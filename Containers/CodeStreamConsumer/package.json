@@ -1,0 +1,19 @@
+{
+  "name": "CodeStreamConsumer",
+  "version": "1.0.0",
+  "description": "Version 1 that just consumes a stream of code",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "Mikael Svahnberg",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "formidable": "^2.1.1",
+    "node-fetch": "^2.6.7",
+    "mongoose": "^6.3.3",
+    "pug": "^3.0.2",
+    "socket.io": "^4.5.0"
+  }
+}

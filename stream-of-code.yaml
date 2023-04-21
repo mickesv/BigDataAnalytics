@@ -1,0 +1,26 @@
+# Docker Compose for Stream-of-code test
+# Connects:
+# - CodeStreamGenerator
+# - CodeStreamConsumer
+# - QualitasCorpus Volume
+
+version: "3.8"
+services:
+  cs-generator:
+    image: csgenerator
+    command: "TEST"
+    volumes:
+      - qc-volume:/QualitasCorpus
+    environment:
+      DELAY: 0
+      TARGET: "cs-consumer:3000"
+  cs-consumer:
+    image: csconsumer
+    volumes:
+      - ./Containers/CodeStreamConsumer/src:/app/src
+    ports:
+      - 8080:3000
+volumes:
+  qc-volume:
+    external: true
+    
