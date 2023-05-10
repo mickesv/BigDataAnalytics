@@ -3,7 +3,7 @@ Work material for parts of a course "Applied Computing and Big Data" offered by 
 
 We are using the [Qualitas Corpus](http://qualitascorpus.com/) as a starting point for some fun very-nearly-big-data analysis.
 
-Documentation and step-by-step instructions for this part of the course is found in the (Documentation)[./Documentation] directory.
+Documentation and step-by-step instructions for this part of the course is found in the [Documentation](Documentation) directory.
 
 ## About the Course
 The course Applied Cloud Computing and Big Data is a 7.5 ECTS course offered by Blekinge Institute of Technology. The course is organised around three themes, and all three themes must be completed to complete the course:
@@ -18,4 +18,4 @@ The course is divided across two source code repositories:
 - https://github.com/mickesv/BigDataAnalytics.git contains the instructions and source code for the Big Data Analytics part of the course.
 
 ## Apply
-If you wish to apply for the course, please visit (UniversityAdmissions)[https://www.universityadmissions.se/intl/start] and search for "Applied Cloud Computing and Big Data".
+If you wish to apply for the course, please visit [UniversityAdmissions](https://www.universityadmissions.se/intl/start) and search for "Applied Cloud Computing and Big Data".
