@@ -102,8 +102,9 @@ class CloneDetector {
         // For each Clone in file.instances, try to expand it with every other Clone
         // (using Clone::maybeExpandWith(), which returns true if it could expand)
         // 
-        // NOTE: If you have used a Clone to expand another Clone, you need to mark it
-        //       as "used" to ensure that you don't use it again.
+        // Comment: This should be doable with a reduce:
+        //          For every new element, check if it overlaps any element in the accumulator.
+        //          If it does, expand the element in the accumulator. If it doesn't, add it to the accumulator.
         //
         // ASSUME: As long as you traverse the array file.instances in the "normal" order, only forward expansion is necessary.
         // 
