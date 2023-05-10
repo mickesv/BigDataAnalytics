@@ -14,7 +14,7 @@ The course Applied Cloud Computing and Big Data is a 7.5 ECTS course offered by 
 
 The course is divided across two source code repositories:
 
-- https://github.com/mickesv/QuoteFinder.git contains the instructions and source code for the Cloud Provisioning and Deployment, and the Business Case for Cloud Computing parts of the course.
+- https://github.com/mickesv/ProvisioningDeployment.git contains the instructions and source code for the Cloud Provisioning and Deployment, and the Business Case for Cloud Computing parts of the course.
 - https://github.com/mickesv/BigDataAnalytics.git contains the instructions and source code for the Big Data Analytics part of the course.
 
 ## Apply
