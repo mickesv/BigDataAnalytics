@@ -60,7 +60,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 #+end_quote
-* Document Overview 
+* Document Overview
+# Overall, I think the module provides now much more "food for thought" than the old instance, that was more focused on solving a problem. You have contextualized that problem very well. I'm not sure about Clojure. Yes, I agree that the focus on formulating the problem and presenting it in a convenient data structure is essential. But I fear you make 1 step forward and 2 back by assuming students know to walk. I'd comparing programming rather to dancing. You have essential things like rythm and dexterity that are cross style, but a Tango dancer will be quite clumsy when trying some Irish tapdance. But it is worth a try and I hope I'm wrong :)
 The course Applied Cloud Computing and Big Data is a 7.5 ECTS course offered by Blekinge Institute of Technology. The course is organised around three themes, and all three themes must be completed to complete the course:
 
 - Cloud Provisioning and Deployment
@@ -1188,7 +1189,9 @@ But what if we don't need to check against all previously seen code all the time
       0        10       20       30       40       50       60       70       80       90      100  
 #+end_src
 
-Studying this graph, we see that there are indeed a few clones that are very frequent, but it quickly tapers off to less than 50 instances per clone. It would make sense to check against these "popular" clones first, but not as much sense as we hoped for.
+Studying this graph, we see that there are indeed a few clones that are very frequent, but it quickly tapers off to less than 50 instances per clone.
+# Hm, not sure what the intention of this last sentence is... what did we hope for and how were we disappointed? 
+It would make sense to check against these "popular" clones first, but not as much sense as we hoped for.
 
 With respect to which technology to use, we have explored a variety of programming languages and tools, including microservices in the form of Docker, shell scripts to perform simple tasks (we are seriously under-utilising shell scripts here: we have once implemented the full clone detection in a 160-odd lines script just to prove that you do not need fancy tools), and a choice of two programming languages to perform the clone detection. We have deliberately /not/ used any of the much touted Big Data Tools such as Hadoop, Spark, or even Disco, since the underlying principles are much more important than the specific tool. The choices of programming languages is not a coincidence; they have inherent support for many of the same functional programming mechanisms that the Big Data tools try to massively scale, and we make intensive use of these features in our solutions.
 
