@@ -1027,7 +1027,7 @@ A third option, which we will not explore further, is to use an /aggregation pip
                    {$project {:_id 1 :numberOfInstances 1 :instances 1}}])))
 #+end_src
 
-An aggregation pipeline is (these days) MongoDB's preferred way of doing map/reduce-like processing. How to read this is as a series of processing steps, e.g ~{$match}~ , ~{$addFields}~, ~{$unwind}~, ~{$project}~, and ~{$group}~ where each step filters or transforms the data stream in some way. There is much to say about what can and can't be done with an aggregation pipeline, a good starting point is the official documentation: https://www.mongodb.com/docs/manual/aggregation/ . Eventually it boils down to /as long as the problem is defined in the right way, the data processing step becomes "easy"/.
+An aggregation pipeline is (these days) MongoDB's preferred way of doing map/reduce-like processing. How to read this is as a series of processing steps, e.g ~{$match}~ , ~{$addFields}~, ~{$unwind}~, ~{$project}~, and ~{$group}~ where each step filters or transforms the data stream in some way. There is much to say about what can and can't be done with an aggregation pipeline, a good starting point is the official documentation: https://www.mongodb.com/docs/manual/aggregation/. Eventually it boils down to /as long as the problem is defined in the right way, the data processing step becomes "easy"/.
 
 #+CINDEX: Horizontal Scaling
 This option will not be explored further in this course, but it does deserve mentioning. Any data processing we can offload to the database is one thing less for our application to worry about, the database is excellent at juggling data streams, and has built-in support for parallelism (and even horizontal scaling).
