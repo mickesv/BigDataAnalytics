@@ -224,7 +224,7 @@ Analogous to the discussion above about optimising for collecting the /right/ da
 Fortunately (for big data), generating reports is only one small part of what one may do with data. Different types of data analysis that can be done include:
 
 #+CINDEX: Linear Data Analysis
-/Linear Data Analysis/, where each datum is studied once and perhaps transformed into some new state. In the end, an analysis across all data is produced. Examples of such queries may count how often a certain phenomenon occur, or the correlation between different attributes of each datum. Even more concretely, one might wish to transform the data about each phone call to add the cost of it, or count of how often a particular number is called, or collecting information about the duration of all phone calls in order to create a new tariff.
+/Linear Data Analysis/, where each datum is studied once and perhaps transformed into some new state. In the end, an analysis across all data is produced. Examples of such queries may count how often a certain phenomenon occurs, or the correlation between different attributes of each datum. Even more concretely, one might wish to transform the data about each phone call to add the cost of it, or count of how often a particular number is called, or collecting information about the duration of all phone calls in order to create a new tariff.
 
 #+CINDEX: Combinatory Data Analysis
 #+CINDEX: Database Joins
