@@ -601,7 +601,7 @@ With these introductions out of the way, it is time to actually fix and run the 
 *Summary*
 We have now:
 1. Created and used a docker image/container to fetch a very-nearly-Big-Data repository of source codes, i.e. the Qualitas Corpus.
-2. Stored the QualitasCorpus in a docker volume, ~qc-volume for use in subsequent steps
+2. Stored the QualitasCorpus in a docker volume, ~qc-volume~, for use in subsequent steps
 3. Created a docker image to simulate source code being generated in a continuous stream.
 4. Created a node.js app to consume this stream and look for code clones in any of the previously submitted files.
 * Assignment Submission: Code Stream Clone Detector :Quiz:Submission:
