@@ -271,7 +271,7 @@ The last type of analysis that I would like to name is /NP-Complete Data Analysi
 The velocity with which new data arrives is not necessarily a problem with modern hardware, but there are still some considerations. Firstly, one may wish to perform some early filtering of noise and valuable data, e.g. to keep the storage volumes down. Secondly, there is a difference between arrival velocity and request velocity, and the toolbox for addressing them differs significantly. Thirdly, if new data needs to be analysed at the same pace as it arrives there are several analysis types and some are absolutely not suitable for real-time analysis. The best option then is to redefine the problem so that it can be solved with more mundane analysis tools.
 
 #+CINDEX: Small Data Big Challenges
-All in all, these considerations add up so that in the end even /small data can cause big challenges/ . Thus, velocity remains in the room and cannot be accused of having killed Big Data.
+All in all, these considerations add up so that in the end even /small data can cause big challenges/. Thus, velocity remains in the room and cannot be accused of having killed Big Data.
 ** Variety : Different Origins or Different Formats
 <<variety>>
 
