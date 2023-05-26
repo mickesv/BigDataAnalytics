@@ -662,6 +662,7 @@ Learn more about hash functions:
 - Hash Tables and Hash Functions https://www.youtube.com/embed/KyUTuwz_b7Q
 - Hashing: The Greatest Idea in Programming https://www.i-programmer.info/babbages-bag/479-hashing.html
 
+# Ok, from here on, the explanations for the algorithm changes are sufficient. Just the initial leap, how to I detect (and expand) a clone at all, is a bit too wide, IMO.
 ** O(n^2)
 #+CINDEX: Big-O Complexity
 #+CINDEX: Dictionary
