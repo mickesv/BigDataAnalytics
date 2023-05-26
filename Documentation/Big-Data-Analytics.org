@@ -789,6 +789,7 @@ The only other reasonable distributed computing alternative I have found is Disc
 #+CINDEX: Unix Koans of Master Foo
 So Java it is. Or Clojure, since I feel adventurous. The benefit of using Clojure for this is that infinite data streams are inherent to the programming language instead of added as an afterthought, so the program code can focus on the problem at hand rather than juggling data to fit the right Java Enterprise Object model. And before you start complaining about your lack of experience in Clojure, consider the following "Master Foo and the Recruiter" Koan (more Unix Koans (some of which are hilariously outdated) can be found at: http://catb.org/~esr/writings/unix-koans/ ):
 
+# Ok, here we have the answer to complains about programming language choice. The fallacy we make is to assume that every student is a UNIX programmer.
 #+begin_verse
 A technical recruiter, having discovered that that the ways of Unix
 hackers were strange to him, sought an audience with Master Foo to
