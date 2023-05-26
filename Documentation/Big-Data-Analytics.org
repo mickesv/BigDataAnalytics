@@ -767,7 +767,7 @@ We /could/ go down the rabbit hole and implement everything in C or C++ (~std::t
 #+PINDEX: Apache Hadoop
 #+PINDEX: Apache Spark
 #+PINDEX: Apache Storm
-Java? With Java 8 and the Streams API, there is a native implementation of MapReduce, as well as support for working with infinite data streams. Writing in Java would also have the benefit of opening up to many of the Apache Software Foundation's data processing tools such as Hadoop https://hadoop.apache.org/ ,  Spark https://spark.apache.org/ , or Storm https://storm.apache.org/index.html .
+Java? With Java 8 and the Streams API, there is a native implementation of MapReduce, as well as support for working with infinite data streams. Writing in Java would also have the benefit of opening up to many of the Apache Software Foundation's data processing tools such as Hadoop https://hadoop.apache.org/, Spark https://spark.apache.org/, or Storm https://storm.apache.org/index.html.
 
 #+CINDEX: Downsides with Apache Tools
 The downside with all three of these, in my humble opinion, is that none of them are ready to be released outside of a university lab. Setting them up and actually getting the master node and worker nodes to communicate is /painful/. There is no reliable list of which network ports that need to be open on each type of node in the network, the used network ports change between versions (even minor versions), and by default you need to essentially keep all ports above 10000 open (and hope that this is sufficient; the port to use for a particular job is assigned at random and sometimes you get a port number lower than 10000). Older versions communicated via unencrypted http requests without any authentication. And even when you do have everything up and running, Hadoop MapReduce will fail three times out of ten (I know: I have tested).
@@ -775,11 +775,11 @@ The downside with all three of these, in my humble opinion, is that none of them
 However.
 
 #+PINDEX: Disco Project
-The only other reasonable distributed computing alternative I have found is Disco http://discoproject.org/ . And then you have Python on your hands.
+The only other reasonable distributed computing alternative I have found is Disco http://discoproject.org/. And then you have Python on your hands.
 
 #+PINDEX: Clojure
 #+CINDEX: Unix Koans of Master Foo
-So Java it is. Or Clojure, since I feel adventurous. The benefit of using Clojure for this is that infinite data streams are inherent to the programming language instead of added as an afterthought, so the program code can focus on the problem at hand rather than juggling data to fit the right Java Enterprise Object model. And before you start complaining about your lack of experience in Clojure, consider the following "Master Foo and the Recruiter" Koan (more Unix Koans (some of which are hilariously outdated) can be found at: http://catb.org/~esr/writings/unix-koans/ ):
+So Java it is. Or Clojure, since I feel adventurous. The benefit of using Clojure for this is that infinite data streams are inherent to the programming language instead of added as an afterthought, so the program code can focus on the problem at hand rather than juggling data to fit the right Java Enterprise Object model. And before you start complaining about your lack of experience in Clojure, consider the following "Master Foo and the Recruiter" Koan (more Unix Koans (some of which are hilariously outdated) can be found at: http://catb.org/~esr/writings/unix-koans/):
 
 #+begin_verse
 A technical recruiter, having discovered that that the ways of Unix
