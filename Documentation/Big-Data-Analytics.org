@@ -61,7 +61,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 #+end_quote
 * Document Overview
-# Overall, I think the module provides now much more "food for thought" than the old instance, that was more focused on solving a problem. You have contextualized that problem very well. I'm not sure about Clojure. Yes, I agree that the focus on formulating the problem and presenting it in a convenient data structure is essential. But I fear you make 1 step forward and 2 back by assuming students know to walk. I'd comparing programming rather to dancing. You have essential things like rythm and dexterity that are cross style, but a Tango dancer will be quite clumsy when trying some Irish tapdance. But it is worth a try and I hope I'm wrong :)
 The course Applied Cloud Computing and Big Data is a 7.5 ECTS course offered by Blekinge Institute of Technology. The course is organised around three themes, and all three themes must be completed to complete the course:
 
 - Cloud Provisioning and Deployment
@@ -162,10 +161,9 @@ Optimising for writing data implies that when new data arrives it should quickly
 
 #+PINDEX: Mongoose
 #+PINDEX: MongoDB
-# You introduce here "posts" as an element in the use case of data storage. They appear again throughout this section byt the use case is not introduced. I assume this is a relic from the source this explanation comes from. Not a big deal, just breaks the otherwise consistent narrative.
-In reality, this suffers from two major issues: The first is that even if the /database/ support "free-form" data where everything is a document and each post in the database may have their own attributes, some form of structure is often imposed by the database access framework (e.g. Mongoose, which is used to access MongoDB databases from node.js programs). This is not such a big deal after all, since performance-wise it only means that data items need to be well behaved objects in your program before you push them to the database. When reading data, on the other hand, each data item needs to fit into the pre-defined structure.
+In reality, this suffers from two major issues: The first is that even if the /database/ support "free-form" data where everything is a document and each item in the database may have their own attributes, some form of structure is often imposed by the database access framework (e.g. Mongoose, which is used to access MongoDB databases from node.js programs). This is not such a big deal after all, since performance-wise it only means that data items need to be well behaved objects in your program before you push them to the database. When reading data, on the other hand, each data item needs to fit into the pre-defined structure.
 
-The second issue is more of a problem, though. To accept any data in the form it comes is to abdicate from the responsibility of designing the data. This will (not may; it /will/) create maintainability issues when some posts are added with some attributes and other posts use other attributes. When reading data, one must carefully check to see if all relevant attributes are specified for each post before any processing of the posts can be done. Your code-base gets littered with passive aggressive data verification every place where the database is queried. In other words; the "write anything" approach is truly only optimised for write speed, and may come with a significant cost for storing and exploring the data.
+The second issue is more of a problem, though. To accept any data in the form it comes is to abdicate from the responsibility of designing the data. This will (not may; it /will/) create maintainability issues when some items are added with some attributes and other items use other attributes. When reading data, one must carefully check to see if all relevant attributes are specified for each item before any processing of the items can be done. Your code-base gets littered with passive aggressive data verification every place where the database is queried. In other words; the "write anything" approach is truly only optimised for write speed, and may come with a significant cost for storing and exploring the data.
 
 #+CINDEX: Optimise for Storing
 #+CINDEX: Data Backup
@@ -181,11 +179,10 @@ The second question is: "What is the /cost/ of keeping data?" The information th
 The third storage decision is: "What are the most suitable formats in which to store the data?" One good example of this is Project Gutenberg mentioned earlier. They may receive books in any format, and they also serve the books in a number of different formats. Internally, however, they are only stored in a small set of formats. Plaintext (ASCII) because this format will remain readable even in the future, and HTML because it is easy to generate other formats based on this (and because it, too, is only a slightly more advanced version of plaintext). Plaintext is a good alternative since it is less vulnerable to the aforementioned bit rot, and for text storage it is also the smallest possible format, which reduces requirements on backup and disk space. In a pinch, it is also compressible (at the cost of becoming less future proof), meaning that even more data can be stored before running out of disk space.
 
 #+CINDEX: Optimise for Exploring
-Exploring the data includes executing queries on the data as well as retrieving complete data posts. If this is the most frequent activity performed on the data, then you may need to compromise other concerns. For example, you might add an index to quickly find answers to common queries, but this comes at a cost of requiring more storage and that it will take longer to insert new posts. Duplicating some data can also help avoiding more complex data queries, but again at a storage cost. Other "tricks" include to store and maintain searchable data in a relational database while keeping the actual data posts outside, essentially stored as opaque blobs (binary large objects).
+Exploring the data includes executing queries on the data as well as retrieving complete data items. If this is the most frequent activity performed on the data, then you may need to compromise other concerns. For example, you might add an index to quickly find answers to common queries, but this comes at a cost of requiring more storage and that it will take longer to insert new items. Duplicating some data can also help avoiding more complex data queries, but again at a storage cost. Other "tricks" include to store and maintain searchable data in a relational database while keeping the actual data items outside, essentially stored as opaque blobs (binary large objects).
 
-#+CINDEX: Active Set
-# Never heard of this term (google points to https://en.wikipedia.org/wiki/Active-set_method but that seems unrelated). Is "caching" the colloquial term here?
-There are, however, things that can be done to optimise /most/ of the queries without adding storage overhead to all posts. For example, all of the examples discussed earlier have "active sets" of data where some items are requested more frequently. I am certain they also have more and less common search patterns for navigating the data. Among the data in the active set, I would also venture that only a portion of them are actually being updated -- the rest must be available but can be statically served.
+#+CINDEX: Active set of Data
+There are, however, things that can be done to optimise /most/ of the queries without adding storage overhead to all items. For example, all of the examples discussed earlier have "active sets" of data where some items are requested more frequently. I am certain they also have more and less common search patterns for navigating the data. Among the data in the active set, I would also venture that only a portion of them are actually being updated -- the rest must be available but can be statically served.
 
 Mind you, organising data into an active set also implies a cost. At regular intervals the active set must be updated to ensure that it indeed consist of the most used data. If, for example, the active set consist of all entries from the last week or month, then an update needs to run at least once per week/month. If the active set is "last 30 days", then you need to update it every day. Moreover, you also need to decide what to do with data that is no longer in the active set; how available should it remain? What quality requirements do you have on e.g. accessibility? Security? Recoverability?
 
@@ -283,7 +280,7 @@ The reason to include /variety/ as one of the Big Data challenges is not necessa
 
 #+CINDEX: Data Variety Challenge
 #+CINDEX: Different Data Origins
-Rather, the challenge with respect to data variety stems from the fact that the data analysis may require input from many different sources, and it may not be possible to know up-front which data entries from each source that will be necessary for the analysis. This means that it may not be possible to filter the data streams beforehand. Data acquisition thus has to resort to collecting and storing all the data from the sources. A certain amount of cleaning can be done on the data from each source (e.g. remove duplicate entries and entries that are obviously out of scope, and convert the data to a post in the database), but it is often not possible to perform any more advanced filtering. /This/ is the real challenge with respect to data variety: it is impossible to know up front which data has value and which should be discarded, and this complicates many of the solutions previously discussed for dealing with volume and velocity (or makes them impossible to use).
+Rather, the challenge with respect to data variety stems from the fact that the data analysis may require input from many different sources, and it may not be possible to know up-front which data entries from each source that will be necessary for the analysis. This means that it may not be possible to filter the data streams beforehand. Data acquisition thus has to resort to collecting and storing all the data from the sources. A certain amount of cleaning can be done on the data from each source (e.g. remove duplicate entries and entries that are obviously out of scope, and convert the data to an item in the database), but it is often not possible to perform any more advanced filtering. /This/ is the real challenge with respect to data variety: it is impossible to know up front which data has value and which should be discarded, and this complicates many of the solutions previously discussed for dealing with volume and velocity (or makes them impossible to use).
 
 Storage volume may no longer be an issue for Big Data, but we did argue that velocity may be a challenge depending on the type of analysis that needs to be done. The challenge with variety thus means that the dataset may grow faster than it would otherwise have to do, which may impact the analysis velocity.
 
@@ -291,14 +288,12 @@ The toolbox is the same as before, i.e. to try to filter as much as possible as 
 
 #+CINDEX: Comparing CO_2 Emissions
 #+TINDEX: Thermal Design Power TDP
-In fact, let's look a little closer at the cost of intelligent analysis. A simplified formula for calculating the power consumption of a cloud computer (based on [[https://devblogs.microsoft.com/sustainable-software/how-can-i-calculate-co2eq-emissions-for-my-azure-vm/][Sara Bergman, "How can I Calculate CO_2-eq emissions for my Azure VM?]] (last checked 2023-04-11) ) is: $E[Wh] = (n_cpu * P_cpu[W] * time[h])$ where $n_cpu$ is the number of CPUs and $P_cpu$ is the power consumption per CPU. The formula suggested by S. Bergman also includes other factors such as memory power consumption and the power consumption of any GPUs, but for simplicity's sake these can be ignored for now. What remains now is to estimate the power consumption per CPU and how much of that CPU which is being used by us (as opposed to any other tenant on the same cloud server).
+In fact, let's look a little closer at the cost of intelligent analysis. A simplified formula for calculating the power consumption of a cloud computer (based on [[https://devblogs.microsoft.com/sustainable-software/how-can-i-calculate-co2eq-emissions-for-my-azure-vm/][Sara Bergman, "How can I Calculate CO_2-eq emissions for my Azure VM?]] (last checked 2023-04-11) ) is: ~E[Wh] = (n_cpu * P_cpu[W] * time[h])~ where ~n_cpu~ is the number of CPUs and ~P_cpu~ is the power consumption per CPU. The formula suggested by S. Bergman also includes other factors such as memory power consumption and the power consumption of any GPUs, but for simplicity's sake these can be ignored for now. What remains now is to estimate the power consumption per CPU and how much of that CPU which is being used by us (as opposed to any other tenant on the same cloud server).
 
-# The formulas here, enclosed in $$, do not render im HTML.
-Thermal Design Power (TDP) is a measure listed by hardware manufacturers, so with a bit of matching between what type of computer and CPU is offered by the cloud provider and what the manufacturer of that specific CPU lists for their TDP, one may find out the energy consumption of one CPU running at full speed: $TDP_cpu[W]$ . Multiply this with our load $l[percent]$ and the time $t[h]$, and we may arrive at an estimated energy consumption for our application: $E[Wh]= (n_cpu * TDP_cpu * l * t)$ .
+Thermal Design Power (TDP) is a measure listed by hardware manufacturers, so with a bit of matching between what type of computer and CPU is offered by the cloud provider and what the manufacturer of that specific CPU lists for their TDP, one may find out the energy consumption of one CPU running at full speed: ~TDP_cpu[W]~ . Multiply this with our load ~l[percent]~ and the time ~t[h]~, and we may arrive at an estimated energy consumption for our application: ~E[Wh]= (n_cpu * TDP_cpu * l * t)~.
 
-Assume we want to reduce the load with for example 10% over a 24h period on a bog-standard dual CPU cloud machine, we may insert the following numbers: $E = (2*165*0.10*24) = 792 Wh ≈ 0.8 kWh$. Being in south Sweden and thus tightly connected to the European power market (which, it should be noted, is likely /not/ where the cloud provider is located), this would mean saving 100g of CO_2 equivalents per day. Run the server for a year to save 36kg of CO_2 equivalents.
+Assume we want to reduce the load with for example 10% over a 24h period on a bog-standard dual CPU cloud machine, we may insert the following numbers: ~E = (2*165*0.10*24) = 792 Wh ≈ 0.8 kWh~. Being in south Sweden and thus tightly connected to the European power market (which, it should be noted, is likely /not/ where the cloud provider is located), this would mean saving 100g of CO_2 equivalents per day. Run the server for a year to save 36kg of CO_2 equivalents.
 
-# LOL
 Humans are part of a natural cycle where we only eat "fresh" organic material (unless you have a penchant for eating crude oil), and thus we are only re-releasing the CO_2 from this organic material back into the natural cycle that will feed the next crop. However, for the sake of this calculation, we /do/ exhale roughly 1kg of CO_2 equivalents per day. Working 8h/day for 20 days/month a single developer can thus spend almost half a year thinking about how to reduce the load by 10% for the same amount of CO_2 equivalents. 
 
 Yes, this is extremely simplified. Yes, CO_2 equivalents does not necessarily mean that all equivalents are equal. Yes, humans are part of the natural cycle so their breath is not a net increase of CO_2 into the atmosphere. Yes, we should probably look closer at how they get to work (do they walk or ride a bike, or do they drive a Chelsea tractor) instead. No, they are not allowed to use a computer or anything else consuming energy while thinking. No, not even coffee. But you get the idea: There is a lot to be saved by analysing the problem before throwing more resources at it.
@@ -309,33 +304,34 @@ Yes, this is extremely simplified. Yes, CO_2 equivalents does not necessarily me
 Cycling back to the /variety/ aspect of big data that we started this section with, the lure of not being forced to structure one's data is that one adopts a more /lassiez-faire/ approach to processing data upon arrival. Over time, this leads to an extremely defensive programming style for data retrieval, a not at all extreme example of which is presented below:
 
 #+begin_src javascript
-  return DocumentStore.find(query)
-      .sort({time:1})
-      .catch( err => {
-          debug('Error while fetching data. \nQuery: %s \n Error: %s', query, err);
-      })
-      .then( result => {
-        if (result) {
-            if (result.field) {
-                if (!isNaN(parseFloat(result.field))) {
-                    if (0 >= parseFloat(result.field)) {
-                        // Finally, here is some code that actually does something useful
-                    } else {
-                        throw 'result.field is negative';
-                    }
-                } else {
-                    throw 'result.field is not a float';
-                }
-            } else {
-                throw 'result.field does not exist';
-            }
-        } else {
-            throw 'did not receive any result from query';
-        }
-      })
-      .catch( err => {
-          debug('Error while parsing data. \nQuery: %s \nError: %s', query, err);
-      });
+    return DocumentStore.find(query)
+        .sort({time:1})
+        .catch( err => {
+            debug('Error while fetching data. \nQuery: %s \n Error: %s', query, err);
+        })
+        .then( result => {
+          if (result) {
+              if (result.field) {
+                  if (!isNaN(parseFloat(result.field))) {
+                      if (0 >= parseFloat(result.field)) {
+                          // Finally, here is some code
+                          // that actually does something useful
+                      } else {
+                          throw 'result.field is negative';
+                      }
+                  } else {
+                      throw 'result.field is not a float';
+                  }
+              } else {
+                  throw 'result.field does not exist';
+              }
+          } else {
+              throw 'did not receive any result from query';
+          }
+        })
+        .catch( err => {
+            debug('Error while parsing data. \nQuery: %s \nError: %s', query, err);
+        });
 #+end_src
 
 This not efficient programming, it is is a passively aggressive word salad! The question that someone forgot to ask in this project was whether data is written more frequently than it is read. Remember also that frequency in this case means both number of times per time unit as well as number of places in the code-base. If the latter is more than "one and only one place", this relaxed attitude to up-front planning of data formats have created a maintainability bomb just waiting to explode.
@@ -504,7 +500,9 @@ This process is the same for all types of clones, but the transformation and mat
 The first step is to ensure access to the Qualitas Corpus. For convenience, the corpus is available from an FTP server at BTH, but given the size we would rather not have you download it more often than you need to. Once you have downloaded it once, we am sure you will agree with us. Thus, we provide you with the basics to create a docker image with the sole purpose of downloading the Qualitas Corpus for you. Since the corpus should survive restarts of the docker container, we will be unpacking it in a separate docker volume, which we will keep and mount from different containers.
 
 *Tasks*
-1. Download the BigDataAnalytics repository: ~git clone https://github.com/mickesv/BigDataAnalytics.git~
+1. Download the BigDataAnalytics repository:
+
+ ~git clone https://github.com/mickesv/BigDataAnalytics.git~
 
 2. Build the =CorpusGetter= image (found in ~Containers/CorpusGetter~ ) and tag it as ~corpusgetter~
 
@@ -558,15 +556,18 @@ The consumer is a ~node.js / express.js~ app, the source code of which is found 
 In the ~src~ directory, you will find a small set of files:
 
 #+begin_src bash
-$ tree
-.
-├── CloneDetector.js # This is the actual Clone Detector, discussed further below
-├── Clone.js         # The Clone class represents one identified Clone
-├── CloneStorage.js  # A Singleton Class to keep track of already identified Clones
-├── FileStorage.js   # A Singleton Class to keep track of already processed files
-├── index.js         # Start file for the system. It sets up the express app and contains the ~processFile()~ function.
-├── SourceLine.js    # The SourceLine class represent a single line (including its original line number) in a file.
-└── Timer.js         # This class is used to start and stop timers as needed.
+  $ tree
+  .
+  ├── CloneDetector.js # This is the actual Clone Detector, discussed further below
+  ├── Clone.js         # The Clone class represents one identified Clone
+  ├── CloneStorage.js  # A Singleton Class to keep track of already identified Clones
+  ├── FileStorage.js   # A Singleton Class to keep track of already processed files
+  ├── index.js         # Start file for the system. 
+                       # Sets up the express app and contains
+                       # the ~processFile()~ function.
+  ├── SourceLine.js    # The SourceLine class represent a single line
+                       # (including its original line number) in a file.
+  └── Timer.js         # This class is used to start and stop timers as needed.
 
 #+end_src
 
@@ -585,7 +586,8 @@ In the CodeStreamConsumer a ~file~ is the central concept through all of these s
   file.chunks     // An array of Chunks, which are just arrays of
                   // SourceLines, each having the length CHUNKSIZE.
   file.instances  // An array of Clones. The processing steps will
-                  // refine this list so that only true and as-long-as-possible Clones remain.
+                  // refine this list so that only true and
+                  // as-long-as-possible Clones remain.
 #+end_src
 
 *Tasks*
@@ -595,8 +597,7 @@ With these introductions out of the way, it is time to actually fix and run the 
 
 1. Start the application using ~docker compose~ with the given ~stream-of-code.yaml~ . You may wish to modify the ~DELAY~ to something bigger during your first tests so you can see what is going on. You will also notice that the ~cs-consumer~ container introduces a bind-mount to the source code of the app so that you can edit the code locally and it will restart automatically.
 
-# Hm, I can already hear the complaints: but I do not know javascript...
-# I miss an explanation of how the detection algorithm works. There are comments in the code, but is that sufficient? I have the impression your strategy is to give less explanations to avoid the trap of providing confusing explanations. A gamble, and we will see how it works out.
+# MUN-TODO I miss an explanation of how the detection algorithm works. There are comments in the code, but is that sufficient? I have the impression your strategy is to give less explanations to avoid the trap of providing confusing explanations. A gamble, and we will see how it works out.
 2. Study the source code of the CodeStreamConsumer so that you understand it. You will notice that there are two implementation tasks, identified by =TODO= statements in the code.
 
 3. The first task is to complete the implementation of the ~CloneDetector~. The smallest possible edit for you is to implement the three methods as suggested, but feel free to be more creative here.
@@ -624,7 +625,6 @@ Please answer the following questions:
 
 4. Please upload your code for the CodeStreamConsumer (zip the folder for the whole Container).
 
-# Nice
 Once delivered, /a meeting will be scheduled/ where you are expected to run and explain your application and its deployment. Be prepared to answer questions about:
 
 - Your implementation of the CloneDetector
@@ -790,7 +790,6 @@ The only other reasonable distributed computing alternative I have found is Disc
 #+CINDEX: Unix Koans of Master Foo
 So Java it is. Or Clojure, since I feel adventurous. The benefit of using Clojure for this is that infinite data streams are inherent to the programming language instead of added as an afterthought, so the program code can focus on the problem at hand rather than juggling data to fit the right Java Enterprise Object model. And before you start complaining about your lack of experience in Clojure, consider the following "Master Foo and the Recruiter" Koan (more Unix Koans (some of which are hilariously outdated) can be found at: http://catb.org/~esr/writings/unix-koans/):
 
-# Ok, here we have the answer to complains about programming language choice. The fallacy we make is to assume that every student is a UNIX programmer.
 #+begin_verse
 A technical recruiter, having discovered that that the ways of Unix
 hackers were strange to him, sought an audience with Master Foo to
@@ -922,13 +921,15 @@ The /elegant/ way to expand clones is by using a ~reduce~ operation like so:
 
 #+FINDEX: expand-clones-elegantly
 #+begin_src clojure
-(defn expand-clones-elegantly [candidates]
-  (reduce (fn [clones candidate]
-            (let [{overlapping true remaining false} (group-by #(overlaps? candidate %) clones)]
-              (if (empty? overlapping)
-                  (conj clones candidate)
-                  (conj remaining (reduce merge-clones candidate overlapping)))
-            )) [] candidates))
+  (defn expand-clones-elegantly [candidates]
+    (reduce (fn [clones candidate]
+              (let [{overlapping true remaining false} (group-by 
+                                                        #(overlaps? candidate %)
+                                                        clones)]
+                (if (empty? overlapping)
+                    (conj clones candidate)
+                    (conj remaining (reduce merge-clones candidate overlapping)))
+              )) [] candidates))
 #+end_src
 
 In plaintext: with every candidate, split the already found clones into two piles; One that overlaps the new candidate and one with all the remaining clones. If there are no overlapping clones, this is a new clone and is conjoined to the existing list of clones. Otherwise, we want to remove the overlapping clones (conveniently already done with the ~remaining~ list) and just store a new clone that merges all of the overlapping clones into one. Beautiful, isn't it?
@@ -1006,35 +1007,46 @@ The Execution time for the =Expanding Candidates= step with Eclipse SDK is now d
 A third option, which we will not explore further, is to use an /aggregation pipeline/ in MongoDB to do the expansion. We are already using an aggregation pipeline for parts of the expansion, but not for all of it:
 
 #+FINDEX: get-overlapping-candidates
-#+begin_src Clojure
-(defn get-overlapping-candidates [conn candidate]
-  (let [db (mg/get-db conn dbname)
-        collname "candidates"
-        clj-cand (from-db-object candidate true)]
-    (mc/aggregate db collname
-                  [{$match {"instances.fileName" {$all (map #(:fileName %) (:instances clj-cand))}}}
-                   {$addFields {:candidate candidate}}
-                   {$unwind "$instances"}
-                   {$project 
-                    {:matches
-                     {$filter
-                      {:input "$candidate.instances"
-                       :cond {$and [{$eq ["$$this.fileName" "$instances.fileName"]}
-                                    {$or [{$and [{$gt  ["$$this.startLine" "$instances.startLine"]}
-                                                 {$lte ["$$this.startLine" "$instances.endLine"]}]}
-                                          {$and [{$gt  ["$instances.startLine" "$$this.startLine"]}
-                                                 {$lte ["$instances.startLine" "$$this.endLine"]}]}]}]}}}
-                     :instances 1
-                     :numberOfInstances 1
-                     :candidate 1
-                     }}
-                   {$match {$expr {$gt [{$size "$matches"} 0]}}}
-                   {$group {:_id "$_id"
-                            :candidate {$first "$candidate"}
-                            :numberOfInstances {$max "$numberOfInstances"}
-                            :instances {$push "$instances"}}}
-                   {$match {$expr {$eq [{$size "$candidate.instances"} "$numberOfInstances"]}}}
-                   {$project {:_id 1 :numberOfInstances 1 :instances 1}}])))
+#+begin_src clojure
+    (defn get-overlapping-candidates [conn candidate]
+      (let [db (mg/get-db conn dbname)
+            collname "candidates"
+            clj-cand (from-db-object candidate true)]
+        (mc/aggregate db collname
+                      [{$match 
+                        {"instances.fileName" 
+                         {$all (map #(:fileName %) (:instances clj-cand))}}}
+                       {$addFields {:candidate candidate}}
+                       {$unwind "$instances"}
+                       {$project 
+                        {:matches
+                         {$filter
+                          {:input "$candidate.instances"
+                           :cond
+                           {$and 
+                            [{$eq
+                              ["$$this.fileName" "$instances.fileName"]}
+                             {$or
+                              [{$and 
+                                [{$gt ["$$this.startLine" "$instances.startLine"]}
+                                 {$lte ["$$this.startLine" "$instances.endLine"]}]}
+                               {$and
+                                [{$gt ["$instances.startLine" "$$this.startLine"]}
+                                 {$lte ["$instances.startLine" "$$this.endLine"]}
+                                 ]}]}]}}}
+                         :instances 1
+                         :numberOfInstances 1
+                         :candidate 1
+                         }}
+                       {$match {$expr {$gt [{$size "$matches"} 0]}}}
+                       {$group {:_id "$_id"
+                                :candidate {$first "$candidate"}
+                                :numberOfInstances {$max "$numberOfInstances"}
+                                :instances {$push "$instances"}}}
+                       {$match {$expr 
+                                {$eq 
+                                 [{$size "$candidate.instances"} "$numberOfInstances"]}}}
+                       {$project {:_id 1 :numberOfInstances 1 :instances 1}}])))
 #+end_src
 
 An aggregation pipeline is (these days) MongoDB's preferred way of doing map/reduce-like processing. How to read this is as a series of processing steps, e.g ~{$match}~ , ~{$addFields}~, ~{$unwind}~, ~{$project}~, and ~{$group}~ where each step filters or transforms the data stream in some way. There is much to say about what can and can't be done with an aggregation pipeline, a good starting point is the official documentation: https://www.mongodb.com/docs/manual/aggregation/. Eventually it boils down to /as long as the problem is defined in the right way, the data processing step becomes "easy"/.
@@ -1095,8 +1107,6 @@ This is where you come in. Since we /have/ the database, and since each processi
 - Collect statistics from inside the cljDetector container to see which processes are consuming most CPU each time-frame. Correlate this with the execution stage and the rest of your collected statistics.
 
 - Since the clone expansion works with the database it is possible to pause execution (at the right moment - just before a new candidate is fetched from storage for processing) and resume later. This requires at least (a) a mechanism for signalling the cljDetector process (e.g. through an open network socket), (b) modifications to ~expander/expand-clones~ to poll if a signal has been received before recurring with a new candidate, and (c) modifications to ~core/-main~ to check for a command line flag "Resume" that overrides the usual execution and jumps directly to calling ~expander/expand-clones~ again. In addition, adding timestamped status updates so that total execution times can still be calculated would be helpful.
-* Assignment Submission: All at Once Clone Detector :Quiz:Submission:
-<<assignmentAllAtOnce>>
 
 *TODO* Please read the following articles:
 
@@ -1111,6 +1121,8 @@ This is where you come in. Since we /have/ the database, and since each processi
 - What have they measured?
 - What are their main findings?
 - What can you learn from this article?
+* Assignment Submission: All at Once Clone Detector :Quiz:Submission:
+<<assignmentAllAtOnce>>
 
 *TODO* Answer the following questions:
 
@@ -1127,7 +1139,6 @@ This is where you come in. Since we /have/ the database, and since each processi
 4. Please make the raw data of your statistics accessible (either as an appendix to your report or via a linked web page).
 
 3. Please upload your code for the modified cljDetector and your MonitorTool (zip the whole folders with the Containers. Please remember to also include the yaml-file used to start your application). Please highlight any modifications you have made in cljDetector to make it easier for us to review your submission.
-
 
 Once delivered, /a meeting will be scheduled/ where you are expected to run and explain your application and its deployment. Be prepared to answer questions about:
 
@@ -1160,38 +1171,36 @@ One point that J. Tigani made in their "Big Data is Dead" article is that most o
 But what if we don't need to check against all previously seen code all the time? Let's form the hypothesis that /a few clones stand for most of the occurrences/. This would be true if, for example, there are specific programming patterns that are more frequent than others (a more glib explanation is that some answers on StackOverflow are more useful than others). It is even possible to verify this through the data already collected by cljDetector (see graph below). If this is true, then one way to streamline the /velocity/ aspect is to only check new code against the list of previously found clones, and schedule a full analysis once every night, week, or even month. The conclusion of /this/ is that data does not need to be big data just because it is plenty, it all boils down to what you want to do with it.
 
 #+begin_src artist
-                           Number of Instances of the 100 Most Common Clones                        
-  700 +-----------------------------------------------------------------------------------------+   
-      |..                                                                                       |   
-      |                                                                                         |   
-  600 |                                                                                         |   
-      |                                                                                         |   
-      |                                                                                         |   
-      |                                                                                         |   
-  500 |                                                                                         |   
-      |                                                                                         |   
-      |  .                                                                                      |   
-  400 |                                                                                         |   
-      |                                                                                         |   
-      |                                                                                         |   
-      |                                                                                         |   
-  300 |                                                                                         |   
-      |   .                                                                                     |   
-      |                                                                                         |   
-  200 |                                                                                         |   
-      |                                                                                         |   
-      |    .                                                                                    |   
-      |    ...                                                                                  |   
-  100 |       .......                                                                           |   
-      |             ...................                                                         |   
-      |                                .........................................................|   
-    0 +-----------------------------------------------------------------------------------------+   
-      0        10       20       30       40       50       60       70       80       90      100  
+                    Number of Instances of the 100 Most Common Clones                        
+  700 +-------------------------------------------------------------------------+   
+      |..                                                                       |   
+      |                                                                         |   
+  600 |                                                                         |   
+      |                                                                         |   
+      |                                                                         |   
+      |                                                                         |   
+  500 |                                                                         |   
+      |                                                                         |   
+      |  .                                                                      |   
+  400 |                                                                         |   
+      |                                                                         |   
+      |                                                                         |   
+      |                                                                         |   
+  300 |                                                                         |   
+      |   .                                                                     |   
+      |                                                                         |   
+  200 |                                                                         |   
+      |                                                                         |   
+      |    .                                                                    |   
+      |    ...                                                                  |   
+  100 |       .......                                                           |   
+      |             ...................                                         |   
+      |                                .........................................|   
+    0 +-------------------------------------------------------------------------+   
+      0        10       20       30       40       50       60  ...  90      100  
 #+end_src
 
-Studying this graph, we see that there are indeed a few clones that are very frequent, but it quickly tapers off to less than 50 instances per clone.
-# Hm, not sure what the intention of this last sentence is... what did we hope for and how were we disappointed? 
-It would make sense to check against these "popular" clones first, but not as much sense as we hoped for.
+Studying this graph, we see that there are indeed a few clones that are very frequent, but it quickly tapers off to less than 50 instances per clone. Thus, it would make sense to check against these "popular" clones first, but we would eventually have to check against the entire codebase anyway.
 
 With respect to which technology to use, we have explored a variety of programming languages and tools, including microservices in the form of Docker, shell scripts to perform simple tasks (we are seriously under-utilising shell scripts here: we have once implemented the full clone detection in a 160-odd lines script just to prove that you do not need fancy tools), and a choice of two programming languages to perform the clone detection. We have deliberately /not/ used any of the much touted Big Data Tools such as Hadoop, Spark, or even Disco, since the underlying principles are much more important than the specific tool. The choices of programming languages is not a coincidence; they have inherent support for many of the same functional programming mechanisms that the Big Data tools try to massively scale, and we make intensive use of these features in our solutions.
 

@@ -220,7 +220,8 @@ may help you:
    • The _execution and results_ sections describe how the study was
      executed (in particular discrepancies from the planned
      methodology), and what the raw results were.  Most of the time, you
-     can safely skip these sections.
+     can safely skip these sections.  Sometimes however, the _results_
+     section is combined with the _analysis_ section.
    • The _analysis_ section “bakes” the results and tries to answer the
      research questions (address the identified problem).  This is
      probably the most interesting section for you to read.
@@ -320,9 +321,9 @@ text, Project Gutenberg (https://www.gutenberg.org/) contains over 70000
 e-books with expired copyrights.  Each book is usually available in a
 couple of different formats, primarily including plain text, but also
 html, epub, and PDF.  According to Kiwix
-(https://wiki.kiwix.org/wiki/Content) , it weighs in at around 75 GB.
-In comparison, the English Wikipedia appears to be around 100GB (I am
-too lazy to actually download this and figure out if this is all of
+(https://wiki.kiwix.org/wiki/Content), it weighs in at around 75 GB.  In
+comparison, the English Wikipedia appears to be around 100GB (I am too
+lazy to actually download this and figure out if this is all of
 Wikipedia, whether it includes images and other media, and whether the
 zim file format is compressed or not).
 
@@ -355,7 +356,7 @@ available.  For example, Spotify Research
 A Spoken English Document Corpus” by Ann Clifton, Sravana Reddy, Yongze
 Yu, Aasish Pappu, Rezvaneh Rezapour, Hamed Bonab, Maria Eskevich, Gareth
 Jones, Jussi Karlgren, Ben Carterette, and Rosie Jones, COLING 2020
-<https://www.aclweb.org/anthology/2020.coling-main.519/> ) .  Youtube
+<https://www.aclweb.org/anthology/2020.coling-main.519/> ).  Youtube
 (https://thinkcomputers.org/what-is-the-capacity-of-youtube-servers/) is
 naturally coy about how much space they require, and I am not certain
 they even know or care themselves how much data they have stored.  In
@@ -384,7 +385,7 @@ single document.
 
    In reality, this suffers from two major issues: The first is that
 even if the _database_ support “free-form” data where everything is a
-document and each post in the database may have their own attributes,
+document and each item in the database may have their own attributes,
 some form of structure is often imposed by the database access framework
 (e.g.  Mongoose, which is used to access MongoDB databases from node.js
 programs).  This is not such a big deal after all, since
@@ -396,10 +397,10 @@ pre-defined structure.
    The second issue is more of a problem, though.  To accept any data in
 the form it comes is to abdicate from the responsibility of designing
 the data.  This will (not may; it _will_) create maintainability issues
-when some posts are added with some attributes and other posts use other
+when some items are added with some attributes and other items use other
 attributes.  When reading data, one must carefully check to see if all
-relevant attributes are specified for each post before any processing of
-the posts can be done.  Your code-base gets littered with passive
+relevant attributes are specified for each item before any processing of
+the items can be done.  Your code-base gets littered with passive
 aggressive data verification every place where the database is queried.
 In other words; the “write anything” approach is truly only optimised
 for write speed, and may come with a significant cost for storing and
@@ -449,18 +450,18 @@ proof), meaning that even more data can be stored before running out of
 disk space.
 
    Exploring the data includes executing queries on the data as well as
-retrieving complete data posts.  If this is the most frequent activity
+retrieving complete data items.  If this is the most frequent activity
 performed on the data, then you may need to compromise other concerns.
 For example, you might add an index to quickly find answers to common
 queries, but this comes at a cost of requiring more storage and that it
-will take longer to insert new posts.  Duplicating some data can also
+will take longer to insert new items.  Duplicating some data can also
 help avoiding more complex data queries, but again at a storage cost.
 Other “tricks” include to store and maintain searchable data in a
-relational database while keeping the actual data posts outside,
+relational database while keeping the actual data items outside,
 essentially stored as opaque blobs (binary large objects).
 
    There are, however, things that can be done to optimise _most_ of the
-queries without adding storage overhead to all posts.  For example, all
+queries without adding storage overhead to all items.  For example, all
 of the examples discussed earlier have “active sets” of data where some
 items are requested more frequently.  I am certain they also have more
 and less common search patterns for navigating the data.  Among the data
@@ -586,7 +587,7 @@ be done include:
    _Linear Data Analysis_, where each datum is studied once and perhaps
 transformed into some new state.  In the end, an analysis across all
 data is produced.  Examples of such queries may count how often a
-certain phenomenon occur, or the correlation between different
+certain phenomenon occurs, or the correlation between different
 attributes of each datum.  Even more concretely, one might wish to
 transform the data about each phone call to add the cost of it, or count
 of how often a particular number is called, or collecting information
@@ -689,7 +690,7 @@ analysis.  The best option then is to redefine the problem so that it
 can be solved with more mundane analysis tools.
 
    All in all, these considerations add up so that in the end even
-_small data can cause big challenges_ .  Thus, velocity remains in the
+_small data can cause big challenges_.  Thus, velocity remains in the
 room and cannot be accused of having killed Big Data.
 
 
@@ -718,17 +719,17 @@ that it may not be possible to filter the data streams beforehand.  Data
 acquisition thus has to resort to collecting and storing all the data
 from the sources.  A certain amount of cleaning can be done on the data
 from each source (e.g.  remove duplicate entries and entries that are
-obviously out of scope, and convert the data to a post in the database),
-but it is often not possible to perform any more advanced filtering.
-_This_ is the real challenge with respect to data variety: it is
-impossible to know up front which data has value and which should be
-discarded, and this complicates many of the solutions previously
+obviously out of scope, and convert the data to an item in the
+database), but it is often not possible to perform any more advanced
+filtering.  _This_ is the real challenge with respect to data variety:
+it is impossible to know up front which data has value and which should
+be discarded, and this complicates many of the solutions previously
 discussed for dealing with volume and velocity (or makes them impossible
 to use).
 
-   Storage volume may no longer an issue for Big Data, but we did argue
-that velocity may be a challenge depending on the type of analysis that
-needs to be done.  The challenge with variety thus means that the
+   Storage volume may no longer be an issue for Big Data, but we did
+argue that velocity may be a challenge depending on the type of analysis
+that needs to be done.  The challenge with variety thus means that the
 dataset may grow faster than it would otherwise have to do, which may
 impact the analysis velocity.
 
@@ -742,29 +743,31 @@ dealing with this.
    In fact, let’s look a little closer at the cost of intelligent
 analysis.  A simplified formula for calculating the power consumption of
 a cloud computer (based on “How can I Calculate CO_2-eq emissions for my
-Azure VM?  (last checked 2023-04-11) ) is: where is the number of CPUs
-and is the power consumption per CPU.  The formula suggested by S.
-Bergman also includes other factors such as memory power consumption and
-the power consumption of any GPUs, but for simplicity’s sake these can
-be ignored for now.  What remains now is to estimate the power
-consumption per CPU and how much of that CPU which is being used by us
-(as opposed to any other tenant on the same cloud server).
+Azure VM?  (last checked 2023-04-11) ) is: ‘E[Wh] = (n_cpu * P_cpu[W] *
+time[h])’ where ‘n_cpu’ is the number of CPUs and ‘P_cpu’ is the power
+consumption per CPU.  The formula suggested by S.  Bergman also includes
+other factors such as memory power consumption and the power consumption
+of any GPUs, but for simplicity’s sake these can be ignored for now.
+What remains now is to estimate the power consumption per CPU and how
+much of that CPU which is being used by us (as opposed to any other
+tenant on the same cloud server).
 
    Thermal Design Power (TDP) is a measure listed by hardware
 manufacturers, so with a bit of matching between what type of computer
 and CPU is offered by the cloud provider and what the manufacturer of
 that specific CPU lists for their TDP, one may find out the energy
-consumption of one CPU running at full speed: .  Multiply this with our
-load and the time , and we may arrive at an estimated energy consumption
-for our application: .
+consumption of one CPU running at full speed: ‘TDP_cpu[W]’ .  Multiply
+this with our load ‘l[percent]’ and the time ‘t[h]’, and we may arrive
+at an estimated energy consumption for our application: ‘E[Wh]= (n_cpu *
+TDP_cpu * l * t)’.
 
    Assume we want to reduce the load with for example 10% over a 24h
 period on a bog-standard dual CPU cloud machine, we may insert the
-following numbers: .  Being in south Sweden and thus tightly connected
-to the European power market (which, it should be noted, is likely _not_
-where the cloud provider is located), this would mean saving 100g of
-CO_2 equivalents per day.  Run the server for a year to save 36kg of
-CO_2 equivalents.
+following numbers: ‘E = (2*165*0.10*24) = 792 Wh ≈ 0.8 kWh’.  Being in
+south Sweden and thus tightly connected to the European power market
+(which, it should be noted, is likely _not_ where the cloud provider is
+located), this would mean saving 100g of CO_2 equivalents per day.  Run
+the server for a year to save 36kg of CO_2 equivalents.
 
    Humans are part of a natural cycle where we only eat “fresh” organic
 material (unless you have a penchant for eating crude oil), and thus we
@@ -802,7 +805,8 @@ example of which is presented below:
                if (result.field) {
                    if (!isNaN(parseFloat(result.field))) {
                        if (0 >= parseFloat(result.field)) {
-                           // Finally, here is some code that actually does something useful
+                           // Finally, here is some code
+                           // that actually does something useful
                        } else {
                            throw 'result.field is negative';
                        }
@@ -1088,12 +1092,12 @@ File: Big-Data-Analytics.info,  Node: Big Data Analytics in Practice Problem Ove
 5 Big Data Analytics in Practice: Problem Overview
 **************************************************
 
-The Qualitas Corpus (See <http://qualitascorpus.com/> ) is a collection
+The Qualitas Corpus (See <http://qualitascorpus.com/>) is a collection
 of software systems and their source code, created and maintained by
 Ewan Tempero, University of Auckland.  It was originally created in
 order to have a curated collection of software systems to perform
 research studies on, but it is large enough to be useful for this course
-as well.  As discussed in the introduction (See *note introduction:: ) ,
+as well.  As discussed in the introduction (See *note introduction::),
 it is perhaps not big enough to be called Big Data today, but it is
 still large enough to cause a bit of problems when trying to perform any
 form of analysis on it – as we shall see.  For that reason, it does not
@@ -1194,8 +1198,9 @@ will be unpacking it in a separate docker volume, which we will keep and
 mount from different containers.
 
    *Tasks*
-  1. Download the BigDataAnalytics repository: ‘git clone
-     https://github.com/mickesv/BigDataAnalytics.git’
+  1. Download the BigDataAnalytics repository:
+
+     ‘git clone https://github.com/mickesv/BigDataAnalytics.git’
 
   2. Build the ‘CorpusGetter’ image (found in ‘Containers/CorpusGetter’
      ) and tag it as ‘corpusgetter’
@@ -1311,8 +1316,11 @@ found so far, and the names of the thus far processed files.
      ├── Clone.js         # The Clone class represents one identified Clone
      ├── CloneStorage.js  # A Singleton Class to keep track of already identified Clones
      ├── FileStorage.js   # A Singleton Class to keep track of already processed files
-     ├── index.js         # Start file for the system. It sets up the express app and contains the ~processFile()~ function.
-     ├── SourceLine.js    # The SourceLine class represent a single line (including its original line number) in a file.
+     ├── index.js         # Start file for the system.
+                          # Sets up the express app and contains
+                          # the ~processFile()~ function.
+     ├── SourceLine.js    # The SourceLine class represent a single line
+                          # (including its original line number) in a file.
      └── Timer.js         # This class is used to start and stop timers as needed.
 
 
@@ -1334,7 +1342,8 @@ object.  Just before storage, it will contain the following fields:
      file.chunks     // An array of Chunks, which are just arrays of
                      // SourceLines, each having the length CHUNKSIZE.
      file.instances  // An array of Clones. The processing steps will
-                     // refine this list so that only true and as-long-as-possible Clones remain.
+                     // refine this list so that only true and
+                     // as-long-as-possible Clones remain.
 
    *Tasks* With these introductions out of the way, it is time to
 actually fix and run the application.
@@ -1349,16 +1358,16 @@ actually fix and run the application.
      introduces a bind-mount to the source code of the app so that you
      can edit the code locally and it will restart automatically.
 
-  2. Study the source code of the CodeStreamConsumer so that you
+  1. Study the source code of the CodeStreamConsumer so that you
      understand it.  You will notice that there are two implementation
      tasks, identified by ‘TODO’ statements in the code.
 
-  3. The first task is to complete the implementation of the
+  2. The first task is to complete the implementation of the
      ‘CloneDetector’.  The smallest possible edit for you is to
      implement the three methods as suggested, but feel free to be more
      creative here.
 
-  4. The second task is to add a new landing page in ‘index.js’ for more
+  3. The second task is to add a new landing page in ‘index.js’ for more
      detailed timing statistics (not just data on the last processed
      file).  Your own creativity sets the boundaries here, but it is
      useful to be able to see trends over time for how long it takes to
@@ -1368,7 +1377,7 @@ actually fix and run the application.
      able to correctly identify clones (feel free to write a new
      CodeStreamGenerator that just send these two files on repeat).
 
-  5. Once you are satisfied with your implementation, run the app for a
+  4. Once you are satisfied with your implementation, run the app for a
      longer period of time so you can get some proper statistics out of
      it.  Make note of what happens, when it happens, and try to reason
      about causes and remedies.
@@ -1377,8 +1386,8 @@ actually fix and run the application.
   1. Created and used a docker image/container to fetch a
      very-nearly-Big-Data repository of source codes, i.e.  the Qualitas
      Corpus.
-  2. Stored the QualitasCorpus in a docker volume, ~qc-volume for use in
-     subsequent steps
+  2. Stored the QualitasCorpus in a docker volume, ‘qc-volume’, for use
+     in subsequent steps
   3. Created a docker image to simulate source code being generated in a
      continuous stream.
   4. Created a node.js app to consume this stream and look for code
@@ -1741,9 +1750,9 @@ an issue.
 implementation of MapReduce, as well as support for working with
 infinite data streams.  Writing in Java would also have the benefit of
 opening up to many of the Apache Software Foundation’s data processing
-tools such as Hadoop <https://hadoop.apache.org/> , Spark
-<https://spark.apache.org/> , or Storm
-<https://storm.apache.org/index.html> .
+tools such as Hadoop <https://hadoop.apache.org/>, Spark
+<https://spark.apache.org/>, or Storm
+<https://storm.apache.org/index.html>.
 
    The downside with all three of these, in my humble opinion, is that
 none of them are ready to be released outside of a university lab.
@@ -1762,7 +1771,7 @@ have tested).
    However.
 
    The only other reasonable distributed computing alternative I have
-found is Disco <http://discoproject.org/> .  And then you have Python on
+found is Disco <http://discoproject.org/>.  And then you have Python on
 your hands.
 
    So Java it is.  Or Clojure, since I feel adventurous.  The benefit of
@@ -1773,7 +1782,7 @@ the right Java Enterprise Object model.  And before you start
 complaining about your lack of experience in Clojure, consider the
 following “Master Foo and the Recruiter” Koan (more Unix Koans (some of
 which are hilariously outdated) can be found at:
-<http://catb.org/~esr/writings/unix-koans/> ):
+<http://catb.org/~esr/writings/unix-koans/>):
 
      A technical recruiter, having discovered that that the ways of Unix
      hackers were strange to him, sought an audience with Master Foo to
@@ -1989,7 +1998,9 @@ so:
 
      (defn expand-clones-elegantly [candidates]
        (reduce (fn [clones candidate]
-                 (let [{overlapping true remaining false} (group-by #(overlaps? candidate %) clones)]
+                 (let [{overlapping true remaining false} (group-by
+                                                           #(overlaps? candidate %)
+                                                           clones)]
                    (if (empty? overlapping)
                        (conj clones candidate)
                        (conj remaining (reduce merge-clones candidate overlapping)))
@@ -2118,18 +2129,27 @@ all of it:
              collname "candidates"
              clj-cand (from-db-object candidate true)]
          (mc/aggregate db collname
-                       [{$match {"instances.fileName" {$all (map #(:fileName %) (:instances clj-cand))}}}
+                       [{$match
+                         {"instances.fileName"
+                          {$all (map #(:fileName %) (:instances clj-cand))}}}
                         {$addFields {:candidate candidate}}
                         {$unwind "$instances"}
                         {$project
                          {:matches
                           {$filter
                            {:input "$candidate.instances"
-                            :cond {$and [{$eq ["$$this.fileName" "$instances.fileName"]}
-                                         {$or [{$and [{$gt  ["$$this.startLine" "$instances.startLine"]}
-                                                      {$lte ["$$this.startLine" "$instances.endLine"]}]}
-                                               {$and [{$gt  ["$instances.startLine" "$$this.startLine"]}
-                                                      {$lte ["$instances.startLine" "$$this.endLine"]}]}]}]}}}
+                            :cond
+                            {$and
+                             [{$eq
+                               ["$$this.fileName" "$instances.fileName"]}
+                              {$or
+                               [{$and
+                                 [{$gt ["$$this.startLine" "$instances.startLine"]}
+                                  {$lte ["$$this.startLine" "$instances.endLine"]}]}
+                                {$and
+                                 [{$gt ["$instances.startLine" "$$this.startLine"]}
+                                  {$lte ["$instances.startLine" "$$this.endLine"]}
+                                  ]}]}]}}}
                           :instances 1
                           :numberOfInstances 1
                           :candidate 1
@@ -2139,7 +2159,9 @@ all of it:
                                  :candidate {$first "$candidate"}
                                  :numberOfInstances {$max "$numberOfInstances"}
                                  :instances {$push "$instances"}}}
-                        {$match {$expr {$eq [{$size "$candidate.instances"} "$numberOfInstances"]}}}
+                        {$match {$expr
+                                 {$eq
+                                  [{$size "$candidate.instances"} "$numberOfInstances"]}}}
                         {$project {:_id 1 :numberOfInstances 1 :instances 1}}])))
 
    An aggregation pipeline is (these days) MongoDB’s preferred way of
@@ -2149,9 +2171,9 @@ processing steps, e.g ‘{$match}’ , ‘{$addFields}’, ‘{$unwind}’,
 data stream in some way.  There is much to say about what can and can’t
 be done with an aggregation pipeline, a good starting point is the
 official documentation:
-<https://www.mongodb.com/docs/manual/aggregation/> .  Eventually it
-boils down to _as long as the problem is defined in the right way, the
-data processing step becomes “easy”_.
+<https://www.mongodb.com/docs/manual/aggregation/>.  Eventually it boils
+down to _as long as the problem is defined in the right way, the data
+processing step becomes “easy”_.
 
    This option will not be explored further in this course, but it does
 deserve mentioning.  Any data processing we can offload to the database
@@ -2285,13 +2307,7 @@ collection in the database so that we have access to them too.
      status updates so that total execution times can still be
      calculated would be helpful.
 
-
-File: Big-Data-Analytics.info,  Node: Assignment Submission All at Once Clone Detector,  Next: Summary,  Prev: Assignment Task Implementing Monitoring,  Up: Top
-
-13 Assignment Submission: All at Once Clone Detector
-****************************************************
-
-*TODO* Please read the following articles:
+   *TODO* Please read the following articles:
 
   1. C.  U.  Smith and L.  G.  Williams.  Software performance
      antipatterns.  In Proceedings of the 2nd international workshop on
@@ -2312,7 +2328,13 @@ to the following:
    • What are their main findings?
    • What can you learn from this article?
 
-   *TODO* Answer the following questions:
+
+File: Big-Data-Analytics.info,  Node: Assignment Submission All at Once Clone Detector,  Next: Summary,  Prev: Assignment Task Implementing Monitoring,  Up: Top
+
+13 Assignment Submission: All at Once Clone Detector
+****************************************************
+
+*TODO* Answer the following questions:
 
   1. Are you able to process the entire Qualitas Corpus?  If not, what
      are the main issues (think in terms of data processing and storage)
@@ -2448,38 +2470,39 @@ analysis once every night, week, or even month.  The conclusion of
 _this_ is that data does not need to be big data just because it is
 plenty, it all boils down to what you want to do with it.
 
-                              Number of Instances of the 100 Most Common Clones
-     700 +-----------------------------------------------------------------------------------------+
-         |..                                                                                       |
-         |                                                                                         |
-     600 |                                                                                         |
-         |                                                                                         |
-         |                                                                                         |
-         |                                                                                         |
-     500 |                                                                                         |
-         |                                                                                         |
-         |  .                                                                                      |
-     400 |                                                                                         |
-         |                                                                                         |
-         |                                                                                         |
-         |                                                                                         |
-     300 |                                                                                         |
-         |   .                                                                                     |
-         |                                                                                         |
-     200 |                                                                                         |
-         |                                                                                         |
-         |    .                                                                                    |
-         |    ...                                                                                  |
-     100 |       .......                                                                           |
-         |             ...................                                                         |
-         |                                .........................................................|
-       0 +-----------------------------------------------------------------------------------------+
-         0        10       20       30       40       50       60       70       80       90      100
+                       Number of Instances of the 100 Most Common Clones
+     700 +-------------------------------------------------------------------------+
+         |..                                                                       |
+         |                                                                         |
+     600 |                                                                         |
+         |                                                                         |
+         |                                                                         |
+         |                                                                         |
+     500 |                                                                         |
+         |                                                                         |
+         |  .                                                                      |
+     400 |                                                                         |
+         |                                                                         |
+         |                                                                         |
+         |                                                                         |
+     300 |                                                                         |
+         |   .                                                                     |
+         |                                                                         |
+     200 |                                                                         |
+         |                                                                         |
+         |    .                                                                    |
+         |    ...                                                                  |
+     100 |       .......                                                           |
+         |             ...................                                         |
+         |                                .........................................|
+       0 +-------------------------------------------------------------------------+
+         0        10       20       30       40       50       60  ...  90      100
 
    Studying this graph, we see that there are indeed a few clones that
 are very frequent, but it quickly tapers off to less than 50 instances
-per clone.  It would make sense to check against these “popular” clones
-first, but not as much sense as we hoped for.
+per clone.  Thus, it would make sense to check against these “popular”
+clones first, but we would eventually have to check against the entire
+codebase anyway.
 
    With respect to which technology to use, we have explored a variety
 of programming languages and tools, including microservices in the form
@@ -2544,7 +2567,7 @@ Concept Index
 
 * ACID Database qualities:               Volume The Size of Big Data.
                                                               (line  69)
-* Active Set:                            Volume The Size of Big Data.
+* Active set of Data:                    Volume The Size of Big Data.
                                                               (line 155)
 * All-at-Once Analysis:                  From File-by-File to All-at-Once Analysis.
                                                               (line   6)
@@ -2597,7 +2620,7 @@ Concept Index
 * Database Joins:                        Velocity The Speed of Noise.
                                                               (line 105)
 * Defensive Programming:                 Variety Different Origins or Different Formats.
-                                                              (line  93)
+                                                              (line  95)
 * Dictionary:                            O(n^2).              (line   6)
 * Different Data Formats:                Variety Different Origins or Different Formats.
                                                               (line   6)
@@ -2618,7 +2641,7 @@ Concept Index
 * Hash function:                         Hashing.             (line   6)
 * Hashing:                               Hashing.             (line   6)
 * Horizontal Scaling:                    Expand with Aggregation Pipeline.
-                                                              (line  51)
+                                                              (line  62)
 * Learning Outcomes:                     Learning Outcomes.   (line   6)
 * Linear Data Analysis:                  Velocity The Speed of Noise.
                                                               (line  96)
@@ -2639,9 +2662,9 @@ Concept Index
 * Parallelisation of cljDetector:        First Run on full Qualitas Corpus.
                                                               (line  24)
 * Performance Antipattern:               Expanding Elegantly but Inefficiently.
-                                                              (line  25)
+                                                              (line  27)
 * Performance Antipattern "Ramp":        Expanding Elegantly but Inefficiently.
-                                                              (line  25)
+                                                              (line  27)
 * Performance Architecture Tactics:      Velocity The Speed of Noise.
                                                               (line   6)
 * Request Rate:                          Velocity The Speed of Noise.
@@ -2721,7 +2744,7 @@ Files and Data Types Index
 * Menu:
 
 * CodeStreamConsumer file object:        Assignment Task Working with a Stream of Data.
-                                                               (line 54)
+                                                               (line 57)
 * Qualitas Corpus:                       Big Data Analytics in Practice Problem Overview.
                                                                (line  6)
 * Thermal Design Power TDP:              Variety Different Origins or Different Formats.
@@ -2763,46 +2786,46 @@ Tag Table:
 Node: Top1465
 Node: Document Overview4687
 Node: A Note on Reading Research Articles7254
-Node: Introduction to Big Data10946
-Ref: introduction11159
-Node: Volume The Size of Big Data13505
-Ref: volume13710
-Node: Velocity The Speed of Noise24333
-Ref: velocity24593
-Node: Variety Different Origins or Different Formats35890
-Ref: variety36184
-Node: Value The Cost of Noise44864
-Node: Summary From Big Data to Big Data Analytics48565
-Node: Learning Outcomes52519
-Node: Quiz Introduction to Big Data53536
-Node: Big Data Analytics in Practice Problem Overview55944
-Node: Task Downloading and Describing the Qualitas Corpus61167
-Node: Quiz Code Clones and Big Data63409
-Node: Assignment Task Working with a Stream of Data65446
-Node: Assignment Submission Code Stream Clone Detector71912
-Ref: assignmentCodeStream72219
-Node: Improving the Clone Detecting Algorithm73689
-Node: Hashing75367
-Node: O(n^2)77281
-Node: From File-by-File to All-at-Once Analysis79928
-Node: Wisely and slow They stumble that run fast86672
-Node: cljDetector All-at-Once Clone Detection90822
-Node: First Run on full Qualitas Corpus96380
-Node: Expanding Elegantly but Inefficiently99679
-Ref: elegant-expansion99984
-Node: Expand with ``Aleph-null Bottles of Beer''103560
-Ref: beer-expansion103874
-Node: Expand with Aggregation Pipeline105997
-Ref: db-expansion106288
-Node: Second Run on full Qualitas Corpus109702
-Node: Assignment Task Implementing Monitoring111534
-Node: Assignment Submission All at Once Clone Detector115689
-Ref: assignmentAllAtOnce115960
-Node: Summary119576
-Node: Concept Index129758
-Node: Program Index138958
-Node: Files and Data Types Index141882
-Node: Functions and Commands Index142582
+Node: Introduction to Big Data11034
+Ref: introduction11247
+Node: Volume The Size of Big Data13593
+Ref: volume13798
+Node: Velocity The Speed of Noise24420
+Ref: velocity24680
+Node: Variety Different Origins or Different Formats35977
+Ref: variety36271
+Node: Value The Cost of Noise45181
+Node: Summary From Big Data to Big Data Analytics48882
+Node: Learning Outcomes52836
+Node: Quiz Introduction to Big Data53853
+Node: Big Data Analytics in Practice Problem Overview56261
+Node: Task Downloading and Describing the Qualitas Corpus61481
+Node: Quiz Code Clones and Big Data63724
+Node: Assignment Task Working with a Stream of Data65761
+Node: Assignment Submission Code Stream Clone Detector72338
+Ref: assignmentCodeStream72645
+Node: Improving the Clone Detecting Algorithm74115
+Node: Hashing75793
+Node: O(n^2)77707
+Node: From File-by-File to All-at-Once Analysis80354
+Node: Wisely and slow They stumble that run fast87098
+Node: cljDetector All-at-Once Clone Detection91243
+Node: First Run on full Qualitas Corpus96801
+Node: Expanding Elegantly but Inefficiently100100
+Ref: elegant-expansion100405
+Node: Expand with ``Aleph-null Bottles of Beer''104099
+Ref: beer-expansion104413
+Node: Expand with Aggregation Pipeline106536
+Ref: db-expansion106827
+Node: Second Run on full Qualitas Corpus110510
+Node: Assignment Task Implementing Monitoring112342
+Node: Assignment Submission All at Once Clone Detector117429
+Ref: assignmentAllAtOnce117700
+Node: Summary120384
+Node: Concept Index130182
+Node: Program Index139382
+Node: Files and Data Types Index142306
+Node: Functions and Commands Index143006
 
 End Tag Table
 

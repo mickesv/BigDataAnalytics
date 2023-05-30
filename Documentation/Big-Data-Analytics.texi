@@ -195,7 +195,7 @@ The @emph{related work} section should discuss in further detail what other rese
 @item
 The @emph{methodology} section explains how the study was conducted. Once an article is published (which they naturally are in this course), this is mostly interesting if you distrust some of the results and want to see if anything has been missed when constructing the study.
 @item
-The @emph{execution and results} sections describe how the study was executed (in particular discrepancies from the planned methodology), and what the raw results were. Most of the time, you can safely skip these sections.
+The @emph{execution and results} sections describe how the study was executed (in particular discrepancies from the planned methodology), and what the raw results were. Most of the time, you can safely skip these sections. Sometimes however, the @emph{results} section is combined with the @emph{analysis} section.
 @item
 The @emph{analysis} section ``bakes'' the results and tries to answer the research questions (address the identified problem). This is probably the most interesting section for you to read.
 @item
@@ -252,7 +252,7 @@ I repeat that these are the @emph{claims} about what constitutes big data. It ma
 We may go about defining the size of Big Data in two ways. One is to look at examples of large datasets and gather anecdotal evidence about what may be Big Data. The other is to look at storage and processing capacity, and establish a ``lower limit'' for what may be Big Data.
 
 @pindex Project Gutenberg
-First, then, some examples. Starting with something simple, like text, @uref{https://www.gutenberg.org/, Project Gutenberg} contains over 70000 e-books with expired copyrights. Each book is usually available in a couple of different formats, primarily including plain text, but also html, epub, and PDF@. According to @uref{https://wiki.kiwix.org/wiki/Content, Kiwix} , it weighs in at around 75 GB@. In comparison, the English Wikipedia appears to be around 100GB (I am too lazy to actually download this and figure out if this is all of Wikipedia, whether it includes images and other media, and whether the zim file format is compressed or not).
+First, then, some examples. Starting with something simple, like text, @uref{https://www.gutenberg.org/, Project Gutenberg} contains over 70000 e-books with expired copyrights. Each book is usually available in a couple of different formats, primarily including plain text, but also html, epub, and PDF@. According to @uref{https://wiki.kiwix.org/wiki/Content, Kiwix}, it weighs in at around 75 GB@. In comparison, the English Wikipedia appears to be around 100GB (I am too lazy to actually download this and figure out if this is all of Wikipedia, whether it includes images and other media, and whether the zim file format is compressed or not).
 
 @pindex Github
 Source code is just another type of text, right? Github provides a @uref{https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=github_repos&page=dataset&project=vagrant-test-2022&ws=!1m4!1m3!3m2!1sbigquery-public-data!2sgithub_repos, dataset} covering nearly 3 million public open-source licensed repositories; this repo is around 500 GB (which consumes 2.5 TB of disk space). As before, I have not checked whether this number contains all versions of all files (GitHub is, after all, a configuration management utility), and whether binaries (such as images, generated pdf documents, etc.) are included in this as well.
@@ -262,7 +262,7 @@ What about image data? @uref{https://www.openstreetmap.org/, OpenStreetMap} is a
 
 @pindex Spotify
 @pindex Youtube
-Audio and video? That ought to take up lots and lots of space. For commercial reasons, this type of data is difficult to get access to, but we may get some ideas based on some research datasets that @emph{are} made available. For example, @uref{https://podcastsdataset.byspotify.com/, Spotify Research} has published a dataset of 100 000 hours worth of podcasts, with a size of ~2TB (See ``100,000 Podcasts: A Spoken English Document Corpus” by Ann Clifton, Sravana Reddy, Yongze Yu, Aasish Pappu, Rezvaneh Rezapour, Hamed Bonab, Maria Eskevich, Gareth Jones, Jussi Karlgren, Ben Carterette, and Rosie Jones, COLING 2020 @uref{https://www.aclweb.org/anthology/2020.coling-main.519/} ) .  @uref{https://thinkcomputers.org/what-is-the-capacity-of-youtube-servers/, Youtube} is naturally coy about how much space they require, and I am not certain they even know or care themselves how much data they have stored. In their case, the defining factor is probably the velocity at which data arrives and the velocity at which data is requested, confident in that they have done as much as they can in order to save storage space.
+Audio and video? That ought to take up lots and lots of space. For commercial reasons, this type of data is difficult to get access to, but we may get some ideas based on some research datasets that @emph{are} made available. For example, @uref{https://podcastsdataset.byspotify.com/, Spotify Research} has published a dataset of 100 000 hours worth of podcasts, with a size of ~2TB (See ``100,000 Podcasts: A Spoken English Document Corpus” by Ann Clifton, Sravana Reddy, Yongze Yu, Aasish Pappu, Rezvaneh Rezapour, Hamed Bonab, Maria Eskevich, Gareth Jones, Jussi Karlgren, Ben Carterette, and Rosie Jones, COLING 2020 @uref{https://www.aclweb.org/anthology/2020.coling-main.519/} ). @uref{https://thinkcomputers.org/what-is-the-capacity-of-youtube-servers/, Youtube} is naturally coy about how much space they require, and I am not certain they even know or care themselves how much data they have stored. In their case, the defining factor is probably the velocity at which data arrives and the velocity at which data is requested, confident in that they have done as much as they can in order to save storage space.
 
 With these examples it is clear that even a modern laptop has enough storage capacity to store even a couple of these datasets. Yes, there are cases where this becomes difficult, and finding a scalable backup solution for our photo collection is ever a problem, but it is still clear that in most cases @emph{it is not the volume itself that is the problem, but what one desires to do with the data}.
 
@@ -275,9 +275,9 @@ Optimising for writing data implies that when new data arrives it should quickly
 
 @pindex Mongoose
 @pindex MongoDB
-In reality, this suffers from two major issues: The first is that even if the @emph{database} support ``free-form'' data where everything is a document and each post in the database may have their own attributes, some form of structure is often imposed by the database access framework (e.g. Mongoose, which is used to access MongoDB databases from node.js programs). This is not such a big deal after all, since performance-wise it only means that data items need to be well behaved objects in your program before you push them to the database. When reading data, on the other hand, each data item needs to fit into the pre-defined structure.
+In reality, this suffers from two major issues: The first is that even if the @emph{database} support ``free-form'' data where everything is a document and each item in the database may have their own attributes, some form of structure is often imposed by the database access framework (e.g. Mongoose, which is used to access MongoDB databases from node.js programs). This is not such a big deal after all, since performance-wise it only means that data items need to be well behaved objects in your program before you push them to the database. When reading data, on the other hand, each data item needs to fit into the pre-defined structure.
 
-The second issue is more of a problem, though. To accept any data in the form it comes is to abdicate from the responsibility of designing the data. This will (not may; it @emph{will}) create maintainability issues when some posts are added with some attributes and other posts use other attributes. When reading data, one must carefully check to see if all relevant attributes are specified for each post before any processing of the posts can be done. Your code-base gets littered with passive aggressive data verification every place where the database is queried. In other words; the ``write anything'' approach is truly only optimised for write speed, and may come with a significant cost for storing and exploring the data.
+The second issue is more of a problem, though. To accept any data in the form it comes is to abdicate from the responsibility of designing the data. This will (not may; it @emph{will}) create maintainability issues when some items are added with some attributes and other items use other attributes. When reading data, one must carefully check to see if all relevant attributes are specified for each item before any processing of the items can be done. Your code-base gets littered with passive aggressive data verification every place where the database is queried. In other words; the ``write anything'' approach is truly only optimised for write speed, and may come with a significant cost for storing and exploring the data.
 
 @cindex Optimise for Storing
 @cindex Data Backup
@@ -293,10 +293,10 @@ The second question is: ``What is the @emph{cost} of keeping data?'' The informa
 The third storage decision is: ``What are the most suitable formats in which to store the data?'' One good example of this is Project Gutenberg mentioned earlier. They may receive books in any format, and they also serve the books in a number of different formats. Internally, however, they are only stored in a small set of formats. Plaintext (ASCII) because this format will remain readable even in the future, and HTML because it is easy to generate other formats based on this (and because it, too, is only a slightly more advanced version of plaintext). Plaintext is a good alternative since it is less vulnerable to the aforementioned bit rot, and for text storage it is also the smallest possible format, which reduces requirements on backup and disk space. In a pinch, it is also compressible (at the cost of becoming less future proof), meaning that even more data can be stored before running out of disk space.
 
 @cindex Optimise for Exploring
-Exploring the data includes executing queries on the data as well as retrieving complete data posts. If this is the most frequent activity performed on the data, then you may need to compromise other concerns. For example, you might add an index to quickly find answers to common queries, but this comes at a cost of requiring more storage and that it will take longer to insert new posts. Duplicating some data can also help avoiding more complex data queries, but again at a storage cost. Other ``tricks'' include to store and maintain searchable data in a relational database while keeping the actual data posts outside, essentially stored as opaque blobs (binary large objects).
+Exploring the data includes executing queries on the data as well as retrieving complete data items. If this is the most frequent activity performed on the data, then you may need to compromise other concerns. For example, you might add an index to quickly find answers to common queries, but this comes at a cost of requiring more storage and that it will take longer to insert new items. Duplicating some data can also help avoiding more complex data queries, but again at a storage cost. Other ``tricks'' include to store and maintain searchable data in a relational database while keeping the actual data items outside, essentially stored as opaque blobs (binary large objects).
 
-@cindex Active Set
-There are, however, things that can be done to optimise @emph{most} of the queries without adding storage overhead to all posts. For example, all of the examples discussed earlier have ``active sets'' of data where some items are requested more frequently. I am certain they also have more and less common search patterns for navigating the data. Among the data in the active set, I would also venture that only a portion of them are actually being updated -- the rest must be available but can be statically served.
+@cindex Active set of Data
+There are, however, things that can be done to optimise @emph{most} of the queries without adding storage overhead to all items. For example, all of the examples discussed earlier have ``active sets'' of data where some items are requested more frequently. I am certain they also have more and less common search patterns for navigating the data. Among the data in the active set, I would also venture that only a portion of them are actually being updated -- the rest must be available but can be statically served.
 
 Mind you, organising data into an active set also implies a cost. At regular intervals the active set must be updated to ensure that it indeed consist of the most used data. If, for example, the active set consist of all entries from the last week or month, then an update needs to run at least once per week/month. If the active set is ``last 30 days'', then you need to update it every day. Moreover, you also need to decide what to do with data that is no longer in the active set; how available should it remain? What quality requirements do you have on e.g. accessibility? Security? Recoverability?
 
@@ -341,7 +341,7 @@ Analogous to the discussion above about optimising for collecting the @emph{righ
 Fortunately (for big data), generating reports is only one small part of what one may do with data. Different types of data analysis that can be done include:
 
 @cindex Linear Data Analysis
-@emph{Linear Data Analysis}, where each datum is studied once and perhaps transformed into some new state. In the end, an analysis across all data is produced. Examples of such queries may count how often a certain phenomenon occur, or the correlation between different attributes of each datum. Even more concretely, one might wish to transform the data about each phone call to add the cost of it, or count of how often a particular number is called, or collecting information about the duration of all phone calls in order to create a new tariff.
+@emph{Linear Data Analysis}, where each datum is studied once and perhaps transformed into some new state. In the end, an analysis across all data is produced. Examples of such queries may count how often a certain phenomenon occurs, or the correlation between different attributes of each datum. Even more concretely, one might wish to transform the data about each phone call to add the cost of it, or count of how often a particular number is called, or collecting information about the duration of all phone calls in order to create a new tariff.
 
 @cindex Combinatory Data Analysis
 @cindex Database Joins
@@ -394,7 +394,7 @@ The last type of analysis that I would like to name is @emph{NP-Complete Data An
 The velocity with which new data arrives is not necessarily a problem with modern hardware, but there are still some considerations. Firstly, one may wish to perform some early filtering of noise and valuable data, e.g. to keep the storage volumes down. Secondly, there is a difference between arrival velocity and request velocity, and the toolbox for addressing them differs significantly. Thirdly, if new data needs to be analysed at the same pace as it arrives there are several analysis types and some are absolutely not suitable for real-time analysis. The best option then is to redefine the problem so that it can be solved with more mundane analysis tools.
 
 @cindex Small Data Big Challenges
-All in all, these considerations add up so that in the end even @emph{small data can cause big challenges} . Thus, velocity remains in the room and cannot be accused of having killed Big Data.
+All in all, these considerations add up so that in the end even @emph{small data can cause big challenges}. Thus, velocity remains in the room and cannot be accused of having killed Big Data.
 
 @node Variety Different Origins or Different Formats
 @section Variety : Different Origins or Different Formats
@@ -406,19 +406,19 @@ The reason to include @emph{variety} as one of the Big Data challenges is not ne
 
 @cindex Data Variety Challenge
 @cindex Different Data Origins
-Rather, the challenge with respect to data variety stems from the fact that the data analysis may require input from many different sources, and it may not be possible to know up-front which data entries from each source that will be necessary for the analysis. This means that it may not be possible to filter the data streams beforehand. Data acquisition thus has to resort to collecting and storing all the data from the sources. A certain amount of cleaning can be done on the data from each source (e.g. remove duplicate entries and entries that are obviously out of scope, and convert the data to a post in the database), but it is often not possible to perform any more advanced filtering. @emph{This} is the real challenge with respect to data variety: it is impossible to know up front which data has value and which should be discarded, and this complicates many of the solutions previously discussed for dealing with volume and velocity (or makes them impossible to use).
+Rather, the challenge with respect to data variety stems from the fact that the data analysis may require input from many different sources, and it may not be possible to know up-front which data entries from each source that will be necessary for the analysis. This means that it may not be possible to filter the data streams beforehand. Data acquisition thus has to resort to collecting and storing all the data from the sources. A certain amount of cleaning can be done on the data from each source (e.g. remove duplicate entries and entries that are obviously out of scope, and convert the data to an item in the database), but it is often not possible to perform any more advanced filtering. @emph{This} is the real challenge with respect to data variety: it is impossible to know up front which data has value and which should be discarded, and this complicates many of the solutions previously discussed for dealing with volume and velocity (or makes them impossible to use).
 
-Storage volume may no longer an issue for Big Data, but we did argue that velocity may be a challenge depending on the type of analysis that needs to be done. The challenge with variety thus means that the dataset may grow faster than it would otherwise have to do, which may impact the analysis velocity.
+Storage volume may no longer be an issue for Big Data, but we did argue that velocity may be a challenge depending on the type of analysis that needs to be done. The challenge with variety thus means that the dataset may grow faster than it would otherwise have to do, which may impact the analysis velocity.
 
 The toolbox is the same as before, i.e. to try to filter as much as possible as early as possible, but with an added emphasis on regular culling of the already collected data. As before, the challenges with Big Data is not about finding a computer which is fast enough, but rather to intelligently analyse the data needs and devise strategies for dealing with this.
 
 @cindex Comparing CO_2 Emissions
 @tindex Thermal Design Power TDP
-In fact, let's look a little closer at the cost of intelligent analysis. A simplified formula for calculating the power consumption of a cloud computer (based on @uref{https://devblogs.microsoft.com/sustainable-software/how-can-i-calculate-co2eq-emissions-for-my-azure-vm/, Sara Bergman, ``How can I Calculate CO@math{_2}-eq emissions for my Azure VM@?} (last checked 2023-04-11) ) is: where is the number of CPUs and is the power consumption per CPU@. The formula suggested by S@. Bergman also includes other factors such as memory power consumption and the power consumption of any GPUs, but for simplicity's sake these can be ignored for now. What remains now is to estimate the power consumption per CPU and how much of that CPU which is being used by us (as opposed to any other tenant on the same cloud server).
+In fact, let's look a little closer at the cost of intelligent analysis. A simplified formula for calculating the power consumption of a cloud computer (based on @uref{https://devblogs.microsoft.com/sustainable-software/how-can-i-calculate-co2eq-emissions-for-my-azure-vm/, Sara Bergman, ``How can I Calculate CO@math{_2}-eq emissions for my Azure VM@?} (last checked 2023-04-11) ) is: @code{E[Wh] = (n_cpu * P_cpu[W] * time[h])} where @code{n_cpu} is the number of CPUs and @code{P_cpu} is the power consumption per CPU@. The formula suggested by S@. Bergman also includes other factors such as memory power consumption and the power consumption of any GPUs, but for simplicity's sake these can be ignored for now. What remains now is to estimate the power consumption per CPU and how much of that CPU which is being used by us (as opposed to any other tenant on the same cloud server).
 
-Thermal Design Power (TDP) is a measure listed by hardware manufacturers, so with a bit of matching between what type of computer and CPU is offered by the cloud provider and what the manufacturer of that specific CPU lists for their TDP, one may find out the energy consumption of one CPU running at full speed: . Multiply this with our load and the time , and we may arrive at an estimated energy consumption for our application: .
+Thermal Design Power (TDP) is a measure listed by hardware manufacturers, so with a bit of matching between what type of computer and CPU is offered by the cloud provider and what the manufacturer of that specific CPU lists for their TDP, one may find out the energy consumption of one CPU running at full speed: @code{TDP_cpu[W]} . Multiply this with our load @code{l[percent]} and the time @code{t[h]}, and we may arrive at an estimated energy consumption for our application: @code{E[Wh]= (n_cpu * TDP_cpu * l * t)}.
 
-Assume we want to reduce the load with for example 10% over a 24h period on a bog-standard dual CPU cloud machine, we may insert the following numbers: . Being in south Sweden and thus tightly connected to the European power market (which, it should be noted, is likely @emph{not} where the cloud provider is located), this would mean saving 100g of CO@math{_2} equivalents per day. Run the server for a year to save 36kg of CO@math{_2} equivalents.
+Assume we want to reduce the load with for example 10% over a 24h period on a bog-standard dual CPU cloud machine, we may insert the following numbers: @code{E = (2*165*0.10*24) = 792 Wh ≈ 0.8 kWh}. Being in south Sweden and thus tightly connected to the European power market (which, it should be noted, is likely @emph{not} where the cloud provider is located), this would mean saving 100g of CO@math{_2} equivalents per day. Run the server for a year to save 36kg of CO@math{_2} equivalents.
 
 Humans are part of a natural cycle where we only eat ``fresh'' organic material (unless you have a penchant for eating crude oil), and thus we are only re-releasing the CO@math{_2} from this organic material back into the natural cycle that will feed the next crop. However, for the sake of this calculation, we @emph{do} exhale roughly 1kg of CO@math{_2} equivalents per day. Working 8h/day for 20 days/month a single developer can thus spend almost half a year thinking about how to reduce the load by 10% for the same amount of CO@math{_2} equivalents. 
 
@@ -440,7 +440,8 @@ return DocumentStore.find(query)
           if (result.field) @{
               if (!isNaN(parseFloat(result.field))) @{
                   if (0 >= parseFloat(result.field)) @{
-                      // Finally, here is some code that actually does something useful
+                      // Finally, here is some code
+                      // that actually does something useful
                   @} else @{
                       throw 'result.field is negative';
                   @}
@@ -636,7 +637,7 @@ There is a Quiz on Canvas where you can submit your article summaries and answer
 @chapter Big Data Analytics in Practice: Problem Overview
 
 @tindex Qualitas Corpus
-The Qualitas Corpus (See @uref{http://qualitascorpus.com/} ) is a collection of software systems and their source code, created and maintained by Ewan Tempero, University of Auckland. It was originally created in order to have a curated collection of software systems to perform research studies on, but it is large enough to be useful for this course as well. As discussed in the introduction (See @ref{introduction} ) , it is perhaps not big enough to be called Big Data today, but it is still large enough to cause a bit of problems when trying to perform any form of analysis on it -- as we shall see. For that reason, it does not matter that the most recent version of the corpus is getting a bit long in the tooth (the most recent version is from 2013): we can still use it for our analyses.
+The Qualitas Corpus (See @uref{http://qualitascorpus.com/}) is a collection of software systems and their source code, created and maintained by Ewan Tempero, University of Auckland. It was originally created in order to have a curated collection of software systems to perform research studies on, but it is large enough to be useful for this course as well. As discussed in the introduction (See @ref{introduction}), it is perhaps not big enough to be called Big Data today, but it is still large enough to cause a bit of problems when trying to perform any form of analysis on it -- as we shall see. For that reason, it does not matter that the most recent version of the corpus is getting a bit long in the tooth (the most recent version is from 2013): we can still use it for our analyses.
 
 @cindex Code Clones
 Using this dataset, we are going to go hunting for @emph{Code Clones}. A code clone is a piece of code that is duplicated in one or more places within a set of source code files. Typically, code clones are created by copying pieces of code with little or no modifications in order to replicate some functionality. In general, there are four types of code clones that can be identified:
@@ -698,7 +699,9 @@ The first step is to ensure access to the Qualitas Corpus. For convenience, the 
 @strong{Tasks}
 @enumerate
 @item
-Download the BigDataAnalytics repository: @code{git clone https://github.com/mickesv/BigDataAnalytics.git}
+Download the BigDataAnalytics repository:
+
+@code{git clone https://github.com/mickesv/BigDataAnalytics.git}
 
 @item
 Build the @samp{CorpusGetter} image (found in @code{Containers/CorpusGetter} ) and tag it as @code{corpusgetter}
@@ -783,8 +786,11 @@ $ tree
 ├── Clone.js         # The Clone class represents one identified Clone
 ├── CloneStorage.js  # A Singleton Class to keep track of already identified Clones
 ├── FileStorage.js   # A Singleton Class to keep track of already processed files
-├── index.js         # Start file for the system. It sets up the express app and contains the ~processFile()~ function.
-├── SourceLine.js    # The SourceLine class represent a single line (including its original line number) in a file.
+├── index.js         # Start file for the system. 
+                     # Sets up the express app and contains
+                     # the ~processFile()~ function.
+├── SourceLine.js    # The SourceLine class represent a single line
+                     # (including its original line number) in a file.
 └── Timer.js         # This class is used to start and stop timers as needed.
 
 @end example
@@ -804,7 +810,8 @@ file.lines      // An array of SourceLines.
 file.chunks     // An array of Chunks, which are just arrays of
                 // SourceLines, each having the length CHUNKSIZE.
 file.instances  // An array of Clones. The processing steps will
-                // refine this list so that only true and as-long-as-possible Clones remain.
+                // refine this list so that only true and
+                // as-long-as-possible Clones remain.
 @end example
 
 @strong{Tasks}
@@ -816,7 +823,9 @@ Generate images for the generator and the consumer, tag them @code{csgenerator} 
 
 @item
 Start the application using @code{docker compose} with the given @code{stream-of-code.yaml} . You may wish to modify the @code{DELAY} to something bigger during your first tests so you can see what is going on. You will also notice that the @code{cs-consumer} container introduces a bind-mount to the source code of the app so that you can edit the code locally and it will restart automatically.
+@end enumerate
 
+@enumerate
 @item
 Study the source code of the CodeStreamConsumer so that you understand it. You will notice that there are two implementation tasks, identified by @samp{TODO} statements in the code.
 
@@ -836,7 +845,7 @@ We have now:
 @item
 Created and used a docker image/container to fetch a very-nearly-Big-Data repository of source codes, i.e. the Qualitas Corpus.
 @item
-Stored the QualitasCorpus in a docker volume, ~qc-volume for use in subsequent steps
+Stored the QualitasCorpus in a docker volume, @code{qc-volume}, for use in subsequent steps
 @item
 Created a docker image to simulate source code being generated in a continuous stream.
 @item
@@ -1110,7 +1119,7 @@ We @emph{could} go down the rabbit hole and implement everything in C or C++ (@c
 @pindex Apache Hadoop
 @pindex Apache Spark
 @pindex Apache Storm
-Java? With Java 8 and the Streams API, there is a native implementation of MapReduce, as well as support for working with infinite data streams. Writing in Java would also have the benefit of opening up to many of the Apache Software Foundation's data processing tools such as Hadoop @uref{https://hadoop.apache.org/} ,  Spark @uref{https://spark.apache.org/} , or Storm @uref{https://storm.apache.org/index.html} .
+Java? With Java 8 and the Streams API, there is a native implementation of MapReduce, as well as support for working with infinite data streams. Writing in Java would also have the benefit of opening up to many of the Apache Software Foundation's data processing tools such as Hadoop @uref{https://hadoop.apache.org/}, Spark @uref{https://spark.apache.org/}, or Storm @uref{https://storm.apache.org/index.html}.
 
 @cindex Downsides with Apache Tools
 The downside with all three of these, in my humble opinion, is that none of them are ready to be released outside of a university lab. Setting them up and actually getting the master node and worker nodes to communicate is @emph{painful}. There is no reliable list of which network ports that need to be open on each type of node in the network, the used network ports change between versions (even minor versions), and by default you need to essentially keep all ports above 10000 open (and hope that this is sufficient; the port to use for a particular job is assigned at random and sometimes you get a port number lower than 10000). Older versions communicated via unencrypted http requests without any authentication. And even when you do have everything up and running, Hadoop MapReduce will fail three times out of ten (I know: I have tested).
@@ -1118,11 +1127,11 @@ The downside with all three of these, in my humble opinion, is that none of them
 However.
 
 @pindex Disco Project
-The only other reasonable distributed computing alternative I have found is Disco @uref{http://discoproject.org/} . And then you have Python on your hands.
+The only other reasonable distributed computing alternative I have found is Disco @uref{http://discoproject.org/}. And then you have Python on your hands.
 
 @pindex Clojure
 @cindex Unix Koans of Master Foo
-So Java it is. Or Clojure, since I feel adventurous. The benefit of using Clojure for this is that infinite data streams are inherent to the programming language instead of added as an afterthought, so the program code can focus on the problem at hand rather than juggling data to fit the right Java Enterprise Object model. And before you start complaining about your lack of experience in Clojure, consider the following ``Master Foo and the Recruiter'' Koan (more Unix Koans (some of which are hilariously outdated) can be found at: @uref{http://catb.org/~esr/writings/unix-koans/} ):
+So Java it is. Or Clojure, since I feel adventurous. The benefit of using Clojure for this is that infinite data streams are inherent to the programming language instead of added as an afterthought, so the program code can focus on the problem at hand rather than juggling data to fit the right Java Enterprise Object model. And before you start complaining about your lack of experience in Clojure, consider the following ``Master Foo and the Recruiter'' Koan (more Unix Koans (some of which are hilariously outdated) can be found at: @uref{http://catb.org/~esr/writings/unix-koans/}):
 
 @display
 A technical recruiter, having discovered that that the ways of Unix
@@ -1306,7 +1315,9 @@ The @emph{elegant} way to expand clones is by using a @code{reduce} operation li
 @example
 (defn expand-clones-elegantly [candidates]
   (reduce (fn [clones candidate]
-            (let [@{overlapping true remaining false@} (group-by #(overlaps? candidate %) clones)]
+            (let [@{overlapping true remaining false@} (group-by 
+                                                      #(overlaps? candidate %)
+                                                      clones)]
               (if (empty? overlapping)
                   (conj clones candidate)
                   (conj remaining (reduce merge-clones candidate overlapping)))
@@ -1427,18 +1438,27 @@ A third option, which we will not explore further, is to use an @emph{aggregatio
         collname "candidates"
         clj-cand (from-db-object candidate true)]
     (mc/aggregate db collname
-                  [@{$match @{"instances.fileName" @{$all (map #(:fileName %) (:instances clj-cand))@}@}@}
+                  [@{$match 
+                    @{"instances.fileName" 
+                     @{$all (map #(:fileName %) (:instances clj-cand))@}@}@}
                    @{$addFields @{:candidate candidate@}@}
                    @{$unwind "$instances"@}
                    @{$project 
                     @{:matches
                      @{$filter
                       @{:input "$candidate.instances"
-                       :cond @{$and [@{$eq ["$$this.fileName" "$instances.fileName"]@}
-                                    @{$or [@{$and [@{$gt  ["$$this.startLine" "$instances.startLine"]@}
-                                                 @{$lte ["$$this.startLine" "$instances.endLine"]@}]@}
-                                          @{$and [@{$gt  ["$instances.startLine" "$$this.startLine"]@}
-                                                 @{$lte ["$instances.startLine" "$$this.endLine"]@}]@}]@}]@}@}@}
+                       :cond
+                       @{$and 
+                        [@{$eq
+                          ["$$this.fileName" "$instances.fileName"]@}
+                         @{$or
+                          [@{$and 
+                            [@{$gt ["$$this.startLine" "$instances.startLine"]@}
+                             @{$lte ["$$this.startLine" "$instances.endLine"]@}]@}
+                           @{$and
+                            [@{$gt ["$instances.startLine" "$$this.startLine"]@}
+                             @{$lte ["$instances.startLine" "$$this.endLine"]@}
+                             ]@}]@}]@}@}@}
                      :instances 1
                      :numberOfInstances 1
                      :candidate 1
@@ -1448,11 +1468,13 @@ A third option, which we will not explore further, is to use an @emph{aggregatio
                             :candidate @{$first "$candidate"@}
                             :numberOfInstances @{$max "$numberOfInstances"@}
                             :instances @{$push "$instances"@}@}@}
-                   @{$match @{$expr @{$eq [@{$size "$candidate.instances"@} "$numberOfInstances"]@}@}@}
+                   @{$match @{$expr 
+                            @{$eq 
+                             [@{$size "$candidate.instances"@} "$numberOfInstances"]@}@}@}
                    @{$project @{:_id 1 :numberOfInstances 1 :instances 1@}@}])))
 @end example
 
-An aggregation pipeline is (these days) MongoDB's preferred way of doing map/reduce-like processing. How to read this is as a series of processing steps, e.g @code{@{$match@}} , @code{@{$addFields@}}, @code{@{$unwind@}}, @code{@{$project@}}, and @code{@{$group@}} where each step filters or transforms the data stream in some way. There is much to say about what can and can't be done with an aggregation pipeline, a good starting point is the official documentation: @uref{https://www.mongodb.com/docs/manual/aggregation/} . Eventually it boils down to @emph{as long as the problem is defined in the right way, the data processing step becomes ``easy''}.
+An aggregation pipeline is (these days) MongoDB's preferred way of doing map/reduce-like processing. How to read this is as a series of processing steps, e.g @code{@{$match@}} , @code{@{$addFields@}}, @code{@{$unwind@}}, @code{@{$project@}}, and @code{@{$group@}} where each step filters or transforms the data stream in some way. There is much to say about what can and can't be done with an aggregation pipeline, a good starting point is the official documentation: @uref{https://www.mongodb.com/docs/manual/aggregation/}. Eventually it boils down to @emph{as long as the problem is defined in the right way, the data processing step becomes ``easy''}.
 
 @cindex Horizontal Scaling
 This option will not be explored further in this course, but it does deserve mentioning. Any data processing we can offload to the database is one thing less for our application to worry about, the database is excellent at juggling data streams, and has built-in support for parallelism (and even horizontal scaling).
@@ -1550,11 +1572,6 @@ Collect statistics from inside the cljDetector container to see which processes 
 Since the clone expansion works with the database it is possible to pause execution (at the right moment - just before a new candidate is fetched from storage for processing) and resume later. This requires at least (a) a mechanism for signalling the cljDetector process (e.g. through an open network socket), (b) modifications to @code{expander/expand-clones} to poll if a signal has been received before recurring with a new candidate, and (c) modifications to @code{core/-main} to check for a command line flag ``Resume'' that overrides the usual execution and jumps directly to calling @code{expander/expand-clones} again. In addition, adding timestamped status updates so that total execution times can still be calculated would be helpful.
 @end itemize
 
-@node Assignment Submission All at Once Clone Detector
-@chapter Assignment Submission: All at Once Clone Detector
-
-@anchor{assignmentAllAtOnce}
-
 @strong{TODO} Please read the following articles:
 
 @enumerate
@@ -1580,6 +1597,11 @@ What are their main findings?
 @item
 What can you learn from this article?
 @end itemize
+
+@node Assignment Submission All at Once Clone Detector
+@chapter Assignment Submission: All at Once Clone Detector
+
+@anchor{assignmentAllAtOnce}
 
 @strong{TODO} Answer the following questions:
 
@@ -1609,7 +1631,6 @@ Please make the raw data of your statistics accessible (either as an appendix to
 @item
 Please upload your code for the modified cljDetector and your MonitorTool (zip the whole folders with the Containers. Please remember to also include the yaml-file used to start your application). Please highlight any modifications you have made in cljDetector to make it easier for us to review your submission.
 @end enumerate
-
 
 Once delivered, @emph{a meeting will be scheduled} where you are expected to run and explain your application and its deployment. Be prepared to answer questions about:
 
@@ -1654,36 +1675,36 @@ One point that J@. Tigani made in their ``Big Data is Dead'' article is that mos
 But what if we don't need to check against all previously seen code all the time? Let's form the hypothesis that @emph{a few clones stand for most of the occurrences}. This would be true if, for example, there are specific programming patterns that are more frequent than others (a more glib explanation is that some answers on StackOverflow are more useful than others). It is even possible to verify this through the data already collected by cljDetector (see graph below). If this is true, then one way to streamline the @emph{velocity} aspect is to only check new code against the list of previously found clones, and schedule a full analysis once every night, week, or even month. The conclusion of @emph{this} is that data does not need to be big data just because it is plenty, it all boils down to what you want to do with it.
 
 @example
-                         Number of Instances of the 100 Most Common Clones                        
-700 +-----------------------------------------------------------------------------------------+   
-    |..                                                                                       |   
-    |                                                                                         |   
-600 |                                                                                         |   
-    |                                                                                         |   
-    |                                                                                         |   
-    |                                                                                         |   
-500 |                                                                                         |   
-    |                                                                                         |   
-    |  .                                                                                      |   
-400 |                                                                                         |   
-    |                                                                                         |   
-    |                                                                                         |   
-    |                                                                                         |   
-300 |                                                                                         |   
-    |   .                                                                                     |   
-    |                                                                                         |   
-200 |                                                                                         |   
-    |                                                                                         |   
-    |    .                                                                                    |   
-    |    ...                                                                                  |   
-100 |       .......                                                                           |   
-    |             ...................                                                         |   
-    |                                .........................................................|   
-  0 +-----------------------------------------------------------------------------------------+   
-    0        10       20       30       40       50       60       70       80       90      100  
+                  Number of Instances of the 100 Most Common Clones                        
+700 +-------------------------------------------------------------------------+   
+    |..                                                                       |   
+    |                                                                         |   
+600 |                                                                         |   
+    |                                                                         |   
+    |                                                                         |   
+    |                                                                         |   
+500 |                                                                         |   
+    |                                                                         |   
+    |  .                                                                      |   
+400 |                                                                         |   
+    |                                                                         |   
+    |                                                                         |   
+    |                                                                         |   
+300 |                                                                         |   
+    |   .                                                                     |   
+    |                                                                         |   
+200 |                                                                         |   
+    |                                                                         |   
+    |    .                                                                    |   
+    |    ...                                                                  |   
+100 |       .......                                                           |   
+    |             ...................                                         |   
+    |                                .........................................|   
+  0 +-------------------------------------------------------------------------+   
+    0        10       20       30       40       50       60  ...  90      100  
 @end example
 
-Studying this graph, we see that there are indeed a few clones that are very frequent, but it quickly tapers off to less than 50 instances per clone. It would make sense to check against these ``popular'' clones first, but not as much sense as we hoped for.
+Studying this graph, we see that there are indeed a few clones that are very frequent, but it quickly tapers off to less than 50 instances per clone. Thus, it would make sense to check against these ``popular'' clones first, but we would eventually have to check against the entire codebase anyway.
 
 With respect to which technology to use, we have explored a variety of programming languages and tools, including microservices in the form of Docker, shell scripts to perform simple tasks (we are seriously under-utilising shell scripts here: we have once implemented the full clone detection in a 160-odd lines script just to prove that you do not need fancy tools), and a choice of two programming languages to perform the clone detection. We have deliberately @emph{not} used any of the much touted Big Data Tools such as Hadoop, Spark, or even Disco, since the underlying principles are much more important than the specific tool. The choices of programming languages is not a coincidence; they have inherent support for many of the same functional programming mechanisms that the Big Data tools try to massively scale, and we make intensive use of these features in our solutions.
 
