@@ -224,7 +224,7 @@ Analogous to the discussion above about optimising for collecting the /right/ da
 Fortunately (for big data), generating reports is only one small part of what one may do with data. Different types of data analysis that can be done include:
 
 #+CINDEX: Linear Data Analysis
-/Linear Data Analysis/, where each datum is studied once and perhaps transformed into some new state. In the end, an analysis across all data is produced. Examples of such queries may count how often a certain phenomenon occur, or the correlation between different attributes of each datum. Even more concretely, one might wish to transform the data about each phone call to add the cost of it, or count of how often a particular number is called, or collecting information about the duration of all phone calls in order to create a new tariff.
+/Linear Data Analysis/, where each datum is studied once and perhaps transformed into some new state. In the end, an analysis across all data is produced. Examples of such queries may count how often a certain phenomenon occurs, or the correlation between different attributes of each datum. Even more concretely, one might wish to transform the data about each phone call to add the cost of it, or count of how often a particular number is called, or collecting information about the duration of all phone calls in order to create a new tariff.
 
 #+CINDEX: Combinatory Data Analysis
 #+CINDEX: Database Joins
@@ -282,7 +282,7 @@ The reason to include /variety/ as one of the Big Data challenges is not necessa
 #+CINDEX: Different Data Origins
 Rather, the challenge with respect to data variety stems from the fact that the data analysis may require input from many different sources, and it may not be possible to know up-front which data entries from each source that will be necessary for the analysis. This means that it may not be possible to filter the data streams beforehand. Data acquisition thus has to resort to collecting and storing all the data from the sources. A certain amount of cleaning can be done on the data from each source (e.g. remove duplicate entries and entries that are obviously out of scope, and convert the data to a post in the database), but it is often not possible to perform any more advanced filtering. /This/ is the real challenge with respect to data variety: it is impossible to know up front which data has value and which should be discarded, and this complicates many of the solutions previously discussed for dealing with volume and velocity (or makes them impossible to use).
 
-Storage volume may no longer an issue for Big Data, but we did argue that velocity may be a challenge depending on the type of analysis that needs to be done. The challenge with variety thus means that the dataset may grow faster than it would otherwise have to do, which may impact the analysis velocity.
+Storage volume may no longer be an issue for Big Data, but we did argue that velocity may be a challenge depending on the type of analysis that needs to be done. The challenge with variety thus means that the dataset may grow faster than it would otherwise have to do, which may impact the analysis velocity.
 
 The toolbox is the same as before, i.e. to try to filter as much as possible as early as possible, but with an added emphasis on regular culling of the already collected data. As before, the challenges with Big Data is not about finding a computer which is fast enough, but rather to intelligently analyse the data needs and devise strategies for dealing with this.
 
@@ -601,7 +601,7 @@ With these introductions out of the way, it is time to actually fix and run the 
 *Summary*
 We have now:
 1. Created and used a docker image/container to fetch a very-nearly-Big-Data repository of source codes, i.e. the Qualitas Corpus.
-2. Stored the QualitasCorpus in a docker volume, ~qc-volume for use in subsequent steps
+2. Stored the QualitasCorpus in a docker volume, ~qc-volume~, for use in subsequent steps
 3. Created a docker image to simulate source code being generated in a continuous stream.
 4. Created a node.js app to consume this stream and look for code clones in any of the previously submitted files.
 * Assignment Submission: Code Stream Clone Detector :Quiz:Submission:
