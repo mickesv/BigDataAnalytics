@@ -34,7 +34,7 @@
     (storage/identify-candidates!)
     (ts-println "Found" (storage/count-items "candidates") "candidates")
     (ts-println "Expanding Candidates...")
-    (expander/expand-clones)))
+    (expander/expand-clones-elegantly)))
 
 (defn pretty-print [clones]
   (doseq [clone clones]
