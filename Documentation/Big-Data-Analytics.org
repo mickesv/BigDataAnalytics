@@ -1000,6 +1000,38 @@ Where:
 - The two clojure commands ~loop~ and ~recur~ go hand in hand to overcome the principle of immutable data by replacing iterations with recursion.
 
 The Execution time for the =Expanding Candidates= step with Eclipse SDK is now down to slightly over two minutes. /me adjusts his tie and brushes off an imaginary speck of dust from his sleeve./
+
+#+begin_src artist
+     ///   +------------------------------------------------------------------------+
+     o o  <  I tried to crawl through the code and get an approximation of a mental |
+      -    | map of what is going on in the code. I think I get the FP (elegant)    |
+           | expander but you lost me with the beer. I understand the ramping       |
+           | problem, but how is that actually solved? I can see that beer moved    |
+           | the overlap detection from clojure space to a mongo query (in          |
+           | get-overlapping-candidates ) and the clones are stored in the database |
+           | instead of in memory. But is that the actual core of the solution, or  |
+           | where is it?                                                           |
+           +------------------------------------------------------------------------+
+      _
+    _/_\_  +------------------------------------------------------------------------+
+     o o  <  There are a number of factors that help us out here. First is that     |
+      v    | only one candidate (and possible expansions) is kept in memory. Second |
+           | is that we shift processing from clojure to the database, so the       |
+           | database connection does not time out as easily.                       |
+           |                                                                        |
+           | But the biggest factor is, I think, that the bundle of joy             |
+           | get-overlapping-candidates is essentially a series of filters (which   |
+           | databases are really good at) where already the first $match quickly   |
+           | reduces the number of elements to continue looking at.                 |
+           |                                                                        | 
+           | Also, for every successfully expanded clone the set of candidates      |
+           | shrinks, whereas in the "elegant" solution we just get more and more   |
+           | clones to match every new candidate with. If the database can execute  |
+           | the query for the first clone candidate (and why shouldn't it, it is   |
+           | after all just a set of filters), life is only going to get easier for |
+           | every subsequent clone candidate.                                      |
+           +------------------------------------------------------------------------+
+#+end_src
 ** Expand with Aggregation Pipeline
 <<db-expansion>>
 #+CINDEX: MongoDB Aggregation Pipeline
