@@ -1210,8 +1210,7 @@ mount from different containers.
 
   4. Run the ‘corpusgetter’ image with the ‘qc-volume’ mounted and
      instruct it to fetch the corpus: ‘docker run -it -v
-     qc-volume:/QualitasCorpus --name qc-getter corpusgetter ./qc-get.sh
-     FETCH’
+     qc-volume:/QualitasCorpus --name qc-getter corpusgetter FETCH’
 
   5. If all goes well, this should end by printing some statistics about
      the fetched corpus and then pause.  If not, you can re-run the
@@ -1358,16 +1357,16 @@ actually fix and run the application.
      introduces a bind-mount to the source code of the app so that you
      can edit the code locally and it will restart automatically.
 
-  1. Study the source code of the CodeStreamConsumer so that you
+  2. Study the source code of the CodeStreamConsumer so that you
      understand it.  You will notice that there are two implementation
      tasks, identified by ‘TODO’ statements in the code.
 
-  2. The first task is to complete the implementation of the
+  3. The first task is to complete the implementation of the
      ‘CloneDetector’.  The smallest possible edit for you is to
      implement the three methods as suggested, but feel free to be more
      creative here.
 
-  3. The second task is to add a new landing page in ‘index.js’ for more
+  4. The second task is to add a new landing page in ‘index.js’ for more
      detailed timing statistics (not just data on the last processed
      file).  Your own creativity sets the boundaries here, but it is
      useful to be able to see trends over time for how long it takes to
@@ -1377,7 +1376,7 @@ actually fix and run the application.
      able to correctly identify clones (feel free to write a new
      CodeStreamGenerator that just send these two files on repeat).
 
-  4. Once you are satisfied with your implementation, run the app for a
+  5. Once you are satisfied with your implementation, run the app for a
      longer period of time so you can get some proper statistics out of
      it.  Make note of what happens, when it happens, and try to reason
      about causes and remedies.
@@ -1902,8 +1901,9 @@ variables (which will only be available inside the ‘let’ statement):
    • ‘chunks’ is a set of all chunks for all files.  This is also a lazy
      sequence, so it will not be evaluated until it needs to be (in the
      call to ‘storage/store-chunks!’ ).  By convention, function names
-     ending in an exclamation mark have side effects, in this case
-     storing the results to the database.
+     ending in an exclamation mark have side effects, in the case of
+     ‘storage/store-chunks!’ this side-effect is the storing of the
+     results to the database.
 
    Once the variables are defined, most of the processing have (at least
 nominally) been done and what remains is to store the results to the
@@ -1931,9 +1931,8 @@ File: Big-Data-Analytics.info,  Node: First Run on full Qualitas Corpus,  Next: 
 11.1 First Run on full Qualitas Corpus
 ======================================
 
-The results of running the first version of this program (using the now
-commented out _first-expand-then-store-all_ relic) on the full Qualitas
-Corpus yields the following data on my laptop:
+The results of running the first version of this program on the full
+Qualitas Corpus yields the following data on my laptop:
 
 Processing Step                Database Collection   #Items      Processing Time
 -----------------------------------------------------------------------------------
@@ -2007,12 +2006,15 @@ so:
                  )) [] candidates))
 
    In plaintext: with every candidate, split the already found clones
-into two piles; One that overlaps the new candidate and one with all the
-remaining clones.  If there are no overlapping clones, this is a new
-clone and is conjoined to the existing list of clones.  Otherwise, we
-want to remove the overlapping clones (conveniently already done with
-the ‘remaining’ list) and just store a new clone that merges all of the
-overlapping clones into one.  Beautiful, isn’t it?
+into two piles (This is what the ‘group-by’ does; One that overlaps the
+new candidate (all elements where ‘overlaps?’ evaluates to ‘true’) and
+one with all the remaining clones (where ‘overlaps?’ evaluates to
+‘false’ ).  If there are no overlapping clones, this is a new clone and
+is conjoined to the existing list of clones.  Otherwise, we want to
+remove the overlapping clones (conveniently already done with the
+‘remaining’ list) and just store a new clone that merges all of the
+overlapping clones into one.  Beautiful, isn’t it?  This is the version
+that fails above.
 
    As it turns out, this introduces a performance antipattern called
 “The Ramp”.  Every new candidate that does not overlap any existing
@@ -2112,6 +2114,36 @@ knew that _this_ was Billy Bones’ true treasure!):
    The Execution time for the ‘Expanding Candidates’ step with Eclipse
 SDK is now down to slightly over two minutes.  _me adjusts his tie and
 brushes off an imaginary speck of dust from his sleeve._
+
+      ///   +------------------------------------------------------------------------+
+      o o  <  I tried to crawl through the code and get an approximation of a mental |
+       -    | map of what is going on in the code. I think I get the FP (elegant)    |
+            | expander but you lost me with the beer. I understand the ramping       |
+            | problem, but how is that actually solved? I can see that beer moved    |
+            | the overlap detection from clojure space to a mongo query (in          |
+            | get-overlapping-candidates ) and the clones are stored in the database |
+            | instead of in memory. But is that the actual core of the solution, or  |
+            | where is it?                                                           |
+            +------------------------------------------------------------------------+
+       _
+     _/_\_  +------------------------------------------------------------------------+
+      o o  <  There are a number of factors that help us out here. First is that     |
+       v    | only one candidate (and possible expansions) is kept in memory. Second |
+            | is that we shift processing from clojure to the database, so the       |
+            | database connection does not time out as easily.                       |
+            |                                                                        |
+            | But the biggest factor is, I think, that the bundle of joy             |
+            | get-overlapping-candidates is essentially a series of filters (which   |
+            | databases are really good at) where already the first $match quickly   |
+            | reduces the number of elements to continue looking at.                 |
+            |                                                                        |
+            | Also, for every successfully expanded clone the set of candidates      |
+            | shrinks, whereas in the "elegant" solution we just get more and more   |
+            | clones to match every new candidate with. If the database can execute  |
+            | the query for the first clone candidate (and why shouldn't it, it is   |
+            | after all just a set of filters), life is only going to get easier for |
+            | every subsequent clone candidate.                                      |
+            +------------------------------------------------------------------------+
 
 
 File: Big-Data-Analytics.info,  Node: Expand with Aggregation Pipeline,  Next: Second Run on full Qualitas Corpus,  Prev: Expand with ``Aleph-null Bottles of Beer'',  Up: cljDetector All-at-Once Clone Detection
@@ -2660,11 +2692,11 @@ Concept Index
 * Optimise for Writing:                  Volume The Size of Big Data.
                                                               (line  69)
 * Parallelisation of cljDetector:        First Run on full Qualitas Corpus.
-                                                              (line  24)
+                                                              (line  23)
 * Performance Antipattern:               Expanding Elegantly but Inefficiently.
-                                                              (line  27)
+                                                              (line  30)
 * Performance Antipattern "Ramp":        Expanding Elegantly but Inefficiently.
-                                                              (line  27)
+                                                              (line  30)
 * Performance Architecture Tactics:      Velocity The Speed of Noise.
                                                               (line   6)
 * Request Rate:                          Velocity The Speed of Noise.
@@ -2800,32 +2832,32 @@ Node: Learning Outcomes52836
 Node: Quiz Introduction to Big Data53853
 Node: Big Data Analytics in Practice Problem Overview56261
 Node: Task Downloading and Describing the Qualitas Corpus61481
-Node: Quiz Code Clones and Big Data63724
-Node: Assignment Task Working with a Stream of Data65761
-Node: Assignment Submission Code Stream Clone Detector72338
-Ref: assignmentCodeStream72645
-Node: Improving the Clone Detecting Algorithm74115
-Node: Hashing75793
-Node: O(n^2)77707
-Node: From File-by-File to All-at-Once Analysis80354
-Node: Wisely and slow They stumble that run fast87098
-Node: cljDetector All-at-Once Clone Detection91243
-Node: First Run on full Qualitas Corpus96801
-Node: Expanding Elegantly but Inefficiently100100
-Ref: elegant-expansion100405
-Node: Expand with ``Aleph-null Bottles of Beer''104099
-Ref: beer-expansion104413
-Node: Expand with Aggregation Pipeline106536
-Ref: db-expansion106827
-Node: Second Run on full Qualitas Corpus110510
-Node: Assignment Task Implementing Monitoring112342
-Node: Assignment Submission All at Once Clone Detector117429
-Ref: assignmentAllAtOnce117700
-Node: Summary120384
-Node: Concept Index130182
-Node: Program Index139382
-Node: Files and Data Types Index142306
-Node: Functions and Commands Index143006
+Node: Quiz Code Clones and Big Data63707
+Node: Assignment Task Working with a Stream of Data65744
+Node: Assignment Submission Code Stream Clone Detector72321
+Ref: assignmentCodeStream72628
+Node: Improving the Clone Detecting Algorithm74098
+Node: Hashing75776
+Node: O(n^2)77690
+Node: From File-by-File to All-at-Once Analysis80337
+Node: Wisely and slow They stumble that run fast87081
+Node: cljDetector All-at-Once Clone Detection91226
+Node: First Run on full Qualitas Corpus96846
+Node: Expanding Elegantly but Inefficiently100079
+Ref: elegant-expansion100384
+Node: Expand with ``Aleph-null Bottles of Beer''104266
+Ref: beer-expansion104580
+Node: Expand with Aggregation Pipeline109149
+Ref: db-expansion109440
+Node: Second Run on full Qualitas Corpus113123
+Node: Assignment Task Implementing Monitoring114955
+Node: Assignment Submission All at Once Clone Detector120042
+Ref: assignmentAllAtOnce120313
+Node: Summary122997
+Node: Concept Index132795
+Node: Program Index141995
+Node: Files and Data Types Index144919
+Node: Functions and Commands Index145619
 
 End Tag Table
 

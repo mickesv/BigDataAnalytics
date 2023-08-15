@@ -761,7 +761,7 @@ Next: <a href="#Quiz-Code-Clones-and-Big-Data" accesskey="n" rel="next">Quiz: Co
 
 </li><li> Create a volume for the Qualitas Corpus: <code class="code">docker volume create qc-volume</code>
 
-</li><li> Run the <code class="code">corpusgetter</code> image with the <code class="code">qc-volume</code> mounted and instruct it to fetch the corpus: <code class="code">docker run -it -v qc-volume:/QualitasCorpus --name qc-getter corpusgetter ./qc-get.sh FETCH</code>
+</li><li> Run the <code class="code">corpusgetter</code> image with the <code class="code">qc-volume</code> mounted and instruct it to fetch the corpus: <code class="code">docker run -it -v qc-volume:/QualitasCorpus --name qc-getter corpusgetter FETCH</code>
 
 </li><li> If all goes well, this should end by printing some statistics about the fetched corpus and then pause. If not, you can re-run the <code class="code">corpusgetter</code> image without any commands, which will only print these statistics and then pause: <code class="code">docker run -it -v qc-volume:/QualitasCorpus --name qc-getter corpusgetter</code>  . Note that pressing any key will terminate the script and end the container, please do not do this yet.
 
@@ -874,10 +874,8 @@ With these introductions out of the way, it is time to actually fix and run the 
 <li> Generate images for the generator and the consumer, tag them <code class="code">csgenerator</code> and <code class="code">csconsumer</code>, respectively.
 
 </li><li> Start the application using <code class="code">docker compose</code> with the given <code class="code">stream-of-code.yaml</code> . You may wish to modify the <code class="code">DELAY</code> to something bigger during your first tests so you can see what is going on. You will also notice that the <code class="code">cs-consumer</code> container introduces a bind-mount to the source code of the app so that you can edit the code locally and it will restart automatically.
-</li></ol>
 
-<ol class="enumerate">
-<li> Study the source code of the CodeStreamConsumer so that you understand it. You will notice that there are two implementation tasks, identified by &lsquo;<samp class="samp">TODO</samp>&rsquo; statements in the code.
+</li><li> Study the source code of the CodeStreamConsumer so that you understand it. You will notice that there are two implementation tasks, identified by &lsquo;<samp class="samp">TODO</samp>&rsquo; statements in the code.
 
 </li><li> The first task is to complete the implementation of the <code class="code">CloneDetector</code>. The smallest possible edit for you is to implement the three methods as suggested, but feel free to be more creative here.
 
@@ -1308,7 +1306,7 @@ Next: <a href="#Assignment-Task-Implementing-Monitoring" accesskey="n" rel="next
 <ul class="itemize mark-bullet">
 <li><code class="code">chunk-param</code> is just a step along the way to get a usable <code class="code">chunk-size</code>
 </li><li><code class="code">file-handles</code> is a set of all files, i.e. the result of calling <code class="code">source-processor/traverse-directory</code> . This is a lazy sequence, so no handles are actually created until needed (which will be in the call to <code class="code">source-processor/chunkify</code> or maybe even in the <code class="code">storage/store-files!</code> call).
-</li><li><code class="code">chunks</code> is a set of all chunks for all files. This is also a lazy sequence, so it will not be evaluated until it needs to be (in the call to <code class="code">storage/store-chunks!</code> ). By convention, function names ending in an exclamation mark have side effects, in this case storing the results to the database.
+</li><li><code class="code">chunks</code> is a set of all chunks for all files. This is also a lazy sequence, so it will not be evaluated until it needs to be (in the call to <code class="code">storage/store-chunks!</code> ). By convention, function names ending in an exclamation mark have side effects, in the case of <code class="code">storage/store-chunks!</code> this side-effect is the storing of the results to the database.
 </li></ul>
 
 <p>Once the variables are defined, most of the processing have (at least nominally) been done and what remains is to store the results to the database. I say &ldquo;nominally&rdquo; because in fact none of the actual processing has happened yet; because of lazy sequences, the processing only happens in these last two calls to <code class="code">storage/store-files!</code> and <code class="code">storage/store-chunks!</code>.
@@ -1331,7 +1329,7 @@ Next: <a href="#Expanding-Elegantly-but-Inefficiently" accesskey="n" rel="next">
 </div>
 <h3 class="section" id="First-Run-on-full-Qualitas-Corpus-1">11.1 First Run on full Qualitas Corpus</h3>
 
-<p>The results of running the first version of this program (using the now commented out <em class="emph">first-expand-then-store-all</em> relic) on the full Qualitas Corpus yields the following data on my laptop:
+<p>The results of running the first version of this program on the full Qualitas Corpus yields the following data on my laptop:
 </p>
 <table class="multitable">
 <thead><tr><th>Processing Step</th><th>Database Collection</th><th>#Items</th><th>Processing Time</th></tr></thead>
@@ -1385,7 +1383,7 @@ Next: <a href="#Expand-with-_0060_0060Aleph_002dnull-Bottles-of-Beer_0027_0027" 
             )) [] candidates))
 </pre></div>
 
-<p>In plaintext: with every candidate, split the already found clones into two piles; One that overlaps the new candidate and one with all the remaining clones. If there are no overlapping clones, this is a new clone and is conjoined to the existing list of clones. Otherwise, we want to remove the overlapping clones (conveniently already done with the <code class="code">remaining</code> list) and just store a new clone that merges all of the overlapping clones into one. Beautiful, isn&rsquo;t it?
+<p>In plaintext: with every candidate, split the already found clones into two piles (This is what the <code class="code">group-by</code> does; One that overlaps the new candidate (all elements where <code class="code">overlaps?</code> evaluates to <code class="code">true</code>) and one with all the remaining clones (where <code class="code">overlaps?</code> evaluates to <code class="code">false</code> ). If there are no overlapping clones, this is a new clone and is conjoined to the existing list of clones. Otherwise, we want to remove the overlapping clones (conveniently already done with the <code class="code">remaining</code> list) and just store a new clone that merges all of the overlapping clones into one. Beautiful, isn&rsquo;t it? This is the version that fails above.
 </p>
 <a class="index-entry-id" id="index-Performance-Antipattern"></a>
 <a class="index-entry-id" id="index-Performance-Antipattern-_0022Ramp_0022"></a>
@@ -1467,6 +1465,38 @@ and remove what we found.
 
 <p>The Execution time for the &lsquo;<samp class="samp">Expanding Candidates</samp>&rsquo; step with Eclipse SDK is now down to slightly over two minutes. <em class="emph">me adjusts his tie and brushes off an imaginary speck of dust from his sleeve.</em>
 </p>
+<div class="example">
+<pre class="example-preformatted"> ///   +------------------------------------------------------------------------+
+ o o  &lt;  I tried to crawl through the code and get an approximation of a mental |
+  -    | map of what is going on in the code. I think I get the FP (elegant)    |
+       | expander but you lost me with the beer. I understand the ramping       |
+       | problem, but how is that actually solved? I can see that beer moved    |
+       | the overlap detection from clojure space to a mongo query (in          |
+       | get-overlapping-candidates ) and the clones are stored in the database |
+       | instead of in memory. But is that the actual core of the solution, or  |
+       | where is it?                                                           |
+       +------------------------------------------------------------------------+
+  _
+_/_\_  +------------------------------------------------------------------------+
+ o o  &lt;  There are a number of factors that help us out here. First is that     |
+  v    | only one candidate (and possible expansions) is kept in memory. Second |
+       | is that we shift processing from clojure to the database, so the       |
+       | database connection does not time out as easily.                       |
+       |                                                                        |
+       | But the biggest factor is, I think, that the bundle of joy             |
+       | get-overlapping-candidates is essentially a series of filters (which   |
+       | databases are really good at) where already the first $match quickly   |
+       | reduces the number of elements to continue looking at.                 |
+       |                                                                        | 
+       | Also, for every successfully expanded clone the set of candidates      |
+       | shrinks, whereas in the &quot;elegant&quot; solution we just get more and more   |
+       | clones to match every new candidate with. If the database can execute  |
+       | the query for the first clone candidate (and why shouldn't it, it is   |
+       | after all just a set of filters), life is only going to get easier for |
+       | every subsequent clone candidate.                                      |
+       +------------------------------------------------------------------------+
+</pre></div>
+
 <hr>
 </div>
 <div class="section-level-extent" id="Expand-with-Aggregation-Pipeline">
