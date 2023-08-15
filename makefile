@@ -27,8 +27,6 @@ doc:
 	@emacs --batch --file ./Documentation/Big-Data-Analytics.org --eval "(org-texinfo-export-to-info)"
 	@texi2pdf ./Documentation/Big-Data-Analytics.texi --command=@afourpaper -q -c -o ./Documentation/Big-Data-Analytics.pdf
 	@texi2any --html --no-split ./Documentation/Big-Data-Analytics.texi -o ./Documentation/Big-Data-Analytics.html
-#	@rm *.aux *.cp *.cps *.fn *.fns *.log *.pg *.pgs *.toc *.tp *.tps
-#	@mv *.html 
 
 clean:
 	@docker rm -f qc-getter cs-generator cs-consumer
