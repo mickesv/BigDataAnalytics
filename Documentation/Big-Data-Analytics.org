@@ -597,7 +597,6 @@ With these introductions out of the way, it is time to actually fix and run the 
 
 1. Start the application using ~docker compose~ with the given ~stream-of-code.yaml~ . You may wish to modify the ~DELAY~ to something bigger during your first tests so you can see what is going on. You will also notice that the ~cs-consumer~ container introduces a bind-mount to the source code of the app so that you can edit the code locally and it will restart automatically.
 
-# MUN-TODO I miss an explanation of how the detection algorithm works. There are comments in the code, but is that sufficient? I have the impression your strategy is to give less explanations to avoid the trap of providing confusing explanations. A gamble, and we will see how it works out.
 2. Study the source code of the CodeStreamConsumer so that you understand it. You will notice that there are two implementation tasks, identified by =TODO= statements in the code.
 
 3. The first task is to complete the implementation of the ~CloneDetector~. The smallest possible edit for you is to implement the three methods as suggested, but feel free to be more creative here.
