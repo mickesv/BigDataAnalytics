@@ -878,13 +878,13 @@ If the list of command line arguments ~args~ , when transformed into upper-case,
 
 - ~chunk-param~ is just a step along the way to get a usable ~chunk-size~
 - ~file-handles~ is a set of all files, i.e. the result of calling ~source-processor/traverse-directory~ . This is a lazy sequence, so no handles are actually created until needed (which will be in the call to ~source-processor/chunkify~ or maybe even in the ~storage/store-files!~ call).
-- ~chunks~ is a set of all chunks for all files. This is also a lazy sequence, so it will not be evaluated until it needs to be (in the call to ~storage/store-chunks!~ ). By convention, function names ending in an exclamation mark have side effects, in this case storing the results to the database.
+- ~chunks~ is a set of all chunks for all files. This is also a lazy sequence, so it will not be evaluated until it needs to be (in the call to ~storage/store-chunks!~ ). By convention, function names ending in an exclamation mark have side effects, in the case of ~storage/store-chunks!~ this side-effect is the storing of the results to the database.
 
 Once the variables are defined, most of the processing have (at least nominally) been done and what remains is to store the results to the database. I say "nominally" because in fact none of the actual processing has happened yet; because of lazy sequences, the processing only happens in these last two calls to ~storage/store-files!~ and ~storage/store-chunks!~.
 
 The final piece of this function are the interspersed calls to our ~ts-println~ function to print timestamped status messages, and a whole lot of closing parentheses to back out of the ~let~, the ~when-not~, and the ~defn~ expressions.
 ** First Run on full Qualitas Corpus
-The results of running the first version of this program (using the now commented out /first-expand-then-store-all/ relic) on the full Qualitas Corpus yields the following data on my laptop:
+The results of running the first version of this program on the full Qualitas Corpus yields the following data on my laptop:
 
 | Processing Step              | Database Collection |   #Items | Processing Time |
 |------------------------------+---------------------+----------+-----------------|
@@ -931,7 +931,7 @@ The /elegant/ way to expand clones is by using a ~reduce~ operation like so:
               )) [] candidates))
 #+end_src
 
-In plaintext: with every candidate, split the already found clones into two piles; One that overlaps the new candidate and one with all the remaining clones. If there are no overlapping clones, this is a new clone and is conjoined to the existing list of clones. Otherwise, we want to remove the overlapping clones (conveniently already done with the ~remaining~ list) and just store a new clone that merges all of the overlapping clones into one. Beautiful, isn't it?
+In plaintext: with every candidate, split the already found clones into two piles (This is what the ~group-by~ does; One that overlaps the new candidate (all elements where ~overlaps?~ evaluates to ~true~) and one with all the remaining clones (where ~overlaps?~ evaluates to ~false~ ). If there are no overlapping clones, this is a new clone and is conjoined to the existing list of clones. Otherwise, we want to remove the overlapping clones (conveniently already done with the ~remaining~ list) and just store a new clone that merges all of the overlapping clones into one. Beautiful, isn't it? This is the version that fails above.
 
 #+CINDEX: Performance Antipattern
 #+CINDEX: Performance Antipattern "Ramp"
