@@ -508,7 +508,7 @@ The first step is to ensure access to the Qualitas Corpus. For convenience, the 
 
 3. Create a volume for the Qualitas Corpus: ~docker volume create qc-volume~
 
-4. Run the ~corpusgetter~ image with the ~qc-volume~ mounted and instruct it to fetch the corpus: ~docker run -it -v qc-volume:/QualitasCorpus --name qc-getter corpusgetter ./qc-get.sh FETCH~
+4. Run the ~corpusgetter~ image with the ~qc-volume~ mounted and instruct it to fetch the corpus: ~docker run -it -v qc-volume:/QualitasCorpus --name qc-getter corpusgetter FETCH~
 
 5. If all goes well, this should end by printing some statistics about the fetched corpus and then pause. If not, you can re-run the ~corpusgetter~ image without any commands, which will only print these statistics and then pause: ~docker run -it -v qc-volume:/QualitasCorpus --name qc-getter corpusgetter~  . Note that pressing any key will terminate the script and end the container, please do not do this yet.
 
