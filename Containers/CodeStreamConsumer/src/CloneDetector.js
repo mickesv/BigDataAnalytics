@@ -81,7 +81,7 @@ class CloneDetector {
 
     #filterCloneCandidates(file, compareFile) {
         // TODO
-        // For each chunk in file.chunks, find all #chunkMatch() in compareFile.chunk
+        // For each chunk in file.chunks, find all #chunkMatch() in compareFile.chunks
         // For each matching chunk, create a new Clone.
         // Store the resulting (flat) array in file.instances.
         // 
