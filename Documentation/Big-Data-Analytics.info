@@ -1,4 +1,4 @@
-This is Big-Data-Analytics.info, produced by makeinfo version 7.0.3 from
+This is Big-Data-Analytics.info, produced by makeinfo version 7.1 from
 Big-Data-Analytics.texi.
 
 This is part of a course on Applied Cloud Computing and Big Data,
@@ -12,7 +12,7 @@ offered by Blekinge Institute of Technology.  Version 1.0
 
      Permission is hereby granted, free of charge, to any person
      obtaining a copy of this software and associated documentation
-     files (the “Software”), to deal in the Software without
+     files (the "Software"), to deal in the Software without
      restriction, including without limitation the rights to use, copy,
      modify, merge, publish, distribute, sublicense, and/or sell copies
      of the Software, and to permit persons to whom the Software is
@@ -21,7 +21,7 @@ offered by Blekinge Institute of Technology.  Version 1.0
      The above copyright notice and this permission notice shall be
      included in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
+     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
      EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
      MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
      NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
@@ -47,7 +47,7 @@ offered by Blekinge Institute of Technology.  Version 1.0
 
      Permission is hereby granted, free of charge, to any person
      obtaining a copy of this software and associated documentation
-     files (the “Software”), to deal in the Software without
+     files (the "Software"), to deal in the Software without
      restriction, including without limitation the rights to use, copy,
      modify, merge, publish, distribute, sublicense, and/or sell copies
      of the Software, and to permit persons to whom the Software is
@@ -56,7 +56,7 @@ offered by Blekinge Institute of Technology.  Version 1.0
      The above copyright notice and this permission notice shall be
      included in all copies or substantial portions of the Software.
 
-     THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
+     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
      EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
      MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
      NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
@@ -93,7 +93,7 @@ Data Analytics part of the course.
 * Files and Data Types Index::
 * Functions and Commands Index::
 
-— The Detailed Node Listing —
+-- The Detailed Node Listing --
 
 Introduction to Big Data
 
@@ -174,11 +174,11 @@ Basic navigation in the document is done with the following keys (try
 ‘info info’ for more details and further key commands):
 
    • <spc> (space) scroll forward
-   • ’b’ Beginning of current node
-   • ’e’ End of current node
-   • ’n’ Next node
-   • ’p’ Previous node
-   • ’u’ Up (usually (but not always) to the top index page)
+   • 'b' Beginning of current node
+   • 'e' End of current node
+   • 'n' Next node
+   • 'p' Previous node
+   • 'u' Up (usually (but not always) to the top index page)
    • <enter> on a cross reference to open it.
 
 
@@ -194,7 +194,7 @@ may help you:
    • Start by reading the abstract and the conclusions.  These will tell
      you what problem or area the article is addressing, and what the
      article contributed to solving the problem.
-   • The articles in this course have – to a large extent – been chosen
+   • The articles in this course have - to a large extent - been chosen
      because they summarise the topics in various ways.  To find these
      summaries, look for _lists, figures, and tables_ in the article.
      Read these.  Read the text around them, or where the figures and
@@ -222,12 +222,12 @@ may help you:
      methodology), and what the raw results were.  Most of the time, you
      can safely skip these sections.  Sometimes however, the _results_
      section is combined with the _analysis_ section.
-   • The _analysis_ section “bakes” the results and tries to answer the
+   • The _analysis_ section "bakes" the results and tries to answer the
      research questions (address the identified problem).  This is
      probably the most interesting section for you to read.
    • The _discussion_ section should raise the view and try to see what
      the results actually mean in a bigger context.  What can you do
-     with the results?  “So what?”.  This is a tricky section to read,
+     with the results?  "So what?".  This is a tricky section to read,
      since the authors want you to believe that their results are the
      best thing invented since hot porridge, but at the same time they
      have to identify threats to the validity of the study.  Validity
@@ -245,7 +245,7 @@ may help you:
 
    The bottom line is that when being told to read a lot of research
 articles, the trick is to learn how to not read them while still getting
-the gist of them.  Hopefully, the “map” described above may provide some
+the gist of them.  Hopefully, the "map" described above may provide some
 help in identifying the parts of an article that are important for you.
 
 
@@ -265,7 +265,7 @@ actually have enough data to be a problem for a modern computer.
 Data?_
 
    To be able to answer this question, we must first understand what big
-data was (or is).  Chen et al.  2014 discuss the “four V’s” of Big Data.
+data was (or is).  Chen et al.  2014 discuss the "four V's" of Big Data.
 Crude as they are, they are still a decent starting point with which to
 understand what Big Data is.  The following are the claims used to
 define Big Data:
@@ -276,7 +276,7 @@ Velocity
      Velocity refers to the rate and amount at which new data arrives
      and need to be ingested and analysed.  Essentially, if you have
      more data generators than you have capacity to receive and organise
-     the data, you’re in trouble.
+     the data, you're in trouble.
 Variety
      Not all data arrives in the same format, which complicates your
      data reception.
@@ -292,7 +292,7 @@ is the combination of them and the scale of them that makes Big Data a
 difficult problem.  But this also means that unless either of them (at
 least either of the first three) actually constitute a problem, then
 there is no Big Data.  Finding the killer of Big Data is thus a matter
-of finding out _who isn’t there anymore_.  So, without further ado, let
+of finding out _who isn't there anymore_.  So, without further ado, let
 us invite the suspects into the library one by one and explore which of
 them might be the killer.
 
@@ -314,7 +314,7 @@ File: Big-Data-Analytics.info,  Node: Volume The Size of Big Data,  Next: Veloci
 We may go about defining the size of Big Data in two ways.  One is to
 look at examples of large datasets and gather anecdotal evidence about
 what may be Big Data.  The other is to look at storage and processing
-capacity, and establish a “lower limit” for what may be Big Data.
+capacity, and establish a "lower limit" for what may be Big Data.
 
    First, then, some examples.  Starting with something simple, like
 text, Project Gutenberg (https://www.gutenberg.org/) contains over 70000
@@ -340,9 +340,9 @@ included in this as well.
    What about image data?  OpenStreetMap
 (https://www.openstreetmap.org/) is a community-driven collection of map
 data.  Maps for the whole planet in XML format lands in at around 125
-GB.  Note that this is “just” the map data and does not include e.g.
+GB.  Note that this is "just" the map data and does not include e.g.
 any satellite images, so the question is whether we should call this
-images or not.  A more personal example of “unstructured” images can be
+images or not.  A more personal example of "unstructured" images can be
 found closer to home: Both my wife and myself are avid hobby
 photographers with two kids.  Our personal photo database have grown to
 ~500 GB over the course of twenty years.
@@ -352,7 +352,7 @@ commercial reasons, this type of data is difficult to get access to, but
 we may get some ideas based on some research datasets that _are_ made
 available.  For example, Spotify Research
 (https://podcastsdataset.byspotify.com/) has published a dataset of 100
-000 hours worth of podcasts, with a size of ~2TB (See “100,000 Podcasts:
+000 hours worth of podcasts, with a size of ~2TB (See "100,000 Podcasts:
 A Spoken English Document Corpus” by Ann Clifton, Sravana Reddy, Yongze
 Yu, Aasish Pappu, Rezvaneh Rezapour, Hamed Bonab, Maria Eskevich, Gareth
 Jones, Jussi Karlgren, Ben Carterette, and Rosie Jones, COLING 2020
@@ -384,7 +384,7 @@ consistency is not an issue here.  Whatever is received is stored as a
 single document.
 
    In reality, this suffers from two major issues: The first is that
-even if the _database_ support “free-form” data where everything is a
+even if the _database_ support "free-form" data where everything is a
 document and each item in the database may have their own attributes,
 some form of structure is often imposed by the database access framework
 (e.g.  Mongoose, which is used to access MongoDB databases from node.js
@@ -402,12 +402,12 @@ attributes.  When reading data, one must carefully check to see if all
 relevant attributes are specified for each item before any processing of
 the items can be done.  Your code-base gets littered with passive
 aggressive data verification every place where the database is queried.
-In other words; the “write anything” approach is truly only optimised
+In other words; the "write anything" approach is truly only optimised
 for write speed, and may come with a significant cost for storing and
 exploring the data.
 
    When optimising for storing data the first question to ask is always:
-“Do we _need_ to store this data?” Any data that is stored also need to
+"Do we _need_ to store this data?"  Any data that is stored also need to
 be maintained.  As mentioned, managing backups is a constant worry with
 my personal photo collection, but this is only a small portion of what
 needs to be taken care of.  Just the fact that new disk space needs to
@@ -419,7 +419,7 @@ computers.  If you keep your data in a regular filesystem, you still
 need to index the data so that you can easily find the right file on the
 right disk on the right computer.
 
-   The second question is: “What is the _cost_ of keeping data?” The
+   The second question is: "What is the _cost_ of keeping data?"  The
 information therein needs to be kept up to date and relevant, otherwise
 it is a nice historical archive but probably of lesser value.  _Bit rot_
 refers to a physical degradation process where bits are accidentally
@@ -434,8 +434,8 @@ requirements.  If, on the other hand, you have decided to not store a
 particular piece of data, then you do not need to worry about whether
 you are in compliance.
 
-   The third storage decision is: “What are the most suitable formats in
-which to store the data?” One good example of this is Project Gutenberg
+   The third storage decision is: "What are the most suitable formats in
+which to store the data?"  One good example of this is Project Gutenberg
 mentioned earlier.  They may receive books in any format, and they also
 serve the books in a number of different formats.  Internally, however,
 they are only stored in a small set of formats.  Plaintext (ASCII)
@@ -456,25 +456,25 @@ For example, you might add an index to quickly find answers to common
 queries, but this comes at a cost of requiring more storage and that it
 will take longer to insert new items.  Duplicating some data can also
 help avoiding more complex data queries, but again at a storage cost.
-Other “tricks” include to store and maintain searchable data in a
+Other "tricks" include to store and maintain searchable data in a
 relational database while keeping the actual data items outside,
 essentially stored as opaque blobs (binary large objects).
 
    There are, however, things that can be done to optimise _most_ of the
 queries without adding storage overhead to all items.  For example, all
-of the examples discussed earlier have “active sets” of data where some
+of the examples discussed earlier have "active sets" of data where some
 items are requested more frequently.  I am certain they also have more
 and less common search patterns for navigating the data.  Among the data
 in the active set, I would also venture that only a portion of them are
-actually being updated – the rest must be available but can be
+actually being updated - the rest must be available but can be
 statically served.
 
    Mind you, organising data into an active set also implies a cost.  At
 regular intervals the active set must be updated to ensure that it
 indeed consist of the most used data.  If, for example, the active set
 consist of all entries from the last week or month, then an update needs
-to run at least once per week/month.  If the active set is “last 30
-days”, then you need to update it every day.  Moreover, you also need to
+to run at least once per week/month.  If the active set is "last 30
+days", then you need to update it every day.  Moreover, you also need to
 decide what to do with data that is no longer in the active set; how
 available should it remain?  What quality requirements do you have on
 e.g.  accessibility?  Security?  Recoverability?
@@ -510,7 +510,7 @@ with the amount of data.  In different variations, this is what one does
 by scaling up and scaling out in a cloud computing solution.  Tactics
 such as _introduce concurrency_, _maintain multiple copies of
 computation_, and _maintain multiple copies of data_ are all approaches
-to “throw more computers at the problem”.
+to "throw more computers at the problem".
 
    _Control Resource Demand_ are slightly more advanced solutions to the
 problem, since they focus on making the best possible use of the
@@ -542,7 +542,7 @@ the call when the customer did not have any more pre-paid money to call
 for.  Once the processing algorithms are optimised and overhead reduced,
 the only thing remaining is to add more computing resources.
 
-   That’s not entirely true, though.  Some more things can be done: work
+   That's not entirely true, though.  Some more things can be done: work
 with the data generators (in this case the telephone switches) so that
 the data is more pre-processed even before it enters the billing system,
 and simplify the required processing e.g.  by a flatter structure of
@@ -557,7 +557,7 @@ collecting all the data and hope to at a later stage figure out which
 information is valuable, some up-front design to cull the initial data
 can often work miracles on the required resources.
 
-   I named this section “the speed of noise”.  If most of the data that
+   I named this section "the speed of noise".  If most of the data that
 arrive is without value, then it really does not matter whether
 algorithms and platforms can be improved sufficiently to take care of
 it: it is still junk.
@@ -565,7 +565,7 @@ it: it is still junk.
    Strike two for big data: _Lack of up-front planning doth not Big Data
 make._
 
-   But what if the data _aren’t_ junk?  The billing data above clearly
+   But what if the data _aren't_ junk?  The billing data above clearly
 has value and need to be processed.  Yes, but does it need to be stored?
 Does all of it need to be stored?  Does all of it need to be stored for
 all eternity?  Does it need to be processed down to its final form
@@ -578,7 +578,7 @@ _right_ data to facilitate processing of new data, the next step is to
 optimise the storage of the data in order to facilitate querying of the
 data.  We have grown comfortable with the idea that storage is cheap,
 and because we _can_ generate new reports out of old data someone
-_might_, and thus we’d better hold on to all data for all eternity.
+_might_, and thus we'd better hold on to all data for all eternity.
 
    Fortunately (for big data), generating reports is only one small part
 of what one may do with data.  Different types of data analysis that can
@@ -622,9 +622,9 @@ of the Particle Swarm Optimisation (PSO) Algorithm):
 
      Step 1: Distribute workers randomly across the entire search realm.
 
-     Step 2: For each worker, look around where they are and identify the nearest “best fit”.
+     Step 2: For each worker, look around where they are and identify the nearest "best fit".
 
-     Step 3: Let all workers vote on who has the best “best fit”.
+     Step 3: Let all workers vote on who has the best "best fit".
 
      Step 4: Move all workers closer to the best best fit.
 
@@ -632,7 +632,7 @@ of the Particle Swarm Optimisation (PSO) Algorithm):
 
    Step 3 is important in this algorithm since otherwise most workers
 will fall down in a local optimum and never go looking for anything
-better.  By synchronising across all workers, this is – somewhat –
+better.  By synchronising across all workers, this is - somewhat -
 avoided.  But the key point here is that this synchronisation step is a
 common feature of many optimisation algorithms for that particular
 reason (to avoid local optima), and it presents an obstacle to large
@@ -740,14 +740,14 @@ Big Data is not about finding a computer which is fast enough, but
 rather to intelligently analyse the data needs and devise strategies for
 dealing with this.
 
-   In fact, let’s look a little closer at the cost of intelligent
+   In fact, let's look a little closer at the cost of intelligent
 analysis.  A simplified formula for calculating the power consumption of
-a cloud computer (based on “How can I Calculate CO_2-eq emissions for my
+a cloud computer (based on "How can I Calculate CO_2-eq emissions for my
 Azure VM?  (last checked 2023-04-11) ) is: ‘E[Wh] = (n_cpu * P_cpu[W] *
 time[h])’ where ‘n_cpu’ is the number of CPUs and ‘P_cpu’ is the power
 consumption per CPU.  The formula suggested by S.  Bergman also includes
 other factors such as memory power consumption and the power consumption
-of any GPUs, but for simplicity’s sake these can be ignored for now.
+of any GPUs, but for simplicity's sake these can be ignored for now.
 What remains now is to estimate the power consumption per CPU and how
 much of that CPU which is being used by us (as opposed to any other
 tenant on the same cloud server).
@@ -769,7 +769,7 @@ south Sweden and thus tightly connected to the European power market
 located), this would mean saving 100g of CO_2 equivalents per day.  Run
 the server for a year to save 36kg of CO_2 equivalents.
 
-   Humans are part of a natural cycle where we only eat “fresh” organic
+   Humans are part of a natural cycle where we only eat "fresh" organic
 material (unless you have a penchant for eating crude oil), and thus we
 are only re-releasing the CO_2 from this organic material back into the
 natural cycle that will feed the next crop.  However, for the sake of
@@ -790,7 +790,7 @@ throwing more resources at it.
 
    *Defensive Programming* Cycling back to the _variety_ aspect of big
 data that we started this section with, the lure of not being forced to
-structure one’s data is that one adopts a more _lassiez-faire_ approach
+structure one's data is that one adopts a more _lassiez-faire_ approach
 to processing data upon arrival.  Over time, this leads to an extremely
 defensive programming style for data retrieval, a not at all extreme
 example of which is presented below:
@@ -829,7 +829,7 @@ salad!  The question that someone forgot to ask in this project was
 whether data is written more frequently than it is read.  Remember also
 that frequency in this case means both number of times per time unit as
 well as number of places in the code-base.  If the latter is more than
-“one and only one place”, this relaxed attitude to up-front planning of
+"one and only one place", this relaxed attitude to up-front planning of
 data formats have created a maintainability bomb just waiting to
 explode.
 
@@ -845,7 +845,7 @@ against each other.  If arrival velocity is the most important
 requirement and the data cannot be cleaned e.g.  on the client-side,
 then maintainability nightmares such as above are perhaps the only
 possible solution.  However, I suspect that modern computers can do a
-lot more cleaning up on arrival time than one may think, and so I’d
+lot more cleaning up on arrival time than one may think, and so I'd
 rather ensure that once the data hits the database it is well formed and
 all fields are used as they should.  Part of my suspicion is that the
 cost of maintaining a system (probably across several decades) will in
@@ -853,7 +853,7 @@ most cases outweigh any performance benefits.
 
    *Summary* Variety as such is likely not a problem anymore: modern
 computers are able to process and store data at a scale that covers most
-“big data” use cases.  The complication with variety stems from when
+"big data" use cases.  The complication with variety stems from when
 data from many sources need to be collated in order to determine _what_
 to store in the first place.  The challenge then becomes how and when to
 perform data maintenance in order to clean up and cull the existing data
@@ -871,17 +871,17 @@ File: Big-Data-Analytics.info,  Node: Value The Cost of Noise,  Next: Summary Fr
 
 It is easy to confuse value with cost, and they are often seen as two
 sides of the same coin.  So the first thing to realise is that value has
-_nothing_ to do with the cost.  What’s more is that value is subjective.
+_nothing_ to do with the cost.  What's more is that value is subjective.
 _Das Ding für Mich_ is not the same as _das Ding für Euch_ (as Immanuel
 Kant would have said if someone had given him the chance).
 
    The claim, and the whole reason for the hype around Big Data, is that
 within these massive streams of data there are veins of gold just
-waiting to be mined by a resourceful company.  So let’s collect all the
+waiting to be mined by a resourceful company.  So let's collect all the
 things and later on blame the developers for not finding the gold that
 you just know _must_ be there.  Why else would everyone be talking about
 Big Data?  Eventually, and as with all buzzwords, simply stating that
-“_we work with big data!_” implies that _your_ company are sitting on
+"_we work with big data!_"  implies that _your_ company are sitting on
 this vein of gold, and know how to tap into it, and often this is enough
 to increase the value of your company.  Even if we, in the end, conclude
 that Big Data is indeed dead, there will still be pressure to claim that
@@ -889,7 +889,7 @@ your company is working with Big Data.
 
    But I digress.  Again.
 
-   The real reason why value is included as one of the four ’V’s of Big
+   The real reason why value is included as one of the four 'V's of Big
 Data is because whatever value the data may have ought to outweigh all
 the costs related to Big Data analytics and Big Data Management.
 
@@ -924,13 +924,13 @@ storing, and analysing the data, there are also costs incurred to
 _curate_ the data.  Keeping the data updated with current events, fixing
 previous mistakes in the data, culling data that no longer have any
 value, adhering to legal requirements such as GDPR, maintaining data
-consistency, and keeping “proof of origin” of the data are all examples
+consistency, and keeping "proof of origin" of the data are all examples
 of activities that a data curator may work on.
 
    *Summary* The question must always be whether the value outweighs the
 costs.  To treat data as Big Data just to satisfy a marketing whim is
 one sure way to allow the costs to skyrocket.  So be sure that you
-actually _have_ to “go Big Data” before you do.
+actually _have_ to "go Big Data" before you do.
 
    This is strike three for Big Data: _Data is not inherently valuable
 just because it is Big!_  More analysis is needed to decide whether
@@ -942,7 +942,7 @@ File: Big-Data-Analytics.info,  Node: Summary From Big Data to Big Data Analytic
 3.5 Summary: From Big Data to Big Data Analytics
 ================================================
 
-We’ve got three strikes against Big Data:
+We've got three strikes against Big Data:
 
   1. Volume is no longer an issue.
   2. Lack of up-front planning doth not Big Data make.
@@ -956,14 +956,14 @@ fact, _Big Data Analytics_.
    Whatever value one hopes to get out of the data is enabled through
 some sort of analysis, and this analysis may be more or less complicated
 to perform.  Likewise, the speed and frequency at which the analysis
-needs to be made differs significantly from problem to problem – ranging
+needs to be made differs significantly from problem to problem - ranging
 from real time analysis to once-every-blue-moon analysis, and spanning
 everything from a simple query to a NP-complete regurgitation of the
 entire database.
 
    Machine Learning and Artificial Intelligence is all the rage these
 days, and we all know that they require enormous training sets to become
-really good.  Aren’t they examples of Big Data?  Well, they _can_ be,
+really good.  Aren't they examples of Big Data?  Well, they _can_ be,
 even if there are plenty of smaller examples where you can download the
 entire dataset to your own laptop.  Bear in mind also that _training_ an
 artificial intelligence and _using_ it are two separate activities.  You
@@ -971,7 +971,7 @@ may have all the time and resources in the world to train your AI, but
 will probably only need a fraction of the original dataset available for
 using the AI.
 
-   _“Beautiful Evidence”_ by Edward Tufte is an interesting book about
+   _"Beautiful Evidence"_ by Edward Tufte is an interesting book about
 how to present data in graphics as well as in text, and how to do this
 while remaining true to actually available evidence (there is an entire
 chapter arguing about the dangers of PowerPoint).  The following quote
@@ -981,17 +981,17 @@ is apt with respect to machine learning:
      methods are for data reasoning: anti-causal, a jumble of effects
      without causes.  In particular, the techniques of data mining,
      factor analysis, and multi-dimensional scaling crunch and grind
-     vast matrices down into small lumps but don’t test causal models.
+     vast matrices down into small lumps but don't test causal models.
      These techniques are perhaps useful for those who have lots of data
      but no ideas.  To be relevant for decisions and actions, whatever
      emerges from data crunching must somehow turn into evidence about
      causal processes.
 
-   “... Lots of data but no ideas.” This pretty much sums it up, don’t
+   "... Lots of data but no ideas."  This pretty much sums it up, don't
 you think?
 
-   Later, Tufte reasons about the old adage “Correlation is not
-Causation”, and concludes that the shortest accurate statement one can
+   Later, Tufte reasons about the old adage "Correlation is not
+Causation", and concludes that the shortest accurate statement one can
 make about correlation and causation is that: _Empirically observed
 covariation is a necessary but not sufficient condition for causality._
 When it comes to Big Data and much of the recent hype around machine
@@ -1044,11 +1044,11 @@ File: Big-Data-Analytics.info,  Node: Quiz Introduction to Big Data,  Next: Big 
 
 *TODO* Please read the following articles:
 
-  1. Chen, Min, Shiwen Mao, and Yunhao Liu.  “Big data: A survey.”
+  1. Chen, Min, Shiwen Mao, and Yunhao Liu.  "Big data: A survey."
      Mobile networks and applications 19 (2014): 171-209.
-  2. Fernández, Alberto, et al.  “Big Data with Cloud Computing: an
+  2. Fernández, Alberto, et al.  "Big Data with Cloud Computing: an
      insight on the computing environment, MapReduce, and programming
-     frameworks.” Wiley Interdisciplinary Reviews: Data Mining and
+     frameworks."  Wiley Interdisciplinary Reviews: Data Mining and
      Knowledge Discovery 4.5 (2014): 380-409.
   3. Curry, E.  (2016).  The Big Data Value Chain: Definitions,
      Concepts, and Theoretical Approaches.  In: Cavanillas, J., Curry,
@@ -1100,7 +1100,7 @@ research studies on, but it is large enough to be useful for this course
 as well.  As discussed in the introduction (See *note introduction::),
 it is perhaps not big enough to be called Big Data today, but it is
 still large enough to cause a bit of problems when trying to perform any
-form of analysis on it – as we shall see.  For that reason, it does not
+form of analysis on it - as we shall see.  For that reason, it does not
 matter that the most recent version of the corpus is getting a bit long
 in the tooth (the most recent version is from 2013): we can still use it
 for our analyses.
@@ -1125,7 +1125,7 @@ clones that can be identified:
    Obviously, the effort required to identify and match clones increases
 with the type, where type 1 clones can be detected using relatively
 simple string matching, whereas already type 2 clones require some
-knowledge about the compiled program’s abstract syntax tree.  Type 3 and
+knowledge about the compiled program's abstract syntax tree.  Type 3 and
 type 4 clones require additional semantic understanding of what a code
 fragment performs.
 
@@ -1152,9 +1152,9 @@ identified, there are two main strategies on how to handle the problem:
 at all costs.  As often in engineering, the decision on how to handle a
 problem depends on the particular situation.  You might find the work by
 Kapser and Godfrey useful ( Kapser, Cory J., and Michael W.  Godfrey.
-“‘Cloning considered harmful’ considered harmful: patterns of cloning in
-software.  Download Cloning considered harmful’ considered harmful:
-patterns of cloning in software.” Empirical Software Engineering 13.6
+"'Cloning considered harmful' considered harmful: patterns of cloning in
+software.  Download Cloning considered harmful' considered harmful:
+patterns of cloning in software."  Empirical Software Engineering 13.6
 (2008): 645.  )  as they identify code clone patterns, describe their
 advantages/disadvantages, long term issues and provide advice on how to
 manage them.
@@ -1200,7 +1200,8 @@ mount from different containers.
    *Tasks*
   1. Download the BigDataAnalytics repository:
 
-     ‘git clone https://github.com/mickesv/BigDataAnalytics.git’
+     ‘git clone https://github.com/mickesv/BigDataAnalytics.git --config
+     core.autocrlf=input’
 
   2. Build the ‘CorpusGetter’ image (found in ‘Containers/CorpusGetter’
      ) and tag it as ‘corpusgetter’
@@ -1234,16 +1235,16 @@ File: Big-Data-Analytics.info,  Node: Quiz Code Clones and Big Data,  Next: Assi
 
 *TODO* Please read the following articles:
 
-  1. C.  K.  Roy, J.  R.  Cordy, and R.  Koschke, “Comparison and
+  1. C.  K.  Roy, J.  R.  Cordy, and R.  Koschke, "Comparison and
      evaluation of code clone detection techniques and tools: A
      qualitative approach Download Comparison and evaluation of code
-     clone detection techniques and tools: A qualitative approach,”
+     clone detection techniques and tools: A qualitative approach,"
      Science of Computer Programming, vol.  74, no.  7, pp.  470–495,
      2009.
-  2. Kapser, Cory J., and Michael W.  Godfrey.  “‘Cloning considered
-     harmful’ considered harmful: patterns of cloning in software.
-     Download Cloning considered harmful’ considered harmful: patterns
-     of cloning in software.” Empirical Software Engineering 13.6
+  2. Kapser, Cory J., and Michael W.  Godfrey.  "'Cloning considered
+     harmful' considered harmful: patterns of cloning in software.
+     Download Cloning considered harmful' considered harmful: patterns
+     of cloning in software."  Empirical Software Engineering 13.6
      (2008): 645.
 
    *TODO* Summarise each article (no more than 1/2 page each) according
@@ -1287,7 +1288,7 @@ inspection.  This may, for example, be through a website where users
 submit suspicious code, or via a hook in the configuration management
 system that automatically send all commits for clone detection.  The
 CodeStreamGenerator expects the previously generated ‘qc-volume’ to be
-mounted under ‘/QualitasCorpus’ so that it has some code to “generate”.
+mounted under ‘/QualitasCorpus’ so that it has some code to "generate".
 You could, of course, mount any code repository in this place, and
 CodeStreamGenerator would be none the wiser.
 
@@ -1302,7 +1303,7 @@ the source code of which is found under ‘Containers/CodeStreamConsumer/’
 , that waits for a HTTP ‘POST’ request with a file in it.  Each file is
 processed in turn using the ‘processFile()’ function, clones are
 detected, and statistics are collected.  Opening a web browser to
-‘http://localhost:8080’ (Assuming you’ve instructed docker to forward
+‘http://localhost:8080’ (Assuming you've instructed docker to forward
 port 8080 on the host to port 3000 in the CodeStreamConsumer container)
 displays the time it took to process the last file, the code clones
 found so far, and the names of the thus far processed files.
@@ -1416,12 +1417,10 @@ Please answer the following questions:
   4. Please upload your code for the CodeStreamConsumer (zip the folder
      for the whole Container).
 
-   Once delivered, _a meeting will be scheduled_ where you are expected
-to run and explain your application and its deployment.  Be prepared to
-answer questions about:
+   Be prepared to answer questions about:
 
    • Your implementation of the CloneDetector
-   • Your implementation’s ability to accurately identify clones.
+   • Your implementation's ability to accurately identify clones.
    • Timing statistics and what they may imply
    • Possible future improvements
 
@@ -1442,7 +1441,7 @@ File: Big-Data-Analytics.info,  Node: Improving the Clone Detecting Algorithm,  
 The CodeStreamConsumer suffers from a few issues that makes it less
 suitable for Big Data.  The most obvious issue is of course that it
 hangs (at least for me) before it finishes processing all the files even
-in the relatively small Qualitas Corpus.  This really isn’t very
+in the relatively small Qualitas Corpus.  This really isn't very
 surprising, considering that the ‘FileStorage’ class keeps all the
 processed files in memory.  Not only that, to speed up processing it
 keeps a chunkified version of the file _also_ in memory, essentially
@@ -1517,7 +1516,7 @@ compared to every other file and chunk.  This is the equivalent of using
 bubble sort, which is never a good idea and absolutely positively
 definitely never ever _ever_ a good idea if you are planning to process
 Big Data.  With hash functions we have introduced the idea of a
-“fingerprint”, and the logical next step is to keep a list of all
+"fingerprint", and the logical next step is to keep a list of all
 fingerprints _and where they came from_.  If the same fingerprint have
 two (or more) origins, it is a clone, which is what was to be shown.
 The data structure, for you algorithms and data structure nerds out
@@ -1563,7 +1562,7 @@ function in step 4 will take much longer.
 optimised for finding elements (or where to write a new element),
 bringing these operations down to a best case Big-O complexity of ‘O(log
 n)’ (which assumes that all your trees are balanced and the wind is
-blowing in the right direction.  The bottom line is that we can’t really
+blowing in the right direction.  The bottom line is that we can't really
 improve the _writing_ any further).
 
 
@@ -1576,7 +1575,7 @@ The elephant in the room remains.  We are still processing one file at
 the time, so the overall complexity is still stuck to the bubble-sort
 ‘O(n^2)’ quagmire.  This is kind of the whole point with this exercise:
 In order to get any further, we need to re-think the problem.  The
-_file_ is no longer the most appropriate data “atom”, even if we still
+_file_ is no longer the most appropriate data "atom", even if we still
 have to start (and end) there.  The algorithm we are looking for now
 would be to:
 
@@ -1617,18 +1616,18 @@ data to the output data and _map_ it onto your entire collection.
 ‘find()’ , ‘exists()’ , etc.)  are surprisingly versatile for data
 analysis problems.  Sometimes (as with the clone detection algorithm
 discussed so far), the problem or the required input and output data
-formats need to be rephrased a bit, but once you do the world’s your
+formats need to be rephrased a bit, but once you do the world's your
 oyster.  Even better, ‘map()’ can easily be parallelised since each
 element should be transformable by itself.  The ‘reduce()’ can also be
 parallelised, but this requires a bit more work.  Being so very
 versatile, it is no surprise that you will find implementations of
 MapReduce in places such as databases and in many programming languages
-(such as lisp, of course, but also Java 8’s Streams API
+(such as lisp, of course, but also Java 8's Streams API
 <http://winterbe.com/posts/2014/07/31/java8-stream-tutorial-examples/>,
 and in JavaScript
 <https://www.sitepoint.com/map-reduce-functional-javascript/> ).
 
-   Let’s try to turn the previous algorithm into something
+   Let's try to turn the previous algorithm into something
 MapReduceable.  While we are at it, we also need to acknowledge that not
 all things should be solved by _our_ programming.  Some tasks are better
 left to a database.
@@ -1738,7 +1737,7 @@ there are some open source packages for distributed MapReduce, but most
 of the ones I could find were last modified around 2018).  Moreover, the
 general consensus of The Internet is that one does not reach for
 JavaScript when building a high performance computing solution.  So
-let’s explore the options.
+let's explore the options.
 
    We _could_ go down the rabbit hole and implement everything in C or
 C++ (‘std::transform’ and ‘std::reduce’ were added in C++17), but I am
@@ -1748,7 +1747,7 @@ an issue.
    Java?  With Java 8 and the Streams API, there is a native
 implementation of MapReduce, as well as support for working with
 infinite data streams.  Writing in Java would also have the benefit of
-opening up to many of the Apache Software Foundation’s data processing
+opening up to many of the Apache Software Foundation's data processing
 tools such as Hadoop <https://hadoop.apache.org/>, Spark
 <https://spark.apache.org/>, or Storm
 <https://storm.apache.org/index.html>.
@@ -1779,7 +1778,7 @@ programming language instead of added as an afterthought, so the program
 code can focus on the problem at hand rather than juggling data to fit
 the right Java Enterprise Object model.  And before you start
 complaining about your lack of experience in Clojure, consider the
-following “Master Foo and the Recruiter” Koan (more Unix Koans (some of
+following "Master Foo and the Recruiter" Koan (more Unix Koans (some of
 which are hilariously outdated) can be found at:
 <http://catb.org/~esr/writings/unix-koans/>):
 
@@ -1788,20 +1787,20 @@ which are hilariously outdated) can be found at:
      learn more about the Way. Master Foo met the recruiter in the HR
      offices of a large firm.
 
-     The recruiter said, “I have observed that Unix hackers scowl or become
+     The recruiter said, "I have observed that Unix hackers scowl or become
      annoyed when I ask them how many years of experience they have in a
-     new programming language. Why is this so?”
+     new programming language. Why is this so?"
 
      Master Foo stood, and began to pace across the office floor. The
-     recruiter was puzzled, and asked “What are you doing?”
+     recruiter was puzzled, and asked "What are you doing?"
 
-     “I am learning to walk,” replied Master Foo.
+     "I am learning to walk," replied Master Foo.
 
-     “I saw you walk through that door” the recruiter exclaimed, “and you
+     "I saw you walk through that door" the recruiter exclaimed, "and you
      are not stumbling over your own feet. Obviously you already know how
-     to walk.”
+     to walk."
 
-     “Yes, but this floor is new to me.” replied Master Foo.
+     "Yes, but this floor is new to me." replied Master Foo.
 
      Upon hearing this, the recruiter was enlightened.
 
@@ -1864,14 +1863,14 @@ follows:
 
    • ‘(maybe-clear-db args)’ No correspondence, this is just there to
      optionally clear the database from previous attempts.
-   • ‘(maybe-read-files args)’ This is the first map “Transform” and the
-     first reduce “Merge output from Transform map”.
-   • ‘(maybe-detect-clones args)’ The Filter “Match Detection” and the
-     “Expand” reduce.
-   • ‘(maybe-list-clones args)’ The final “Format” map to join clones
+   • ‘(maybe-read-files args)’ This is the first map "Transform" and the
+     first reduce "Merge output from Transform map".
+   • ‘(maybe-detect-clones args)’ The Filter "Match Detection" and the
+     "Expand" reduce.
+   • ‘(maybe-list-clones args)’ The final "Format" map to join clones
      with their original files.
 
-   So far, so good.  Let’s look at the ‘maybe-read-files’ function next
+   So far, so good.  Let's look at the ‘maybe-read-files’ function next
 (since the others are shaped in more or less the same way this is as
 good an example as any):
 
@@ -1888,7 +1887,7 @@ good an example as any):
            (storage/store-chunks! chunks))))
 
    If the list of command line arguments ‘args’ , when transformed into
-upper-case, does _not_ contain the word “NOREAD”, define some local
+upper-case, does _not_ contain the word "NOREAD", define some local
 variables (which will only be available inside the ‘let’ statement):
 
    • ‘chunk-param’ is just a step along the way to get a usable
@@ -1907,7 +1906,7 @@ variables (which will only be available inside the ‘let’ statement):
 
    Once the variables are defined, most of the processing have (at least
 nominally) been done and what remains is to store the results to the
-database.  I say “nominally” because in fact none of the actual
+database.  I say "nominally" because in fact none of the actual
 processing has happened yet; because of lazy sequences, the processing
 only happens in these last two calls to ‘storage/store-files!’ and
 ‘storage/store-chunks!’.
@@ -1970,18 +1969,16 @@ help with this.  However, since there is essentially one chunk created
 for each line in each file, the only difference is at the end of the
 file where you may create ‘CHUNKSIZE’ fewer chunks per file.
 
-Chunk 1: File lines 1 -- 1 + CHUNKSIZE
-Chunk 2: File lines 2 -- 2 + CHUNKSIZE
-@dots{}
-Chunk n: File lines n -- n + CHUNKSIZE
-Chunk n+1 : File lines n+1 -- n+1 + CHUNKSIZE
+     Chunk 1: File lines 1 - 1 + CHUNKSIZE Chunk 2: File lines 2 - 2 +
+     CHUNKSIZE ... Chunk n: File lines n - n + CHUNKSIZE Chunk n+1 :
+     File lines n+1 - n+1 + CHUNKSIZE
 
    Thus, ‘CHUNKSIZE’ only determines the size of the smallest possible
 clone.  What _may_ be impacted by the ‘CHUNKSIZE’ is the hash encoding.
 I leave it as an exercise to the reader to investigate the effect of
 MD5-encoding chunks of different sizes.
 
-   However, the real killer is the “Expanding Candidates” step – not
+   However, the real killer is the "Expanding Candidates" step - not
 only because it fails to complete, but because it takes a long time to
 get to the point where it fails.  This is discussed further below (see
 *note elegant-expansion:: and *note beer-expansion:: ).
@@ -2013,11 +2010,11 @@ one with all the remaining clones (where ‘overlaps?’ evaluates to
 is conjoined to the existing list of clones.  Otherwise, we want to
 remove the overlapping clones (conveniently already done with the
 ‘remaining’ list) and just store a new clone that merges all of the
-overlapping clones into one.  Beautiful, isn’t it?  This is the version
+overlapping clones into one.  Beautiful, isn't it?  This is the version
 that fails above.
 
    As it turns out, this introduces a performance antipattern called
-“The Ramp”.  Every new candidate that does not overlap any existing
+"The Ramp".  Every new candidate that does not overlap any existing
 clones will add one more item to the list of clones.  Sometimes a few
 items are removed, but most of the time the list of clones just grow.
 The time it takes to ‘group-by’ thus gets longer and longer all the time
@@ -2027,8 +2024,8 @@ something has to break:
      Execution error (MongoCursorNotFoundException) at
      com.mongodb.operation.QueryHelper/translateCommandException
      (QueryHelper.java:27).  bigdataanalytics-clone-detector-1 | Query
-     failed with error code -5 and error message ’Cursor
-     7063045859606288607 not found on server dbstorage:27017’ on server
+     failed with error code -5 and error message 'Cursor
+     7063045859606288607 not found on server dbstorage:27017' on server
      dbstorage:27017
 
    Why does the _database_ throw an error in the ‘expand-clones’ method?
@@ -2038,7 +2035,7 @@ off but only on an as-requested basis.  This is part of why and how it
 is possible to work with infinite data series.  The other clue is that
 the database connection defaults to recycling open cursors after 10
 minutes, if a new candidate is not requested in more than 10 minutes the
-database is going to kill the connection.  We could force Clojure’s hand
+database is going to kill the connection.  We could force Clojure's hand
 and wrap the call to ‘storage/identify-candidates!’ in a ‘doall’ block,
 making sure that all candidates are in memory before we start the
 ‘expand’.  However, we would still have the ramp antipattern in there,
@@ -2065,11 +2062,11 @@ Expanding Candidates                                              5 min
 
 File: Big-Data-Analytics.info,  Node: Expand with ``Aleph-null Bottles of Beer'',  Next: Expand with Aggregation Pipeline,  Prev: Expanding Elegantly but Inefficiently,  Up: cljDetector All-at-Once Clone Detection
 
-11.3 Expand with “Aleph-null Bottles of Beer”
+11.3 Expand with "Aleph-null Bottles of Beer"
 =============================================
 
 The alternative to being elegant is inspired by an ancient song (who
-knew that _this_ was Billy Bones’ true treasure!):
+knew that _this_ was Billy Bones' true treasure!):
 
      Lots and lots of candidates on the wall!
      Take one down,
@@ -2099,12 +2096,12 @@ knew that _this_ was Billy Bones’ true treasure!):
              (recur (storage/get-one-candidate dbconnection))))))
 
    Where:
-   • In ‘expand-clones’ we “take one down” as long as we can find one.
-     ‘maybe-expand’ “stretches it abound” and then we store it as a
+   • In ‘expand-clones’ we "take one down" as long as we can find one.
+     ‘maybe-expand’ "stretches it abound" and then we store it as a
      clone.
    • In ‘maybe-expand’ we find any candidates that overlap and stretch
      our clone to encompass these too (in ‘merged-clone’).  Removing all
-     the “used” candidates from the database as we go, we then loop back
+     the "used" candidates from the database as we go, we then loop back
      to see if the newly stretched clone happen to overlap with any new
      candidates.
    • The two clojure commands ‘loop’ and ‘recur’ go hand in hand to
@@ -2196,16 +2193,16 @@ all of it:
                                   [{$size "$candidate.instances"} "$numberOfInstances"]}}}
                         {$project {:_id 1 :numberOfInstances 1 :instances 1}}])))
 
-   An aggregation pipeline is (these days) MongoDB’s preferred way of
+   An aggregation pipeline is (these days) MongoDB's preferred way of
 doing map/reduce-like processing.  How to read this is as a series of
 processing steps, e.g ‘{$match}’ , ‘{$addFields}’, ‘{$unwind}’,
 ‘{$project}’, and ‘{$group}’ where each step filters or transforms the
-data stream in some way.  There is much to say about what can and can’t
+data stream in some way.  There is much to say about what can and can't
 be done with an aggregation pipeline, a good starting point is the
 official documentation:
 <https://www.mongodb.com/docs/manual/aggregation/>.  Eventually it boils
 down to _as long as the problem is defined in the right way, the data
-processing step becomes “easy”_.
+processing step becomes "easy"_.
 
    This option will not be explored further in this course, but it does
 deserve mentioning.  Any data processing we can offload to the database
@@ -2232,7 +2229,7 @@ File: Big-Data-Analytics.info,  Node: Second Run on full Qualitas Corpus,  Prev:
 11.5 Second Run on full Qualitas Corpus
 =======================================
 
-Using the “Beer Expansion Algorithm” on the full Qualitas Corpus yields
+Using the "Beer Expansion Algorithm" on the full Qualitas Corpus yields
 the following numbers:
 
 Processing Step                Database Collection   #Items        Processing Time
@@ -2244,7 +2241,7 @@ Identifying Clone Candidates   candidates            ≃ 586100      20 min
 Expanding Candidates
 - Storing Clones               clones                ≃ 25000       6h 20 min
 
-   Notice 1: I don’t _think_ it matters much since I had CPUs to spare
+   Notice 1: I don't _think_ it matters much since I had CPUs to spare
 but I had to participate in a Zoom call during the candidate expansion
 step, which may have slowed things down for me.  To remember when it is
 time for you to run this exercise is to plan it so that you do not have
@@ -2259,6 +2256,13 @@ algorithm thus remains.  In fact, the expansion algorithm is already
 parallelisable by adding a second ‘reduce’ step that consolidates any
 overlapping clones into one, much in the same way it is done for
 candidates today.
+
+   Notice 3: Adding indexes to the database for ‘chunks.chunkHash’ and
+for ‘candidates.instances.fileName’ improves execution time
+significantly (I thank a student in the 2023 course instance for this
+suggestion).  This puts yet another nail in the coffin for Big Data;
+caring about old-school stuff is still the cheapest performance
+improvement one may make to an application.
 
 
 File: Big-Data-Analytics.info,  Node: Assignment Task Implementing Monitoring,  Next: Assignment Submission All at Once Clone Detector,  Prev: cljDetector All-at-Once Clone Detection,  Up: Top
@@ -2295,8 +2299,8 @@ collection in the database so that we have access to them too.
      ‘storage.clj’ so that messages are stored in the new collection
      ‘statusUpdates’.
 
-  2. Implement a separate Docker Container – in your own choice of
-     programming language – that monitors the database and regularly
+  2. Implement a separate Docker Container - in your own choice of
+     programming language - that monitors the database and regularly
      updates with the current count of ‘[files chunks candidates
      clones]’ , as well as any new ‘statusUpdates’.  Call this Container
      ‘MonitorTool’ .
@@ -2333,7 +2337,7 @@ collection in the database so that we have access to them too.
      process (e.g.  through an open network socket), (b) modifications
      to ‘expander/expand-clones’ to poll if a signal has been received
      before recurring with a new candidate, and (c) modifications to
-     ‘core/-main’ to check for a command line flag “Resume” that
+     ‘core/-main’ to check for a command line flag "Resume" that
      overrides the usual execution and jumps directly to calling
      ‘expander/expand-clones’ again.  In addition, adding timestamped
      status updates so that total execution times can still be
@@ -2383,20 +2387,27 @@ File: Big-Data-Analytics.info,  Node: Assignment Submission All at Once Clone De
      or influence these results and trends?
 
         • Is the time to generate chunks constant or does it vary with
-          the number of already generated chunks?
+          the number of already generated chunks?  Please explain with
+          the help of the implemented algoritm why this is an expected
+          result (or why it is not expected).
         • Is the time to generate clone candidates constant or does it
-          vary with the number of already generated candidates?
+          vary with the number of already generated candidates?  Please
+          explain with the help of the implemented algoritm why this is
+          an expected result (or why it is not expected).
         • Is the time to expand clone candidates constant or does it
           vary with the number of already expanded clones or the number
-          of remaining candidates?
+          of remaining candidates?  Please explain with the help of the
+          implemented algoritm why this is an expected result (or why it
+          is not expected).
         • What is the average clone size?  How can this be used to
           predict progress during the expansion phase?
         • What is the average number of chunks per file?  How can this
           be used to predict progress during the read/chunkify/identify
           candidates stages?
 
-  3. Please make the raw data of your statistics accessible (either as
-     an appendix to your report or via a linked web page).
+  3. Please make a sample of the raw data of your statistics accessible
+     (either as an appendix to your report or via a linked web page).
+     The first 100-odd lines of statistics is sufficient.
 
   4. Please upload your code for the modified cljDetector and your
      MonitorTool (zip the whole folders with the Containers.  Please
@@ -2404,7 +2415,7 @@ File: Big-Data-Analytics.info,  Node: Assignment Submission All at Once Clone De
      application).  Please highlight any modifications you have made in
      cljDetector to make it easier for us to review your submission.
 
-   Once delivered, _a meeting will be scheduled_ where you are expected
+   Once delivered, _a meeting may be scheduled_ where you are expected
 to run and explain your application and its deployment.  Be prepared to
 answer questions about:
 
@@ -2429,10 +2440,10 @@ File: Big-Data-Analytics.info,  Node: Summary,  Next: Concept Index,  Prev: Assi
 
 Well, here we are; the end of this part of the course.  Please revisit
 the *note Learning Outcomes:: to verify whether you now meet them.
-Starting with the four V’s of Big Data (Volume, Velocity, Variety, and
+Starting with the four V's of Big Data (Volume, Velocity, Variety, and
 Value), we have explored what these imply for how we may solve Big Data
 Analytics tasks.  Indeed, we have also discussed whether Big Data really
-is that big anymore.  The conclusion is (not surprisingly) “it depends”.
+is that big anymore.  The conclusion is (not surprisingly) "it depends".
 
    As a concrete example, we introduce the analytics task of identifying
 code clones in a relatively large collection of source code (i.e., the
@@ -2441,7 +2452,7 @@ task.  Identifying code clones is a relevant industry challenge, but it
 is also a representative for a larger class of problems to identify
 matches between ‘some data’ and ‘some large repository of other data’.
 
-   Specifically, we explore three of the four V’s:
+   Specifically, we explore three of the four V's:
 
    *Variety* Each file that is processed contain a mix of code and
 non-code (empty lines and comments), so we preprocess the files to
@@ -2481,16 +2492,16 @@ combination of these two approaches, using an initial set of data
 (velocity).  Also, in practice, it should be possible to bulk-add a new
 block of data without having to reprocess everything.
 
-   One point that J.  Tigani made in their “Big Data is Dead” article is
+   One point that J.  Tigani made in their "Big Data is Dead" article is
 that most of the time, most of the data is rarely touched after a week,
 a month, or a year.  Code clones are different, since every new piece of
 code always need to be matched against everything seen before.  Since
-I’ve already argued that code clone detection is representative of a
+I've already argued that code clone detection is representative of a
 bigger class of analysis tasks, this implies that big data is not dead.
 It is just resting.
 
-   But what if we don’t need to check against all previously seen code
-all the time?  Let’s form the hypothesis that _a few clones stand for
+   But what if we don't need to check against all previously seen code
+all the time?  Let's form the hypothesis that _a few clones stand for
 most of the occurrences_.  This would be true if, for example, there are
 specific programming patterns that are more frequent than others (a more
 glib explanation is that some answers on StackOverflow are more useful
@@ -2532,7 +2543,7 @@ plenty, it all boils down to what you want to do with it.
 
    Studying this graph, we see that there are indeed a few clones that
 are very frequent, but it quickly tapers off to less than 50 instances
-per clone.  Thus, it would make sense to check against these “popular”
+per clone.  Thus, it would make sense to check against these "popular"
 clones first, but we would eventually have to check against the entire
 codebase anyway.
 
@@ -2565,28 +2576,28 @@ is because in my experience this language forces you to pay attention to
 the structure of the data you are processing rather than the algorithm
 with which you are going to process it, and when the data structures
 come into focus you start paying attention to which problem you are
-actually trying to solve.  In that spirit, we’d like to end with a
-precis of a quote from D.  Adams in “The Hitchhikers Guide to the
-Galaxy”:
+actually trying to solve.  In that spirit, we'd like to end with a
+precis of a quote from D.  Adams in "The Hitchhikers Guide to the
+Galaxy":
 
-     Loonquawl: “Do you have... er, that is...”
+     Loonquawl: "Do you have... er, that is..."
 
-     Deep Thought: “An answer for you?  Yes I have.” “Though I don’t
-     think that you’re going to like it”
+     Deep Thought: "An answer for you?  Yes I have."  "Though I don't
+     think that you're going to like it"
 
-     “The answer to the Great Question... is...”
+     "The answer to the Great Question... is..."
 
-     “Forty-two.”
+     "Forty-two."
 
-     Loonquawl: “Forty-two!  Is that all you’ve got to show for seven
-     and a half million years’ work?”
+     Loonquawl: "Forty-two!  Is that all you've got to show for seven
+     and a half million years' work?"
 
-     Deep Thought: “I checked it very thoroughly, and that quite
+     Deep Thought: "I checked it very thoroughly, and that quite
      definitely is the answer.  I think the problem, to be quite honest
-     with you, is that you’ve never actually known what the question
-     is.”
+     with you, is that you've never actually known what the question
+     is."
 
-   – THE END –
+   - THE END -
 
 
 File: Big-Data-Analytics.info,  Node: Concept Index,  Next: Program Index,  Prev: Summary,  Up: Top
@@ -2815,49 +2826,49 @@ Functions and Commands Index
 
 
 Tag Table:
-Node: Top1465
-Node: Document Overview4687
-Node: A Note on Reading Research Articles7254
-Node: Introduction to Big Data11034
-Ref: introduction11247
-Node: Volume The Size of Big Data13593
-Ref: volume13798
-Node: Velocity The Speed of Noise24420
-Ref: velocity24680
-Node: Variety Different Origins or Different Formats35977
-Ref: variety36271
-Node: Value The Cost of Noise45181
-Node: Summary From Big Data to Big Data Analytics48882
-Node: Learning Outcomes52836
-Node: Quiz Introduction to Big Data53853
-Node: Big Data Analytics in Practice Problem Overview56261
-Node: Task Downloading and Describing the Qualitas Corpus61481
-Node: Quiz Code Clones and Big Data63707
-Node: Assignment Task Working with a Stream of Data65744
-Node: Assignment Submission Code Stream Clone Detector72321
-Ref: assignmentCodeStream72628
-Node: Improving the Clone Detecting Algorithm74098
-Node: Hashing75776
-Node: O(n^2)77690
-Node: From File-by-File to All-at-Once Analysis80337
-Node: Wisely and slow They stumble that run fast87081
-Node: cljDetector All-at-Once Clone Detection91226
-Node: First Run on full Qualitas Corpus96846
-Node: Expanding Elegantly but Inefficiently100079
-Ref: elegant-expansion100384
-Node: Expand with ``Aleph-null Bottles of Beer''104266
-Ref: beer-expansion104580
-Node: Expand with Aggregation Pipeline109149
-Ref: db-expansion109440
-Node: Second Run on full Qualitas Corpus113123
-Node: Assignment Task Implementing Monitoring114955
-Node: Assignment Submission All at Once Clone Detector120042
-Ref: assignmentAllAtOnce120313
-Node: Summary122997
-Node: Concept Index132795
-Node: Program Index141995
-Node: Files and Data Types Index144919
-Node: Functions and Commands Index145619
+Node: Top1455
+Node: Document Overview4667
+Node: A Note on Reading Research Articles7214
+Node: Introduction to Big Data10978
+Ref: introduction11191
+Node: Volume The Size of Big Data13527
+Ref: volume13732
+Node: Velocity The Speed of Noise24309
+Ref: velocity24569
+Node: Variety Different Origins or Different Formats35840
+Ref: variety36134
+Node: Value The Cost of Noise45022
+Node: Summary From Big Data to Big Data Analytics48704
+Node: Learning Outcomes52637
+Node: Quiz Introduction to Big Data53654
+Node: Big Data Analytics in Practice Problem Overview56055
+Node: Task Downloading and Describing the Qualitas Corpus61262
+Node: Quiz Code Clones and Big Data63522
+Node: Assignment Task Working with a Stream of Data65546
+Node: Assignment Submission Code Stream Clone Detector72117
+Ref: assignmentCodeStream72424
+Node: Improving the Clone Detecting Algorithm73766
+Node: Hashing75442
+Node: O(n^2)77356
+Node: From File-by-File to All-at-Once Analysis79997
+Node: Wisely and slow They stumble that run fast86731
+Node: cljDetector All-at-Once Clone Detection90844
+Node: First Run on full Qualitas Corpus96434
+Node: Expanding Elegantly but Inefficiently99668
+Ref: elegant-expansion99973
+Node: Expand with ``Aleph-null Bottles of Beer''103843
+Ref: beer-expansion104153
+Node: Expand with Aggregation Pipeline108708
+Ref: db-expansion108999
+Node: Second Run on full Qualitas Corpus112674
+Node: Assignment Task Implementing Monitoring114887
+Node: Assignment Submission All at Once Clone Detector119966
+Ref: assignmentAllAtOnce120237
+Node: Summary123404
+Node: Concept Index133133
+Node: Program Index142333
+Node: Files and Data Types Index145257
+Node: Functions and Commands Index145957
 
 End Tag Table
 

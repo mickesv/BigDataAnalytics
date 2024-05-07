@@ -502,7 +502,7 @@ The first step is to ensure access to the Qualitas Corpus. For convenience, the 
 *Tasks*
 1. Download the BigDataAnalytics repository:
 
- ~git clone https://github.com/mickesv/BigDataAnalytics.git~
+ ~git clone https://github.com/mickesv/BigDataAnalytics.git --config core.autocrlf=input~
 
 2. Build the =CorpusGetter= image (found in ~Containers/CorpusGetter~ ) and tag it as ~corpusgetter~
 
@@ -624,7 +624,7 @@ Please answer the following questions:
 
 4. Please upload your code for the CodeStreamConsumer (zip the folder for the whole Container).
 
-Once delivered, /a meeting will be scheduled/ where you are expected to run and explain your application and its deployment. Be prepared to answer questions about:
+Be prepared to answer questions about:
 
 - Your implementation of the CloneDetector
 - Your implementation's ability to accurately identify clones.
@@ -903,13 +903,13 @@ An observation when correlating this data with the processes running on the comp
 
 Storing the files is quick, I suspect that Clojure can do a lot to help out with simple data transfers behind the scenes. Storing chunks is much slower, and I willingly grant that the ~source-processor/chunkify-file~ function can probably be much improved. The real improvement would however be to reduce the number of chunks per file, and one might be led to believe that the ~CHUNKSIZE~ parameter may help with this. However, since there is essentially one chunk created for each line in each file, the only difference is at the end of the file where you may create ~CHUNKSIZE~ fewer chunks per file.
 
-#+begin_verbatim
+#+begin_quote
 Chunk 1: File lines 1 -- 1 + CHUNKSIZE
 Chunk 2: File lines 2 -- 2 + CHUNKSIZE
 ...
 Chunk n: File lines n -- n + CHUNKSIZE
 Chunk n+1 : File lines n+1 -- n+1 + CHUNKSIZE
-#+end_verbatim
+#+end_quote
 
 Thus, ~CHUNKSIZE~ only determines the size of the smallest possible clone. What /may/ be impacted by the ~CHUNKSIZE~ is the hash encoding. I leave it as an exercise to the reader to investigate the effect of MD5-encoding chunks of different sizes.
 
@@ -1113,6 +1113,8 @@ Using the "Beer Expansion Algorithm" on the full Qualitas Corpus yields the foll
 Notice 1: I don't /think/ it matters much since I had CPUs to spare but I had to participate in a Zoom call during the candidate expansion step, which may have slowed things down for me. To remember when it is time for you to run this exercise is to plan it so that you do not have to use the computer yourself at the same time.
 
 Notice 2: During the expand-step it is now MongoDB processes that are consuming most CPU resources, but only on two CPUs. The Beer Expansion Algorithm has thus managed to push the workload to the database, but is still limited by how many and how quickly requests can be dispatched from the Clojure/Java processes. The need to parallelise the expansion algorithm thus remains. In fact, the expansion algorithm is already parallelisable by adding a second ~reduce~ step that consolidates any overlapping clones into one, much in the same way it is done for candidates today.
+
+Notice 3: Adding indexes to the database for ~chunks.chunkHash~ and for ~candidates.instances.fileName~ improves execution time significantly (I thank a student in the 2023 course instance for this suggestion). This puts yet another nail in the coffin for Big Data; caring about old-school stuff is still the cheapest performance improvement one may make to an application.
 * Assignment Task: Implementing Monitoring :Practice:
 It is time for you to contribute to this project. As it stands, the cljDetector prints status updates together with timestamps to the terminal (ignore, if you please, that the timestamps are usually off by some hours; you can fix this with the Dockerfile but it is not necessary).
 
@@ -1161,17 +1163,17 @@ This is where you come in. Since we /have/ the database, and since each processi
 
 2. Please upload a report of your collected statistics and your analysis thereof. The report shall contain summaries of the collected data, along with answers to the following questions. Please /discuss/ your answers and try to find reasons for why you are getting these results. Are there, for example, any particular characteristica in way the analytics is undertaken or the particular implementation/choice of tools/database that may cause or influence these results and trends?
 
-   - Is the time to generate chunks constant or does it vary with the number of already generated chunks?
-   - Is the time to generate clone candidates constant or does it vary with the number of already generated candidates?
-   - Is the time to expand clone candidates constant or does it vary with the number of already expanded clones or the number of remaining candidates?
+   - Is the time to generate chunks constant or does it vary with the number of already generated chunks? Please explain with the help of the implemented algoritm why this is an expected result (or why it is not expected).
+   - Is the time to generate clone candidates constant or does it vary with the number of already generated candidates? Please explain with the help of the implemented algoritm why this is an expected result (or why it is not expected).
+   - Is the time to expand clone candidates constant or does it vary with the number of already expanded clones or the number of remaining candidates? Please explain with the help of the implemented algoritm why this is an expected result (or why it is not expected).
    - What is the average clone size? How can this be used to predict progress during the expansion phase?
    - What is the average number of chunks per file? How can this be used to predict progress during the read/chunkify/identify candidates stages?
 
-4. Please make the raw data of your statistics accessible (either as an appendix to your report or via a linked web page).
+4. Please make a sample of the raw data of your statistics accessible (either as an appendix to your report or via a linked web page). The first 100-odd lines of statistics is sufficient.
 
 3. Please upload your code for the modified cljDetector and your MonitorTool (zip the whole folders with the Containers. Please remember to also include the yaml-file used to start your application). Please highlight any modifications you have made in cljDetector to make it easier for us to review your submission.
 
-Once delivered, /a meeting will be scheduled/ where you are expected to run and explain your application and its deployment. Be prepared to answer questions about:
+Once delivered, /a meeting may be scheduled/ where you are expected to run and explain your application and its deployment. Be prepared to answer questions about:
 
 - Your modifications to cljDetector
 - Your implementation of your MonitorTool
