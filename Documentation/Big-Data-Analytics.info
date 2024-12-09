@@ -1,4 +1,4 @@
-This is Big-Data-Analytics.info, produced by makeinfo version 7.1 from
+This is Big-Data-Analytics.info, produced by makeinfo version 7.1.1 from
 Big-Data-Analytics.texi.
 
 This is part of a course on Applied Cloud Computing and Big Data,
@@ -2356,7 +2356,8 @@ collection in the database so that we have access to them too.
      Computer Measurement Group Conference, pages 717–725, 2003.
 
    *TODO* Summarise each article (no more than 1/2 page each) according
-to the following:
+to the following, and include the summaries in your submission of this
+assignment.
 
    • Authors and Title of the article
    • Briefly, what is the article about?
@@ -2826,49 +2827,49 @@ Functions and Commands Index
 
 
 Tag Table:
-Node: Top1455
-Node: Document Overview4667
-Node: A Note on Reading Research Articles7214
-Node: Introduction to Big Data10978
-Ref: introduction11191
-Node: Volume The Size of Big Data13527
-Ref: volume13732
-Node: Velocity The Speed of Noise24309
-Ref: velocity24569
-Node: Variety Different Origins or Different Formats35840
-Ref: variety36134
-Node: Value The Cost of Noise45022
-Node: Summary From Big Data to Big Data Analytics48704
-Node: Learning Outcomes52637
-Node: Quiz Introduction to Big Data53654
-Node: Big Data Analytics in Practice Problem Overview56055
-Node: Task Downloading and Describing the Qualitas Corpus61262
-Node: Quiz Code Clones and Big Data63522
-Node: Assignment Task Working with a Stream of Data65546
-Node: Assignment Submission Code Stream Clone Detector72117
-Ref: assignmentCodeStream72424
-Node: Improving the Clone Detecting Algorithm73766
-Node: Hashing75442
-Node: O(n^2)77356
-Node: From File-by-File to All-at-Once Analysis79997
-Node: Wisely and slow They stumble that run fast86731
-Node: cljDetector All-at-Once Clone Detection90844
-Node: First Run on full Qualitas Corpus96434
-Node: Expanding Elegantly but Inefficiently99668
-Ref: elegant-expansion99973
-Node: Expand with ``Aleph-null Bottles of Beer''103843
-Ref: beer-expansion104153
-Node: Expand with Aggregation Pipeline108708
-Ref: db-expansion108999
-Node: Second Run on full Qualitas Corpus112674
-Node: Assignment Task Implementing Monitoring114887
-Node: Assignment Submission All at Once Clone Detector119966
-Ref: assignmentAllAtOnce120237
-Node: Summary123404
-Node: Concept Index133133
-Node: Program Index142333
-Node: Files and Data Types Index145257
-Node: Functions and Commands Index145957
+Node: Top1457
+Node: Document Overview4669
+Node: A Note on Reading Research Articles7216
+Node: Introduction to Big Data10980
+Ref: introduction11193
+Node: Volume The Size of Big Data13529
+Ref: volume13734
+Node: Velocity The Speed of Noise24311
+Ref: velocity24571
+Node: Variety Different Origins or Different Formats35842
+Ref: variety36136
+Node: Value The Cost of Noise45024
+Node: Summary From Big Data to Big Data Analytics48706
+Node: Learning Outcomes52639
+Node: Quiz Introduction to Big Data53656
+Node: Big Data Analytics in Practice Problem Overview56057
+Node: Task Downloading and Describing the Qualitas Corpus61264
+Node: Quiz Code Clones and Big Data63524
+Node: Assignment Task Working with a Stream of Data65548
+Node: Assignment Submission Code Stream Clone Detector72119
+Ref: assignmentCodeStream72426
+Node: Improving the Clone Detecting Algorithm73768
+Node: Hashing75444
+Node: O(n^2)77358
+Node: From File-by-File to All-at-Once Analysis79999
+Node: Wisely and slow They stumble that run fast86733
+Node: cljDetector All-at-Once Clone Detection90846
+Node: First Run on full Qualitas Corpus96436
+Node: Expanding Elegantly but Inefficiently99670
+Ref: elegant-expansion99975
+Node: Expand with ``Aleph-null Bottles of Beer''103845
+Ref: beer-expansion104155
+Node: Expand with Aggregation Pipeline108710
+Ref: db-expansion109001
+Node: Second Run on full Qualitas Corpus112676
+Node: Assignment Task Implementing Monitoring114889
+Node: Assignment Submission All at Once Clone Detector120033
+Ref: assignmentAllAtOnce120304
+Node: Summary123471
+Node: Concept Index133200
+Node: Program Index142400
+Node: Files and Data Types Index145324
+Node: Functions and Commands Index146024
 
 End Tag Table
 

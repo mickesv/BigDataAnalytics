@@ -1616,7 +1616,7 @@ C@. U@. Smith and L@. G@. Williams. New software performance antipatterns: More 
 C@. U@. Smith and L@. G@. Williams. More new software performance antipatterns: Even more ways to shoot yourself in the foot. In Computer Measurement Group Conference, pages 717–725, 2003.
 @end enumerate
 
-@strong{TODO} Summarise each article (no more than 1/2 page each) according to the following:
+@strong{TODO} Summarise each article (no more than 1/2 page each) according to the following, and include the summaries in your submission of this assignment.
 
 @itemize
 @item

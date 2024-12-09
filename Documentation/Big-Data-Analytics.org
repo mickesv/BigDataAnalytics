@@ -1147,7 +1147,7 @@ This is where you come in. Since we /have/ the database, and since each processi
 2. C. U. Smith and L. G. Williams. New software performance antipatterns: More ways to shoot yourself in the foot. In Computer Measurement Group Conference, pages 667–674, 2003.
 3. C. U. Smith and L. G. Williams. More new software performance antipatterns: Even more ways to shoot yourself in the foot. In Computer Measurement Group Conference, pages 717–725, 2003.
 
-*TODO* Summarise each article (no more than 1/2 page each) according to the following:
+*TODO* Summarise each article (no more than 1/2 page each) according to the following, and include the summaries in your submission of this assignment.
 
 - Authors and Title of the article
 - Briefly, what is the article about?
