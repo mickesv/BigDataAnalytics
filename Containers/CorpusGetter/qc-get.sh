@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-getCorpus() {
+# This should already be done in the build now.
+# --------------------
+getCorpus_deprecated() {
   echo "Getting QualitasCorpus..."
   cd /QualitasCorpus
   wget ftp://custsrv1.bth.se/FTP/QualitasCorpus/QualitasCorpus-20130901r-pt1.tar
@@ -30,14 +32,17 @@ printCorpusStats() {
 echo "Staring Corpus-Getter..."
 echo "Start command is:" $0 $@
 
-if [[ "$1" == "FETCH" ]]; then
-  echo "Started with FETCH argument, fetching corpus..."
-  getCorpus
-  echo ""
-  printCorpusStats
-else
-  printCorpusStats
-fi
+# This should already be done in the build now.
+# --------------------
+# if [[ "$1" == "FETCH" ]]; then
+#   echo "Started with FETCH argument, fetching corpus..."
+#   getCorpus
+#   printCorpusStats
+# else
+#   printCorpusStats
+# fi
+
+printCorpusStats
 
 # Wait for keypress, then end container
 # --------------------
