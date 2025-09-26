@@ -37,6 +37,11 @@ SOFTWARE@.
 @end quotation
 @end copying
 
+@dircategory Misc
+@direntry
+* (Big-Data-Analytics). Big Data Analytics.
+@end direntry
+
 @finalout
 @titlepage
 @title Big Data Analytics
@@ -61,6 +66,7 @@ This is part of a course on Applied Cloud Computing and Big Data, offered by Ble
 This document introduces and provides a study track through the material for the Big Data Analytics part of the course.
 
 Copyright © 2023 Mikael Svahnberg Mikael.Svahnberg@@bth.se
+
 @end ifnottex
 
 @menu
@@ -262,7 +268,7 @@ What about image data? @uref{https://www.openstreetmap.org/, OpenStreetMap} is a
 
 @pindex Spotify
 @pindex Youtube
-Audio and video? That ought to take up lots and lots of space. For commercial reasons, this type of data is difficult to get access to, but we may get some ideas based on some research datasets that @emph{are} made available. For example, @uref{https://podcastsdataset.byspotify.com/, Spotify Research} has published a dataset of 100 000 hours worth of podcasts, with a size of ~2TB (See ``100,000 Podcasts: A Spoken English Document Corpus” by Ann Clifton, Sravana Reddy, Yongze Yu, Aasish Pappu, Rezvaneh Rezapour, Hamed Bonab, Maria Eskevich, Gareth Jones, Jussi Karlgren, Ben Carterette, and Rosie Jones, COLING 2020 @uref{https://www.aclweb.org/anthology/2020.coling-main.519/} ). @uref{https://thinkcomputers.org/what-is-the-capacity-of-youtube-servers/, Youtube} is naturally coy about how much space they require, and I am not certain they even know or care themselves how much data they have stored. In their case, the defining factor is probably the velocity at which data arrives and the velocity at which data is requested, confident in that they have done as much as they can in order to save storage space.
+Audio and video? That ought to take up lots and lots of space. For commercial reasons, this type of data is difficult to get access to, but we may get some ideas based on some research datasets that @emph{are} made available. For example, @uref{https://podcastsdataset.byspotify.com/, Spotify Research} has published a dataset of 100 000 hours worth of podcasts, with a size of ~2TB (See "100,000 Podcasts: A Spoken English Document Corpus” by Ann Clifton, Sravana Reddy, Yongze Yu, Aasish Pappu, Rezvaneh Rezapour, Hamed Bonab, Maria Eskevich, Gareth Jones, Jussi Karlgren, Ben Carterette, and Rosie Jones, COLING 2020 @uref{https://www.aclweb.org/anthology/2020.coling-main.519/} ). @uref{https://thinkcomputers.org/what-is-the-capacity-of-youtube-servers/, Youtube} is naturally coy about how much space they require, and I am not certain they even know or care themselves how much data they have stored. In their case, the defining factor is probably the velocity at which data arrives and the velocity at which data is requested, confident in that they have done as much as they can in order to save storage space.
 
 With these examples it is clear that even a modern laptop has enough storage capacity to store even a couple of these datasets. Yes, there are cases where this becomes difficult, and finding a scalable backup solution for our photo collection is ever a problem, but it is still clear that in most cases @emph{it is not the volume itself that is the problem, but what one desires to do with the data}.
 
@@ -414,7 +420,7 @@ The toolbox is the same as before, i.e. to try to filter as much as possible as 
 
 @cindex Comparing CO_2 Emissions
 @tindex Thermal Design Power TDP
-In fact, let's look a little closer at the cost of intelligent analysis. A simplified formula for calculating the power consumption of a cloud computer (based on @uref{https://devblogs.microsoft.com/sustainable-software/how-can-i-calculate-co2eq-emissions-for-my-azure-vm/, Sara Bergman, ``How can I Calculate CO@math{_2}-eq emissions for my Azure VM@?} (last checked 2023-04-11) ) is: @code{E[Wh] = (n_cpu * P_cpu[W] * time[h])} where @code{n_cpu} is the number of CPUs and @code{P_cpu} is the power consumption per CPU@. The formula suggested by S@. Bergman also includes other factors such as memory power consumption and the power consumption of any GPUs, but for simplicity's sake these can be ignored for now. What remains now is to estimate the power consumption per CPU and how much of that CPU which is being used by us (as opposed to any other tenant on the same cloud server).
+In fact, let's look a little closer at the cost of intelligent analysis. A simplified formula for calculating the power consumption of a cloud computer (based on @uref{https://devblogs.microsoft.com/sustainable-software/how-can-i-calculate-co2eq-emissions-for-my-azure-vm/, Sara Bergman, "How can I Calculate CO@math{_2}-eq emissions for my Azure VM@?} (last checked 2023-04-11) ) is: @code{E[Wh] = (n_cpu * P_cpu[W] * time[h])} where @code{n_cpu} is the number of CPUs and @code{P_cpu} is the power consumption per CPU@. The formula suggested by S@. Bergman also includes other factors such as memory power consumption and the power consumption of any GPUs, but for simplicity's sake these can be ignored for now. What remains now is to estimate the power consumption per CPU and how much of that CPU which is being used by us (as opposed to any other tenant on the same cloud server).
 
 Thermal Design Power (TDP) is a measure listed by hardware manufacturers, so with a bit of matching between what type of computer and CPU is offered by the cloud provider and what the manufacturer of that specific CPU lists for their TDP, one may find out the energy consumption of one CPU running at full speed: @code{TDP_cpu[W]} . Multiply this with our load @code{l[percent]} and the time @code{t[h]}, and we may arrive at an estimated energy consumption for our application: @code{E[Wh]= (n_cpu * TDP_cpu * l * t)}.
 
@@ -702,6 +708,12 @@ The first step is to ensure access to the Qualitas Corpus. For convenience, the 
 Download the BigDataAnalytics repository:
 
 @code{git clone https://github.com/mickesv/BigDataAnalytics.git --config core.autocrlf=input}
+
+@item
+Download the QualitasCorpus manually: @uref{https://bth.instructure.com/courses/6588/files?preview=1403271}
+
+@item
+Unzip this archive and put the two tar-files in BigDataAnalytics/Containers/CorpusGetter
 
 @item
 Build the @samp{CorpusGetter} image (found in @code{Containers/CorpusGetter} ) and tag it as @code{corpusgetter}

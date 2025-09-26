@@ -504,15 +504,19 @@ The first step is to ensure access to the Qualitas Corpus. For convenience, the 
 
  ~git clone https://github.com/mickesv/BigDataAnalytics.git --config core.autocrlf=input~
 
-2. Build the =CorpusGetter= image (found in ~Containers/CorpusGetter~ ) and tag it as ~corpusgetter~
+2. Download the QualitasCorpus manually: https://bth.instructure.com/courses/6588/files?preview=1403271
 
-3. Create a volume for the Qualitas Corpus: ~docker volume create qc-volume~
+3. Unzip this archive and put the two tar-files in BigDataAnalytics/Containers/CorpusGetter
 
-4. Run the ~corpusgetter~ image with the ~qc-volume~ mounted and instruct it to fetch the corpus: ~docker run -it -v qc-volume:/QualitasCorpus --name qc-getter corpusgetter FETCH~
+4. Build the =CorpusGetter= image (found in ~Containers/CorpusGetter~ ) and tag it as ~corpusgetter~
 
-5. If all goes well, this should end by printing some statistics about the fetched corpus and then pause. If not, you can re-run the ~corpusgetter~ image without any commands, which will only print these statistics and then pause: ~docker run -it -v qc-volume:/QualitasCorpus --name qc-getter corpusgetter~  . Note that pressing any key will terminate the script and end the container, please do not do this yet.
+5. Create a volume for the Qualitas Corpus: ~docker volume create qc-volume~
 
-6. In a separate terminal, enter the running container with ~docker exec -it qc-getter bash~ and browse around. Do spend some time to acquaint yourself with how the QualitasCorpus is structured, where to find the actual source code for the systems in it, and what else you can find for each system.
+6. Run the ~corpusgetter~ image with the ~qc-volume~ mounted and instruct it to fetch the corpus: ~docker run -it -v qc-volume:/QualitasCorpus --name qc-getter corpusgetter FETCH~
+
+7. If all goes well, this should end by printing some statistics about the fetched corpus and then pause. If not, you can re-run the ~corpusgetter~ image without any commands, which will only print these statistics and then pause: ~docker run -it -v qc-volume:/QualitasCorpus --name qc-getter corpusgetter~  . Note that pressing any key will terminate the script and end the container, please do not do this yet.
+
+8. In a separate terminal, enter the running container with ~docker exec -it qc-getter bash~ and browse around. Do spend some time to acquaint yourself with how the QualitasCorpus is structured, where to find the actual source code for the systems in it, and what else you can find for each system.
 
 * Quiz: Code Clones and Big Data :Quiz:Knowledge:
 *TODO* Please read the following articles:

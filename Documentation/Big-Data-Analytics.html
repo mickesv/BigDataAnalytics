@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- Created by GNU Texinfo 7.1.1, https://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 7.2, https://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- This is part of a course on Applied Cloud Computing and Big Data, offered by Blekinge Institute of Technology. Version 1.0
@@ -67,6 +67,7 @@ ul.toc-numbered-mark {list-style: none}
 
 
 
+
 <div class="top-level-extent" id="Top">
 <div class="nav-panel">
 <p>
@@ -111,22 +112,23 @@ This document introduces and provides a study track through the material for the
 <p>Copyright © 2023 Mikael Svahnberg Mikael.Svahnberg@bth.se
 </p>
 
-<div class="element-contents" id="SEC_Contents">
+
+<div class="region-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
 
 <ul class="toc-numbered-mark">
-  <li><a id="toc-Document-Overview-1" href="#Document-Overview">1 Document Overview</a></li>
-  <li><a id="toc-A-Note-on-Reading-Research-Articles-1" href="#A-Note-on-Reading-Research-Articles">2 A Note on Reading Research Articles</a></li>
-  <li><a id="toc-Introduction-to-Big-Data-1" href="#Introduction-to-Big-Data">3 Introduction to Big Data</a>
+  <li><a id="toc-Document-Overview" href="#Document-Overview">1 Document Overview</a></li>
+  <li><a id="toc-A-Note-on-Reading-Research-Articles" href="#A-Note-on-Reading-Research-Articles">2 A Note on Reading Research Articles</a></li>
+  <li><a id="toc-Introduction-to-Big-Data" href="#Introduction-to-Big-Data">3 Introduction to Big Data</a>
   <ul class="toc-numbered-mark">
     <li><a id="toc-Volume-_003a-The-Size-of-Big-Data" href="#Volume-The-Size-of-Big-Data">3.1 Volume : The Size of Big Data</a></li>
     <li><a id="toc-Velocity-_003a-The-Speed-of-Noise" href="#Velocity-The-Speed-of-Noise">3.2 Velocity : The Speed of Noise</a></li>
     <li><a id="toc-Variety-_003a-Different-Origins-or-Different-Formats" href="#Variety-Different-Origins-or-Different-Formats">3.3 Variety : Different Origins or Different Formats</a></li>
     <li><a id="toc-Value-_003a-The-Cost-of-Noise" href="#Value-The-Cost-of-Noise">3.4 Value : The Cost of Noise</a></li>
     <li><a id="toc-Summary_003a-From-Big-Data-to-Big-Data-Analytics" href="#Summary-From-Big-Data-to-Big-Data-Analytics">3.5 Summary: From Big Data to Big Data Analytics</a></li>
-    <li><a id="toc-Learning-Outcomes-1" href="#Learning-Outcomes">3.6 Learning Outcomes</a></li>
+    <li><a id="toc-Learning-Outcomes" href="#Learning-Outcomes">3.6 Learning Outcomes</a></li>
   </ul></li>
   <li><a id="toc-Quiz_003a-Introduction-to-Big-Data" href="#Quiz-Introduction-to-Big-Data">4 Quiz: Introduction to Big Data</a></li>
   <li><a id="toc-Big-Data-Analytics-in-Practice_003a-Problem-Overview" href="#Big-Data-Analytics-in-Practice-Problem-Overview">5 Big Data Analytics in Practice: Problem Overview</a></li>
@@ -134,28 +136,28 @@ This document introduces and provides a study track through the material for the
   <li><a id="toc-Quiz_003a-Code-Clones-and-Big-Data" href="#Quiz-Code-Clones-and-Big-Data">7 Quiz: Code Clones and Big Data</a></li>
   <li><a id="toc-Assignment-Task_003a-Working-with-a-Stream-of-Data" href="#Assignment-Task-Working-with-a-Stream-of-Data">8 Assignment Task: Working with a Stream of Data</a></li>
   <li><a id="toc-Assignment-Submission_003a-Code-Stream-Clone-Detector" href="#Assignment-Submission-Code-Stream-Clone-Detector">9 Assignment Submission: Code Stream Clone Detector</a></li>
-  <li><a id="toc-Improving-the-Clone-Detecting-Algorithm-1" href="#Improving-the-Clone-Detecting-Algorithm">10 Improving the Clone Detecting Algorithm</a>
+  <li><a id="toc-Improving-the-Clone-Detecting-Algorithm" href="#Improving-the-Clone-Detecting-Algorithm">10 Improving the Clone Detecting Algorithm</a>
   <ul class="toc-numbered-mark">
-    <li><a id="toc-Hashing-1" href="#Hashing">10.1 Hashing</a></li>
-    <li><a id="toc-O_0028n_005e2_0029-1" href="#O_0028n_005e2_0029">10.2 O(n<em class="math">^2</em>)</a></li>
-    <li><a id="toc-From-File_002dby_002dFile-to-All_002dat_002dOnce-Analysis-1" href="#From-File_002dby_002dFile-to-All_002dat_002dOnce-Analysis">10.3 From File-by-File to All-at-Once Analysis</a></li>
+    <li><a id="toc-Hashing" href="#Hashing">10.1 Hashing</a></li>
+    <li><a id="toc-O_0028n_005e2_0029" href="#O_0028n_005e2_0029">10.2 O(n<em class="math">^2</em>)</a></li>
+    <li><a id="toc-From-File_002dby_002dFile-to-All_002dat_002dOnce-Analysis" href="#From-File_002dby_002dFile-to-All_002dat_002dOnce-Analysis">10.3 From File-by-File to All-at-Once Analysis</a></li>
     <li><a id="toc-Wisely_002c-and-slow_002e-They-stumble-that-run-fast_002e" href="#Wisely-and-slow-They-stumble-that-run-fast">10.4 Wisely, and slow. They stumble that run fast.</a></li>
   </ul></li>
   <li><a id="toc-cljDetector_003a-All_002dat_002dOnce-Clone-Detection" href="#cljDetector-All_002dat_002dOnce-Clone-Detection">11 cljDetector: All-at-Once Clone Detection</a>
   <ul class="toc-numbered-mark">
-    <li><a id="toc-First-Run-on-full-Qualitas-Corpus-1" href="#First-Run-on-full-Qualitas-Corpus">11.1 First Run on full Qualitas Corpus</a></li>
-    <li><a id="toc-Expanding-Elegantly-but-Inefficiently-1" href="#Expanding-Elegantly-but-Inefficiently">11.2 Expanding Elegantly but Inefficiently</a></li>
-    <li><a id="toc-Expand-with-_0060_0060Aleph_002dnull-Bottles-of-Beer_0027_0027-1" href="#Expand-with-_0060_0060Aleph_002dnull-Bottles-of-Beer_0027_0027">11.3 Expand with &ldquo;Aleph-null Bottles of Beer&rdquo;</a></li>
-    <li><a id="toc-Expand-with-Aggregation-Pipeline-1" href="#Expand-with-Aggregation-Pipeline">11.4 Expand with Aggregation Pipeline</a></li>
-    <li><a id="toc-Second-Run-on-full-Qualitas-Corpus-1" href="#Second-Run-on-full-Qualitas-Corpus">11.5 Second Run on full Qualitas Corpus</a></li>
+    <li><a id="toc-First-Run-on-full-Qualitas-Corpus" href="#First-Run-on-full-Qualitas-Corpus">11.1 First Run on full Qualitas Corpus</a></li>
+    <li><a id="toc-Expanding-Elegantly-but-Inefficiently" href="#Expanding-Elegantly-but-Inefficiently">11.2 Expanding Elegantly but Inefficiently</a></li>
+    <li><a id="toc-Expand-with-_0060_0060Aleph_002dnull-Bottles-of-Beer_0027_0027" href="#Expand-with-_0060_0060Aleph_002dnull-Bottles-of-Beer_0027_0027">11.3 Expand with &ldquo;Aleph-null Bottles of Beer&rdquo;</a></li>
+    <li><a id="toc-Expand-with-Aggregation-Pipeline" href="#Expand-with-Aggregation-Pipeline">11.4 Expand with Aggregation Pipeline</a></li>
+    <li><a id="toc-Second-Run-on-full-Qualitas-Corpus" href="#Second-Run-on-full-Qualitas-Corpus">11.5 Second Run on full Qualitas Corpus</a></li>
   </ul></li>
   <li><a id="toc-Assignment-Task_003a-Implementing-Monitoring" href="#Assignment-Task-Implementing-Monitoring">12 Assignment Task: Implementing Monitoring</a></li>
   <li><a id="toc-Assignment-Submission_003a-All-at-Once-Clone-Detector" href="#Assignment-Submission-All-at-Once-Clone-Detector">13 Assignment Submission: All at Once Clone Detector</a></li>
-  <li><a id="toc-Summary-1" href="#Summary">14 Summary</a></li>
-  <li><a id="toc-Concept-Index-1" href="#Concept-Index" rel="index">Concept Index</a></li>
-  <li><a id="toc-Program-Index-1" href="#Program-Index" rel="index">Program Index</a></li>
-  <li><a id="toc-Files-and-Data-Types-Index-1" href="#Files-and-Data-Types-Index" rel="index">Files and Data Types Index</a></li>
-  <li><a id="toc-Functions-and-Commands-Index-1" href="#Functions-and-Commands-Index" rel="index">Functions and Commands Index</a></li>
+  <li><a id="toc-Summary" href="#Summary">14 Summary</a></li>
+  <li><a id="toc-Concept-Index" href="#Concept-Index" rel="index">Concept Index</a></li>
+  <li><a id="toc-Program-Index" href="#Program-Index" rel="index">Program Index</a></li>
+  <li><a id="toc-Files-and-Data-Types-Index" href="#Files-and-Data-Types-Index" rel="index">Files and Data Types Index</a></li>
+  <li><a id="toc-Functions-and-Commands-Index" href="#Functions-and-Commands-Index" rel="index">Functions and Commands Index</a></li>
 </ul>
 </div>
 </div>
@@ -308,7 +310,7 @@ Next: <a href="#Velocity-The-Speed-of-Noise" accesskey="n" rel="next">Velocity :
 </p>
 <a class="index-entry-id" id="index-Spotify"></a>
 <a class="index-entry-id" id="index-Youtube"></a>
-<p>Audio and video? That ought to take up lots and lots of space. For commercial reasons, this type of data is difficult to get access to, but we may get some ideas based on some research datasets that <em class="emph">are</em> made available. For example, <a class="uref" href="https://podcastsdataset.byspotify.com/">Spotify Research</a> has published a dataset of 100 000 hours worth of podcasts, with a size of ~2TB (See &ldquo;100,000 Podcasts: A Spoken English Document Corpus” by Ann Clifton, Sravana Reddy, Yongze Yu, Aasish Pappu, Rezvaneh Rezapour, Hamed Bonab, Maria Eskevich, Gareth Jones, Jussi Karlgren, Ben Carterette, and Rosie Jones, COLING 2020 <a class="uref" href="https://www.aclweb.org/anthology/2020.coling-main.519/">https://www.aclweb.org/anthology/2020.coling-main.519/</a> ). <a class="uref" href="https://thinkcomputers.org/what-is-the-capacity-of-youtube-servers/">Youtube</a> is naturally coy about how much space they require, and I am not certain they even know or care themselves how much data they have stored. In their case, the defining factor is probably the velocity at which data arrives and the velocity at which data is requested, confident in that they have done as much as they can in order to save storage space.
+<p>Audio and video? That ought to take up lots and lots of space. For commercial reasons, this type of data is difficult to get access to, but we may get some ideas based on some research datasets that <em class="emph">are</em> made available. For example, <a class="uref" href="https://podcastsdataset.byspotify.com/">Spotify Research</a> has published a dataset of 100 000 hours worth of podcasts, with a size of ~2TB (See &quot;100,000 Podcasts: A Spoken English Document Corpus” by Ann Clifton, Sravana Reddy, Yongze Yu, Aasish Pappu, Rezvaneh Rezapour, Hamed Bonab, Maria Eskevich, Gareth Jones, Jussi Karlgren, Ben Carterette, and Rosie Jones, COLING 2020 <a class="uref" href="https://www.aclweb.org/anthology/2020.coling-main.519/">https://www.aclweb.org/anthology/2020.coling-main.519/</a> ). <a class="uref" href="https://thinkcomputers.org/what-is-the-capacity-of-youtube-servers/">Youtube</a> is naturally coy about how much space they require, and I am not certain they even know or care themselves how much data they have stored. In their case, the defining factor is probably the velocity at which data arrives and the velocity at which data is requested, confident in that they have done as much as they can in order to save storage space.
 </p>
 <p>With these examples it is clear that even a modern laptop has enough storage capacity to store even a couple of these datasets. Yes, there are cases where this becomes difficult, and finding a scalable backup solution for our photo collection is ever a problem, but it is still clear that in most cases <em class="emph">it is not the volume itself that is the problem, but what one desires to do with the data</em>.
 </p>
@@ -466,7 +468,7 @@ Next: <a href="#Value-The-Cost-of-Noise" accesskey="n" rel="next">Value : The Co
 </p>
 <a class="index-entry-id" id="index-Comparing-CO_005f2-Emissions"></a>
 <a class="index-entry-id" id="index-Thermal-Design-Power-TDP"></a>
-<p>In fact, let&rsquo;s look a little closer at the cost of intelligent analysis. A simplified formula for calculating the power consumption of a cloud computer (based on <a class="uref" href="https://devblogs.microsoft.com/sustainable-software/how-can-i-calculate-co2eq-emissions-for-my-azure-vm/">&ldquo;How can I Calculate CO<em class="math">_2</em>-eq emissions for my Azure VM?</a> (last checked 2023-04-11) ) is: <code class="code">E[Wh] = (n_cpu * P_cpu[W] * time[h])</code> where <code class="code">n_cpu</code> is the number of CPUs and <code class="code">P_cpu</code> is the power consumption per CPU. The formula suggested by S. Bergman also includes other factors such as memory power consumption and the power consumption of any GPUs, but for simplicity&rsquo;s sake these can be ignored for now. What remains now is to estimate the power consumption per CPU and how much of that CPU which is being used by us (as opposed to any other tenant on the same cloud server).
+<p>In fact, let&rsquo;s look a little closer at the cost of intelligent analysis. A simplified formula for calculating the power consumption of a cloud computer (based on <a class="uref" href="https://devblogs.microsoft.com/sustainable-software/how-can-i-calculate-co2eq-emissions-for-my-azure-vm/">&quot;How can I Calculate CO<em class="math">_2</em>-eq emissions for my Azure VM?</a> (last checked 2023-04-11) ) is: <code class="code">E[Wh] = (n_cpu * P_cpu[W] * time[h])</code> where <code class="code">n_cpu</code> is the number of CPUs and <code class="code">P_cpu</code> is the power consumption per CPU. The formula suggested by S. Bergman also includes other factors such as memory power consumption and the power consumption of any GPUs, but for simplicity&rsquo;s sake these can be ignored for now. What remains now is to estimate the power consumption per CPU and how much of that CPU which is being used by us (as opposed to any other tenant on the same cloud server).
 </p>
 <p>Thermal Design Power (TDP) is a measure listed by hardware manufacturers, so with a bit of matching between what type of computer and CPU is offered by the cloud provider and what the manufacturer of that specific CPU lists for their TDP, one may find out the energy consumption of one CPU running at full speed: <code class="code">TDP_cpu[W]</code> . Multiply this with our load <code class="code">l[percent]</code> and the time <code class="code">t[h]</code>, and we may arrive at an estimated energy consumption for our application: <code class="code">E[Wh]= (n_cpu * TDP_cpu * l * t)</code>.
 </p>
@@ -759,6 +761,10 @@ Next: <a href="#Quiz-Code-Clones-and-Big-Data" accesskey="n" rel="next">Quiz: Co
 
 <p><code class="code">git clone https://github.com/mickesv/BigDataAnalytics.git --config core.autocrlf=input</code>
 </p>
+</li><li> Download the QualitasCorpus manually: <a class="uref" href="https://bth.instructure.com/courses/6588/files?preview=1403271">https://bth.instructure.com/courses/6588/files?preview=1403271</a>
+
+</li><li> Unzip this archive and put the two tar-files in BigDataAnalytics/Containers/CorpusGetter
+
 </li><li> Build the &lsquo;<samp class="samp">CorpusGetter</samp>&rsquo; image (found in <code class="code">Containers/CorpusGetter</code> ) and tag it as <code class="code">corpusgetter</code>
 
 </li><li> Create a volume for the Qualitas Corpus: <code class="code">docker volume create qc-volume</code>
@@ -1836,7 +1842,7 @@ Next: <a href="#Program-Index" accesskey="n" rel="next">Program Index</a>, Previ
 <a class="summary-letter-printindex" href="#Concept-Index_cp_letter-U"><b>U</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Concept-Index_cp_letter-A">A</th></tr>
@@ -2008,7 +2014,7 @@ Next: <a href="#Files-and-Data-Types-Index" accesskey="n" rel="next">Files and D
 <a class="summary-letter-printindex" href="#Program-Index_pg_letter-Y"><b>Y</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="pg-entries-printindex" border="0">
+<table class="pg-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Program-Index_pg_letter-A">A</th></tr>
@@ -2094,7 +2100,7 @@ Next: <a href="#Functions-and-Commands-Index" accesskey="n" rel="next">Functions
 <a class="summary-letter-printindex" href="#Files-and-Data-Types-Index_tp_letter-T"><b>T</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="tp-entries-printindex" border="0">
+<table class="tp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Files-and-Data-Types-Index_tp_letter-C">C</th></tr>
@@ -2142,7 +2148,7 @@ Previous: <a href="#Files-and-Data-Types-Index" accesskey="p" rel="prev">Files a
 <a class="summary-letter-printindex" href="#Functions-and-Commands-Index_fn_letter-P"><b>P</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="fn-entries-printindex" border="0">
+<table class="fn-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Functions-and-Commands-Index_fn_symbol-1">-</th></tr>

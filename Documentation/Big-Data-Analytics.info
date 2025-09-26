@@ -1,4 +1,4 @@
-This is Big-Data-Analytics.info, produced by makeinfo version 7.1.1 from
+This is Big-Data-Analytics.info, produced by makeinfo version 7.2 from
 Big-Data-Analytics.texi.
 
 This is part of a course on Applied Cloud Computing and Big Data,
@@ -29,6 +29,11 @@ offered by Blekinge Institute of Technology.  Version 1.0
      WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
      DEALINGS IN THE SOFTWARE.
+
+INFO-DIR-SECTION Misc
+START-INFO-DIR-ENTRY
+* (Big-Data-Analytics). Big Data Analytics.
+END-INFO-DIR-ENTRY
 
 
 File: Big-Data-Analytics.info,  Node: Top,  Next: Document Overview,  Up: (dir)
@@ -118,7 +123,6 @@ cljDetector: All-at-Once Clone Detection
 * Expand with ``Aleph-null Bottles of Beer''::
 * Expand with Aggregation Pipeline::
 * Second Run on full Qualitas Corpus::
-
 
 
 File: Big-Data-Analytics.info,  Node: Document Overview,  Next: A Note on Reading Research Articles,  Prev: Top,  Up: Top
@@ -1203,17 +1207,23 @@ mount from different containers.
      ‘git clone https://github.com/mickesv/BigDataAnalytics.git --config
      core.autocrlf=input’
 
-  2. Build the ‘CorpusGetter’ image (found in ‘Containers/CorpusGetter’
+  2. Download the QualitasCorpus manually:
+     <https://bth.instructure.com/courses/6588/files?preview=1403271>
+
+  3. Unzip this archive and put the two tar-files in
+     BigDataAnalytics/Containers/CorpusGetter
+
+  4. Build the ‘CorpusGetter’ image (found in ‘Containers/CorpusGetter’
      ) and tag it as ‘corpusgetter’
 
-  3. Create a volume for the Qualitas Corpus: ‘docker volume create
+  5. Create a volume for the Qualitas Corpus: ‘docker volume create
      qc-volume’
 
-  4. Run the ‘corpusgetter’ image with the ‘qc-volume’ mounted and
+  6. Run the ‘corpusgetter’ image with the ‘qc-volume’ mounted and
      instruct it to fetch the corpus: ‘docker run -it -v
      qc-volume:/QualitasCorpus --name qc-getter corpusgetter FETCH’
 
-  5. If all goes well, this should end by printing some statistics about
+  7. If all goes well, this should end by printing some statistics about
      the fetched corpus and then pause.  If not, you can re-run the
      ‘corpusgetter’ image without any commands, which will only print
      these statistics and then pause: ‘docker run -it -v
@@ -1221,7 +1231,7 @@ mount from different containers.
      that pressing any key will terminate the script and end the
      container, please do not do this yet.
 
-  6. In a separate terminal, enter the running container with ‘docker
+  8. In a separate terminal, enter the running container with ‘docker
      exec -it qc-getter bash’ and browse around.  Do spend some time to
      acquaint yourself with how the QualitasCorpus is structured, where
      to find the actual source code for the systems in it, and what else
@@ -1322,7 +1332,6 @@ found so far, and the names of the thus far processed files.
      ├── SourceLine.js    # The SourceLine class represent a single line
                           # (including its original line number) in a file.
      └── Timer.js         # This class is used to start and stop timers as needed.
-
 
    The ‘processFiles()’ function follows the previously outlined overall
 process for code detection, with pre-processing, transformation, match
@@ -2788,7 +2797,7 @@ Files and Data Types Index
 * Menu:
 
 * CodeStreamConsumer file object:        Assignment Task Working with a Stream of Data.
-                                                               (line 57)
+                                                               (line 56)
 * Qualitas Corpus:                       Big Data Analytics in Practice Problem Overview.
                                                                (line  6)
 * Thermal Design Power TDP:              Variety Different Origins or Different Formats.
@@ -2824,56 +2833,56 @@ Functions and Commands Index
 * Particle Swarm Optimisation:           Velocity The Speed of Noise.
                                                               (line 132)
 
-
 
 Tag Table:
-Node: Top1457
-Node: Document Overview4669
-Node: A Note on Reading Research Articles7216
-Node: Introduction to Big Data10980
-Ref: introduction11193
-Node: Volume The Size of Big Data13529
-Ref: volume13734
-Node: Velocity The Speed of Noise24311
-Ref: velocity24571
-Node: Variety Different Origins or Different Formats35842
-Ref: variety36136
-Node: Value The Cost of Noise45024
-Node: Summary From Big Data to Big Data Analytics48706
-Node: Learning Outcomes52639
-Node: Quiz Introduction to Big Data53656
-Node: Big Data Analytics in Practice Problem Overview56057
-Node: Task Downloading and Describing the Qualitas Corpus61264
-Node: Quiz Code Clones and Big Data63524
-Node: Assignment Task Working with a Stream of Data65548
-Node: Assignment Submission Code Stream Clone Detector72119
-Ref: assignmentCodeStream72426
-Node: Improving the Clone Detecting Algorithm73768
-Node: Hashing75444
-Node: O(n^2)77358
-Node: From File-by-File to All-at-Once Analysis79999
-Node: Wisely and slow They stumble that run fast86733
-Node: cljDetector All-at-Once Clone Detection90846
-Node: First Run on full Qualitas Corpus96436
-Node: Expanding Elegantly but Inefficiently99670
-Ref: elegant-expansion99975
-Node: Expand with ``Aleph-null Bottles of Beer''103845
-Ref: beer-expansion104155
-Node: Expand with Aggregation Pipeline108710
-Ref: db-expansion109001
-Node: Second Run on full Qualitas Corpus112676
-Node: Assignment Task Implementing Monitoring114889
-Node: Assignment Submission All at Once Clone Detector120033
-Ref: assignmentAllAtOnce120304
-Node: Summary123471
-Node: Concept Index133200
-Node: Program Index142400
-Node: Files and Data Types Index145324
-Node: Functions and Commands Index146024
+Node: Top1562
+Node: Document Overview4773
+Node: A Note on Reading Research Articles7320
+Node: Introduction to Big Data11084
+Ref: introduction11297
+Node: Volume The Size of Big Data13633
+Ref: volume13838
+Node: Velocity The Speed of Noise24415
+Ref: velocity24675
+Node: Variety Different Origins or Different Formats35946
+Ref: variety36240
+Node: Value The Cost of Noise45128
+Node: Summary From Big Data to Big Data Analytics48810
+Node: Learning Outcomes52743
+Node: Quiz Introduction to Big Data53760
+Node: Big Data Analytics in Practice Problem Overview56161
+Node: Task Downloading and Describing the Qualitas Corpus61368
+Node: Quiz Code Clones and Big Data63842
+Node: Assignment Task Working with a Stream of Data65866
+Node: Assignment Submission Code Stream Clone Detector72436
+Ref: assignmentCodeStream72743
+Node: Improving the Clone Detecting Algorithm74085
+Node: Hashing75761
+Node: O(n^2)77675
+Node: From File-by-File to All-at-Once Analysis80316
+Node: Wisely and slow They stumble that run fast87050
+Node: cljDetector All-at-Once Clone Detection91163
+Node: First Run on full Qualitas Corpus96753
+Node: Expanding Elegantly but Inefficiently99987
+Ref: elegant-expansion100292
+Node: Expand with ``Aleph-null Bottles of Beer''104162
+Ref: beer-expansion104472
+Node: Expand with Aggregation Pipeline109027
+Ref: db-expansion109318
+Node: Second Run on full Qualitas Corpus112993
+Node: Assignment Task Implementing Monitoring115206
+Node: Assignment Submission All at Once Clone Detector120350
+Ref: assignmentAllAtOnce120621
+Node: Summary123788
+Node: Concept Index133517
+Node: Program Index142717
+Node: Files and Data Types Index145641
+Node: Functions and Commands Index146341
 
 End Tag Table
 
 
 Local Variables:
 coding: utf-8
+Info-documentlanguage: en
 End:
