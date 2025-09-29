@@ -710,7 +710,7 @@ Download the BigDataAnalytics repository:
 @code{git clone https://github.com/mickesv/BigDataAnalytics.git --config core.autocrlf=input}
 
 @item
-Download the QualitasCorpus manually: @uref{https://bth.instructure.com/courses/6588/files?preview=1403271}
+Download the QualitasCorpus manually [Link redacted; Available on Canvas and by contacting the course manager]
 
 @item
 Unzip this archive and put the two tar-files in BigDataAnalytics/Containers/CorpusGetter

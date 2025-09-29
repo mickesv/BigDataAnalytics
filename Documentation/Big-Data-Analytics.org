@@ -504,7 +504,7 @@ The first step is to ensure access to the Qualitas Corpus. For convenience, the 
 
  ~git clone https://github.com/mickesv/BigDataAnalytics.git --config core.autocrlf=input~
 
-2. Download the QualitasCorpus manually: https://bth.instructure.com/courses/6588/files?preview=1403271
+2. Download the QualitasCorpus manually [Link redacted; Available on Canvas and by contacting the course manager]
 
 3. Unzip this archive and put the two tar-files in BigDataAnalytics/Containers/CorpusGetter
 
