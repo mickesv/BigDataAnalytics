@@ -14,6 +14,9 @@ corpusCheck: corpusVolume
 codeStream: corpusVolume
 	@docker compose -f stream-of-code.yaml up
 
+build: corpusVolume
+	@cd ./Containers && make corpusGetter
+
 cljDetector: corpusVolume
 	@docker compose -f all-at-once.yaml up
 
@@ -30,3 +33,7 @@ doc:
 
 clean:
 	@docker rm -f qc-getter cs-generator cs-consumer
+
+deepclean: clean
+	@docker rmi corpusgetter
+	@docker volume rm qc-volume

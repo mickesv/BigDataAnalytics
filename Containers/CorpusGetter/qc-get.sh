@@ -14,6 +14,28 @@ getCorpus_deprecated() {
   rm QualitasCorpus-20130901r-pt2.tar  
 }
 
+diagnose() {
+  echo "Diagnosing QualitasCorpus..."
+  cd /QualitasCorpus
+  ls -l
+  ls -l QualitasCorpus-20130901r  
+  echo "Number of tar files:"
+  find . -name "*.tar*" -print | wc -l
+  echo "Number of zip files:"
+  find . -name "*.zip" -print | wc -l
+  echo ""
+  echo "--------------------"
+  echo "Output of install log:"
+  cat /Logs/install.log
+}
+
+reinstall() {
+  echo "Attempting to reinstall QualitasCorpus..."
+
+  mkdir /Logs
+  cd /QualitasCorpus
+  yes | QualitasCorpus-20130901r/bin/install.pl &> /Logs/install.log
+}
 
 printCorpusStats() {
   echo "Statistics for QualitasCorpus"
@@ -41,6 +63,16 @@ echo "Start command is:" $0 $@
 # else
 #   printCorpusStats
 # fi
+
+if [[ "$1" == "DIAGNOSE" ]]; then
+    diagnose
+fi
+
+if [[ "$1" == "REINSTALL" ]]; then
+    reinstall
+fi
+
+
 
 printCorpusStats
 
