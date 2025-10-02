@@ -37,6 +37,19 @@ reinstall() {
   yes | QualitasCorpus-20130901r/bin/install.pl &> /Logs/install.log
 }
 
+fullinstall() {
+    echo "Full install of QualitasCorpus..."
+
+    cd /QualitasCorpus
+    rm -rf *
+    cp /Download/* .
+    tar xf QualitasCorpus-20130901r-pt1.tar
+    tar xf QualitasCorpus-20130901r-pt2.tar
+    reinstall
+    rm QualitasCorpus-20130901r-pt1.tar
+    rm QualitasCorpus-20130901r-pt2.tar
+}
+
 printCorpusStats() {
   echo "Statistics for QualitasCorpus"
   echo "------------------------------"
@@ -70,6 +83,10 @@ fi
 
 if [[ "$1" == "REINSTALL" ]]; then
     reinstall
+fi
+
+if [[ "$1" == "INSTALL" ]]; then
+    fullinstall
 fi
 
 

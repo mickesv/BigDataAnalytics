@@ -14,8 +14,8 @@ corpusCheck: corpusVolume
 codeStream: corpusVolume
 	@docker compose -f stream-of-code.yaml up
 
-build: corpusVolume
-	@cd ./Containers && make corpusGetter
+build-cg: corpusVolume
+	@cd ./Containers && make corpusGetterFull
 
 cljDetector: corpusVolume
 	@docker compose -f all-at-once.yaml up

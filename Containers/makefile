@@ -3,6 +3,10 @@ all: corpusGetter codeStreamGenerator codeStreamConsumer cljDetector
 corpusGetter:
 	cd CorpusGetter && docker build -t corpusgetter .
 
+corpusGetterFull:
+	cd CorpusGetter && docker build -t corpusgetter . --no-cache
+
+
 codeStreamGenerator:
 	cd CodeStreamGenerator && docker build -t csgenerator .
 
