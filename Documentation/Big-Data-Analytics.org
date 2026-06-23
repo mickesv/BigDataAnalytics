@@ -506,13 +506,13 @@ The first step is to ensure access to the Qualitas Corpus. For convenience, the 
 
 2. Download the QualitasCorpus manually [Link redacted; Available on Canvas and by contacting the course manager]
 
-3. Unzip this archive and put the two tar-files in BigDataAnalytics/Containers/CorpusGetter
+3. Unzip this archive and put the two tar-files in BigDataAnalytics/Data
 
 4. Build the =CorpusGetter= image (found in ~Containers/CorpusGetter~ ) and tag it as ~corpusgetter~
 
 5. Create a volume for the Qualitas Corpus: ~docker volume create qc-volume~
 
-6. Run the ~corpusgetter~ image and instruct it to fetch the corpus: ~docker run -it -v qc-volume:/QualitasCorpus -v ./Containers/CorpusGetter:/Download --name qc-getter corpusgetter ./qc-get.sh INSTALL~
+6. Run the ~corpusgetter~ image and instruct it to fetch the corpus: ~docker run -it -v qc-volume:/QualitasCorpus -v ./Data:/Download --name qc-getter corpusgetter ./qc-get.sh INSTALL~
 
 7. If all goes well, this should end by printing some statistics about the fetched corpus and then pause. If not, you can re-run the ~corpusgetter~ image without any commands, which will only print these statistics and then pause: ~docker run -it -v qc-volume:/QualitasCorpus --name qc-getter corpusgetter~  . Note that pressing any key will terminate the script and end the container, please do not do this yet.
 
