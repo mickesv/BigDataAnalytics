@@ -32,9 +32,9 @@
         db (mg/get-db conn dbname)
         collname "files"
         file-parted (partition-all partition-size files)]
-    (try (doseq [file-group file-parted]
-           (mc/insert-batch db collname (map (fn [%] {:fileName (.getPath %) :contents (slurp %)}) file-group)))
-         (catch Exception e []))))
+    (doseq [file-group file-parted]
+      (try (mc/insert-batch db collname (map (fn [%] {:fileName (.getPath %) :contents (slurp %)}) file-group))
+         (catch Exception e [])))))
 
 (defn store-chunks! [chunks]
   (let [conn (mg/connect {:host hostname})        
